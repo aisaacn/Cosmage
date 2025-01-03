@@ -14,7 +14,7 @@ namespace CosmageV2.GamePhase
         public void ExecuteGamePhase(GamePhaseManager manager)
         {
             // TODO
-            Console.WriteLine($"executing Player {manager.CurrentPlayer}'s end phase");
+            Console.WriteLine($"executing Player {manager.CurrentPlayer.Name}'s end phase");
             manager.SwitchPlayer();
         }
     }

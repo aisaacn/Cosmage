@@ -50,6 +50,7 @@
     <Compile Include="GamePhase\GamePhase.cs" />
     <Compile Include="GamePhase\GamePhaseManager.cs" />
     <Compile Include="GamePhase\GamePhaseExecutor\IGamePhaseExecutor.cs" />
+    <Compile Include="Player\Player.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Tests\" />

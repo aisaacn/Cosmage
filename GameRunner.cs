@@ -11,7 +11,11 @@ namespace CosmageV2
     {
         static void Main()
         {
+            Player player1 = new Player(Element.Natural, "Player1-N");
+            Player player2 = new Player(Element.Mechanical, "Player2-M");
+
             GamePhaseManager manager = GamePhaseManager.Instance;
+            manager.AddPlayers(player1, player2);
             manager.StartGame();
         }
     }
