@@ -1,0 +1,10 @@
+*.vsidx
+*.suo
+*.json
+*.testlog
+*.manifest
+*.exe
+*.pdb
+*.cache
+bin/Debug*
+obj/Debug*
