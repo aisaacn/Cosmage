@@ -1,4 +1,6 @@
-﻿using System;
+﻿using CosmageV2.PlayerInteraction;
+using System;
+using System.Collections.Generic;
 
 namespace CosmageV2.GamePhase
 {
@@ -13,8 +15,15 @@ namespace CosmageV2.GamePhase
 
         public void ExecuteGamePhase(GamePhaseManager manager)
         {
-            // TODO
-            Console.WriteLine($"executing Player {manager.CurrentPlayer.Name}'s construct phase");
+            List<Construct> currentPlayerConstructs = manager.CurrentPlayer.Constructs;
+            if (currentPlayerConstructs.Count > 0)
+            {
+                // TODO deal damage to opposing player for each construct
+            }
+            else
+            {
+                Console.WriteLine($"{manager.CurrentPlayer.Name} has no constructs");
+            }
         }
     }
 }

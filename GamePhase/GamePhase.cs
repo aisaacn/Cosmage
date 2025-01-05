@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CosmageV2.GamePhase
 {
-    internal enum GamePhase
+    public enum GamePhase
     {
         Ingredient,
         Consumable,

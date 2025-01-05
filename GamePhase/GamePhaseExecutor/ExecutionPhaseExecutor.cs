@@ -14,7 +14,14 @@ namespace CosmageV2.GamePhase
         public void ExecuteGamePhase(GamePhaseManager manager)
         {
             // TODO
-            Console.WriteLine($"executing Player {manager.CurrentPlayer.Name}'s execution phase");
+            if (manager.CurrentPlayer.IsSpellReadyToCast())
+            {
+                // TODO cast spell and modify game state as necessary
+            }
+            else
+            {
+                Console.WriteLine($"{manager.CurrentPlayer.Name} is not ready to cast a spell");
+            }
         }
     }
 }

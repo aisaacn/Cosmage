@@ -1,13 +1,17 @@
-﻿using System;
+﻿using CosmageV2.PlayerInteraction;
+using CosmageV2.GUI;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace CosmageV2.GamePhase
 {
     internal class GamePhaseManager
     {
+        // TODO: reconsider lazy instantiation (it's just so easy)
         private static readonly Lazy<GamePhaseManager> lazy =
             new Lazy<GamePhaseManager>(() => new GamePhaseManager());
         public static GamePhaseManager Instance { get { return lazy.Value; } }
@@ -19,6 +23,7 @@ namespace CosmageV2.GamePhase
         Player player2;
         public Player CurrentPlayer { get; private set; }
         public int CurrentTurn { get; private set; }
+        public Form GUI { get; private set; }
 
         private GamePhaseManager()
         {
@@ -27,12 +32,15 @@ namespace CosmageV2.GamePhase
 
         private void SetupGamePhaseManager()
         {
-            //TODO: instantiate player data
-            // CurrentPlayer = 1;
             CurrentTurn = 0;
 
             gamePhaseExecutorFactory = new DefaultGamePhaseExecutorFactory();
             currentPhaseExecutor = gamePhaseExecutorFactory.CreateInitialPhaseExecutor();
+        }
+
+        public GamePhase GetCurrentPhase()
+        {
+            return currentPhaseExecutor.Phase;
         }
 
         public void AddPlayers(Player player1, Player player2)
@@ -40,6 +48,11 @@ namespace CosmageV2.GamePhase
             this.player1 = player1;
             this.player2 = player2;
             CurrentPlayer = this.player1;
+        }
+
+        public void AddGUI(Form gui)
+        {
+            this.GUI = gui;
         }
 
         public void StartGame()

@@ -50,10 +50,34 @@
     <Compile Include="GamePhase\GamePhase.cs" />
     <Compile Include="GamePhase\GamePhaseManager.cs" />
     <Compile Include="GamePhase\GamePhaseExecutor\IGamePhaseExecutor.cs" />
-    <Compile Include="Player\Player.cs" />
+    <Compile Include="GUI\GUIForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\GUIForm.Designer.cs">
+      <DependentUpon>GUIForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PlayerInteraction\Construct.cs" />
+    <Compile Include="PlayerInteraction\ElementalStrength.cs" />
+    <Compile Include="PlayerInteraction\Player.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Tests\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="GUI\GUIForm.resx">
+      <DependentUpon>GUIForm.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
