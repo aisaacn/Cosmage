@@ -23,7 +23,6 @@ namespace CosmageV2.GamePhase
         Player player2;
         public Player CurrentPlayer { get; private set; }
         public int CurrentTurn { get; private set; }
-        public Form GUI { get; private set; }
 
         private GamePhaseManager()
         {
@@ -48,11 +47,6 @@ namespace CosmageV2.GamePhase
             this.player1 = player1;
             this.player2 = player2;
             CurrentPlayer = this.player1;
-        }
-
-        public void AddGUI(Form gui)
-        {
-            this.GUI = gui;
         }
 
         public void StartGame()

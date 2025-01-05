@@ -22,7 +22,6 @@ namespace CosmageV2
             // TODO refactor to use IGamePhaseManager type instead. Allows for multiple rule sets, additional players, etc
             GamePhaseManager manager = GamePhaseManager.Instance;
             manager.AddPlayers(player1, player2);
-            manager.AddGUI(gui);
 
             gui.ShowDialog();
             // manager.StartGame();
