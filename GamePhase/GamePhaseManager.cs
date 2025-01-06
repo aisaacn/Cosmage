@@ -31,6 +31,8 @@ namespace CosmageV2.GamePhase
 
         private void SetupGamePhaseManager()
         {
+            CreatePlayers();
+            CurrentPlayer = this.player1;
             CurrentTurn = 0;
 
             gamePhaseExecutorFactory = new DefaultGamePhaseExecutorFactory();
@@ -42,11 +44,12 @@ namespace CosmageV2.GamePhase
             return currentPhaseExecutor.Phase;
         }
 
-        public void AddPlayers(Player player1, Player player2)
+        // Player creation happens here because different amounts of players will require a different IGamePhaseManager
+        // Default GamePhaseManager will always only support two players
+        private void CreatePlayers()
         {
-            this.player1 = player1;
-            this.player2 = player2;
-            CurrentPlayer = this.player1;
+            this.player1 = new Player(Element.Natural, "Player1-N");
+            this.player2 = new Player(Element.Mechanical, "Player2-M");
         }
 
         public void StartGame()

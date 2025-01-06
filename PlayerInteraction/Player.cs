@@ -11,7 +11,6 @@ namespace CosmageV2.PlayerInteraction
 {
     internal class Player
     {
-        GamePhaseManager manager;
         public Element Element { get; }
         public string Name { get; }
         public int Health { get; private set; }
@@ -20,7 +19,6 @@ namespace CosmageV2.PlayerInteraction
 
         public Player(Element element, string name) 
         {
-            manager = GamePhaseManager.Instance;
             Element = element;
             Name = name;
             Health = 20; //TODO: abstract health for different rulesets
