@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace CosmageV2.PlayerInteraction
 {
     // Data structure to define magnitudes of each element for active spells, wards, and constructs.
-    internal class ElementalStrength
+    public class ElementalStrength
     {
         Dictionary<Element, int> strengths;
 
@@ -21,6 +21,15 @@ namespace CosmageV2.PlayerInteraction
             strengths.Add(Element.Unnatural, 0);
         }
 
+        public ElementalStrength(int natural, int mechanical, int unnatural)
+        {
+            strengths = new Dictionary<Element, int>();
+
+            strengths.Add(Element.Natural, natural);
+            strengths.Add(Element.Mechanical, mechanical);
+            strengths.Add(Element.Unnatural, unnatural);
+        }
+
         public int GetStrength(Element element)
         {
             return strengths[element];
@@ -30,6 +39,13 @@ namespace CosmageV2.PlayerInteraction
         {
             int cur = strengths[element];
             strengths[element] = cur + strength;
+        }
+
+        public void AddStrengths(ElementalStrength strengthsToAdd)
+        {
+            strengths[Element.Natural] += strengthsToAdd.GetStrength(Element.Natural);
+            strengths[Element.Mechanical] += strengthsToAdd.GetStrength(Element.Mechanical);
+            strengths[Element.Unnatural] += strengthsToAdd.GetStrength(Element.Unnatural);
         }
 
         public override string ToString()

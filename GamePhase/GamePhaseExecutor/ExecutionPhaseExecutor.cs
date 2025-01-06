@@ -20,7 +20,7 @@ namespace CosmageV2.GamePhase
             }
             else
             {
-                Console.WriteLine($"{manager.CurrentPlayer.Name} is not ready to cast a spell");
+                // Console.WriteLine($"{manager.CurrentPlayer.Name} is not ready to cast a spell");
             }
         }
     }

@@ -13,7 +13,7 @@ namespace CosmageV2
     {
         static void Main()
         {
-            Form gui = new GUIForm();
+            Form gui = new StartScreenGui();
             gui.ShowDialog();
         }
     }

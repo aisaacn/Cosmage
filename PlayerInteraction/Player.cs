@@ -28,22 +28,33 @@ namespace CosmageV2.PlayerInteraction
 
         public void HandleAddIngredient()
         {
-            // TODO await input from GUI
-            Console.WriteLine($"Adding ingredient to {Name}'s Cauldron");
-            cauldron.AddStrength(Element, 1);
+            // TODO abstract this to something like IIngredientPhaseHandler
+            IngredientPhaseGui ingredientForm = new IngredientPhaseGui();
+            ingredientForm.ShowDialog();
+
+            if (ingredientForm.isCatalyst)
+            {
+                Console.WriteLine($"Catalyst added to {Name}'s Cauldron.");
+                // TODO
+            }
+            else
+            {
+                // Console.WriteLine($"Adding essence to {Name}'s Cauldron.");
+                cauldron.AddStrengths(ingredientForm.strength);
+            }
             Console.WriteLine($"{Name}'s current Cauldron: {cauldron}");
         }
 
         public void HandleUseConsumables()
         {
             // TODO implement user interaction (consumables will simply modify cauldron for now)
-            Console.WriteLine($"{Name} may use any number of consumables");
+            // Console.WriteLine($"{Name} may use any number of consumables");
         }
 
         public void HandleRuneActivation()
         {
             // TODO implement rune system
-            Console.WriteLine($"{Name} may add one charge to and activate a single rune");
+            // Console.WriteLine($"{Name} may add one charge to and activate a single rune");
         }
 
         public bool IsSpellReadyToCast()

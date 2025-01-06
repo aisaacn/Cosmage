@@ -22,7 +22,7 @@ namespace CosmageV2.GamePhase
             }
             else
             {
-                Console.WriteLine($"{manager.CurrentPlayer.Name} has no constructs");
+                // Console.WriteLine($"{manager.CurrentPlayer.Name} has no constructs");
             }
         }
     }

@@ -70,7 +70,7 @@ namespace CosmageV2.GamePhase
         private bool IsGameOver()
         {
             //TODO: check if player health is zero
-            return CurrentTurn > 2;
+            return CurrentTurn > 10;
         }
 
         private void DeclareWinner()

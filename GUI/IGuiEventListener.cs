@@ -4,12 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CosmageV2
+namespace CosmageV2.GUI
 {
-    public enum Element
+    internal class IGuiEventListener
     {
-        Natural,
-        Mechanical,
-        Unnatural
     }
 }
