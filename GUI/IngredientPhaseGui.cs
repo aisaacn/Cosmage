@@ -14,12 +14,14 @@ namespace CosmageV2.GUI
     public partial class IngredientPhaseGui : Form
     {
         public bool isCatalyst;
+        public CatalystType catalyst;
         public ElementalStrength strength;
 
         public IngredientPhaseGui()
         {
             InitializeComponent();
             isCatalyst = false;
+            catalyst = CatalystType.None;
         }
 
         private void AddBasicNatural_Click(object sender, EventArgs e)
@@ -60,22 +62,22 @@ namespace CosmageV2.GUI
         private void AddAttackCrystal_Click(object sender, EventArgs e)
         {
             isCatalyst = true;
+            catalyst = CatalystType.Attack;
             this.Close();
-            // TODO
         }
 
         private void AddWardCrystal_Click(object sender, EventArgs e)
         {
             isCatalyst = true;
+            catalyst = CatalystType.Ward;
             this.Close();
-            // TODO
         }
 
         private void AddConstructCrystal_Click(object sender, EventArgs e)
         {
             isCatalyst = true;
+            catalyst = CatalystType.Construct;
             this.Close();
-            // TODO
         }
     }
 }

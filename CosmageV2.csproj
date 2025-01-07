@@ -64,7 +64,9 @@
     </Compile>
     <Compile Include="PlayerInteraction\Construct.cs" />
     <Compile Include="PlayerInteraction\ElementalStrength.cs" />
+    <Compile Include="PlayerInteraction\IAddIngredientHandler.cs" />
     <Compile Include="PlayerInteraction\Player.cs" />
+    <Compile Include="PlayerInteraction\WinFormAddIngredientHandler.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Tests\" />

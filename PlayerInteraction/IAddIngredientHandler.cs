@@ -4,13 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CosmageV2
+namespace CosmageV2.PlayerInteraction
 {
-    public enum CatalystType
+    internal interface IAddIngredientHandler
     {
-        Attack,
-        Ward,
-        Construct,
-        None
+        void HandleAddIngredient(Player player);
     }
 }
