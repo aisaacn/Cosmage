@@ -13,8 +13,7 @@ namespace CosmageV2.GamePhase
 
         public void ExecuteGamePhase(GamePhaseManager manager)
         {
-            // TODO
-            Console.WriteLine($"Ending {manager.CurrentPlayer.Name}'s turn");
+            //Console.WriteLine($"Ending {manager.CurrentPlayer.Name}'s turn");
             manager.SwitchPlayer();
         }
     }

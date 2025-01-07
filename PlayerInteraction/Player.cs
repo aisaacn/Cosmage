@@ -70,7 +70,7 @@ namespace CosmageV2.PlayerInteraction
                 return false;
             }
 
-            Console.WriteLine($"Adding {type.ToString()} catalyst to {Name}'s cauldron");
+            //Console.WriteLine($"Adding {type.ToString()} catalyst to {Name}'s cauldron");
             Catalyst = type;
             return true;
         }

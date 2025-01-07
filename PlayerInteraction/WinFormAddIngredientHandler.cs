@@ -11,6 +11,7 @@ namespace CosmageV2.PlayerInteraction
     {
         public void HandleAddIngredient(Player player)
         {
+            // TODO only show ingredients from player's satchel
             IngredientPhaseGui ingredientForm = new IngredientPhaseGui();
             ingredientForm.ShowDialog();
 

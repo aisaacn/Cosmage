@@ -87,7 +87,7 @@ namespace CosmageV2.GamePhase
         private void DeclareWinner()
         {
             //TODO determine winning player
-            Console.WriteLine($"Player {CurrentPlayer.Name} wins!");
+            //Console.WriteLine($"Player {CurrentPlayer.Name} wins!");
         }
 
         private void ExecuteCurrentPhase()
@@ -97,18 +97,18 @@ namespace CosmageV2.GamePhase
 
         private void TransitionToNextPhase()
         {
-            currentPhaseExecutor = gamePhaseExecutorFactory.GetNextPhaseExecutor(currentPhaseExecutor.Phase);
+            currentPhaseExecutor = gamePhaseExecutorFactory.GetNextPhaseExecutor(GetCurrentPhase());
         }
 
         public void SwitchPlayer()
         {
-            //TODO
-            Console.WriteLine("----switching active player----");
+            //Console.WriteLine("----switching active player----");
             CurrentTurn++;
             if (CurrentPlayer == player1) CurrentPlayer = player2;
             else CurrentPlayer = player1;
 
             GameBoard.UpdateCurrentPlayer(CurrentPlayer);
+            // TODO update current round on GameBoard
         }
     }
 }
