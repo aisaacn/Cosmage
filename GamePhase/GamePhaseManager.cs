@@ -23,6 +23,7 @@ namespace CosmageV2.GamePhase
         Player player2;
         public Player CurrentPlayer { get; private set; }
         public int CurrentTurn { get; private set; }
+        public GameBoardGui GameBoard { get; private set; }
 
         private GamePhaseManager()
         {
@@ -32,7 +33,7 @@ namespace CosmageV2.GamePhase
         private void SetupGamePhaseManager()
         {
             CreatePlayers();
-            CurrentPlayer = this.player1;
+            ConfigureGameBoard();
             CurrentTurn = 0;
 
             gamePhaseExecutorFactory = new DefaultGamePhaseExecutorFactory();
@@ -48,8 +49,17 @@ namespace CosmageV2.GamePhase
         // Default GamePhaseManager will always only support two players
         private void CreatePlayers()
         {
-            this.player1 = new Player(Element.Natural, "Player1-N");
-            this.player2 = new Player(Element.Mechanical, "Player2-M");
+            player1 = new Player(Element.Natural, "Player1-N");
+            player2 = new Player(Element.Mechanical, "Player2-M");
+            CurrentPlayer = player1;
+        }
+
+        private void ConfigureGameBoard()
+        {
+            GameBoard = new GameBoardGui();
+            GameBoard.AssignPlayersToLabels(player1, player2);
+            GameBoard.UpdateCurrentPlayer(CurrentPlayer);
+            GameBoard.Show();
         }
 
         public void StartGame()
@@ -65,6 +75,7 @@ namespace CosmageV2.GamePhase
                 isGameOver = IsGameOver();
             }
             DeclareWinner();
+            // TODO persist GameBoard GUI
         }
 
         private bool IsGameOver()
@@ -96,6 +107,8 @@ namespace CosmageV2.GamePhase
             CurrentTurn++;
             if (CurrentPlayer == player1) CurrentPlayer = player2;
             else CurrentPlayer = player1;
+
+            GameBoard.UpdateCurrentPlayer(CurrentPlayer);
         }
     }
 }

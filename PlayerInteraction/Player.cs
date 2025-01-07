@@ -7,16 +7,17 @@ using System.Windows.Forms;
 
 namespace CosmageV2.PlayerInteraction
 {
-    internal class Player
+    public class Player
     {
         public Element Element { get; }
         public string Name { get; }
         public int Health { get; private set; }
         public List<Construct> Constructs { get; private set; }
-        ElementalStrength cauldron;
-        CatalystType catalyst;
+        public ElementalStrength Cauldron {  get; private set; }
+        public CatalystType Catalyst { get; private set; }
 
         IAddIngredientHandler addIngredientHandler;
+        IGameBoardUpdater gameBoardUpdater;
 
         public Player(Element element, string name) 
         {
@@ -25,17 +26,17 @@ namespace CosmageV2.PlayerInteraction
             Health = 20; //TODO: abstract health for different rulesets
 
             Constructs = new List<Construct>();
-            cauldron = new ElementalStrength();
-            catalyst = CatalystType.None;
+            Cauldron = new ElementalStrength();
+            Catalyst = CatalystType.None;
 
-            addIngredientHandler = new WinFormAddIngredientHandler();
+            addIngredientHandler = new WinFormAddIngredientHandler(); // TODO add ruleset manager to create all appropriate handlers
+            gameBoardUpdater = new WinFormGameBoardUpdater();
         }
 
         public void HandleAddIngredient()
         {
-            // TODO abstract this to something like IIngredientPhaseHandler
             addIngredientHandler.HandleAddIngredient(this);
-            Console.WriteLine($"{Name}'s current Cauldron: {cauldron}");
+            gameBoardUpdater.UpdateCauldron(this);
         }
 
         public void HandleUseConsumables()
@@ -58,19 +59,19 @@ namespace CosmageV2.PlayerInteraction
 
         public void AddToCauldron(ElementalStrength strength)
         {
-            this.cauldron.AddStrengths(strength);
+            Cauldron.AddStrengths(strength);
         }
 
         public bool AddCatalyst(CatalystType type)
         {
-            if (catalyst != CatalystType.None)
+            if (Catalyst != CatalystType.None)
             {
                 Console.WriteLine($"{Name} already has a catalyst");
                 return false;
             }
 
             Console.WriteLine($"Adding {type.ToString()} catalyst to {Name}'s cauldron");
-            catalyst = type;
+            Catalyst = type;
             return true;
         }
     }

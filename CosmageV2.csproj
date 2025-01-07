@@ -50,6 +50,12 @@
     <Compile Include="GamePhase\GamePhase.cs" />
     <Compile Include="GamePhase\GamePhaseManager.cs" />
     <Compile Include="GamePhase\GamePhaseExecutor\IGamePhaseExecutor.cs" />
+    <Compile Include="GUI\GameBoardGui.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\GameBoardGui.Designer.cs">
+      <DependentUpon>GameBoardGui.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\IngredientPhaseGui.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -65,8 +71,10 @@
     <Compile Include="PlayerInteraction\Construct.cs" />
     <Compile Include="PlayerInteraction\ElementalStrength.cs" />
     <Compile Include="PlayerInteraction\IAddIngredientHandler.cs" />
+    <Compile Include="PlayerInteraction\IGameBoardUpdater.cs" />
     <Compile Include="PlayerInteraction\Player.cs" />
     <Compile Include="PlayerInteraction\WinFormAddIngredientHandler.cs" />
+    <Compile Include="PlayerInteraction\WinFormGameBoardUpdater.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Tests\" />
@@ -83,6 +91,9 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="GUI\GameBoardGui.resx">
+      <DependentUpon>GameBoardGui.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI\IngredientPhaseGui.resx">
       <DependentUpon>IngredientPhaseGui.cs</DependentUpon>
     </EmbeddedResource>

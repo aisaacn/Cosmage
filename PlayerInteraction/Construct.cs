@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CosmageV2.PlayerInteraction
 {
-    internal class Construct
+    public class Construct
     {
         public ElementalStrength Strengths { get; private set; }
 
