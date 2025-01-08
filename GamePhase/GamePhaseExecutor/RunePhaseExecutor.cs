@@ -13,7 +13,7 @@ namespace CosmageV2.GamePhase
 
         public void ExecuteGamePhase(GamePhaseManager manager)
         {
-            manager.CurrentPlayer.HandleRuneActivation();
+            manager.CurrentPlayer.HandleRunePhase();
         }
     }
 }

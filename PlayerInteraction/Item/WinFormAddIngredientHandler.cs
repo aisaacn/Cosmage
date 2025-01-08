@@ -15,13 +15,13 @@ namespace CosmageV2.PlayerInteraction
             IngredientPhaseGui ingredientForm = new IngredientPhaseGui();
             ingredientForm.ShowDialog();
 
-            if (ingredientForm.isCatalyst)
+            if (ingredientForm.IsCatalyst)
             {
-                TryAddCatalyst(player, ingredientForm.catalyst);
+                TryAddCatalyst(player, ingredientForm.Catalyst);
             }
             else
             {
-                player.AddToCauldron(ingredientForm.strength);
+                player.AddToCauldron(ingredientForm.Strength);
             }
         }
 

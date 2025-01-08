@@ -15,9 +15,11 @@ namespace CosmageV2.PlayerInteraction
         public List<Construct> Constructs { get; private set; }
         public ElementalStrength Cauldron {  get; private set; }
         public CatalystType Catalyst { get; private set; }
+        public List<Rune> Runes { get; private set; }
 
         IAddIngredientHandler addIngredientHandler;
         IGameBoardUpdater gameBoardUpdater;
+        IRunePhaseHandler runePhaseHandler;
 
         public Player(Element element, string name) 
         {
@@ -28,9 +30,12 @@ namespace CosmageV2.PlayerInteraction
             Constructs = new List<Construct>();
             Cauldron = new ElementalStrength();
             Catalyst = CatalystType.None;
+            CreateRunes();
 
-            addIngredientHandler = new WinFormAddIngredientHandler(); // TODO add ruleset manager to create all appropriate handlers
+            // TODO add ruleset manager to create all appropriate handlers
+            addIngredientHandler = new WinFormAddIngredientHandler();
             gameBoardUpdater = new WinFormGameBoardUpdater();
+            runePhaseHandler = new WinFormRunePhaseHandler();
         }
 
         public void HandleAddIngredient()
@@ -45,10 +50,9 @@ namespace CosmageV2.PlayerInteraction
             // Console.WriteLine($"{Name} may use any number of consumables");
         }
 
-        public void HandleRuneActivation()
+        public void HandleRunePhase()
         {
-            // TODO implement rune system
-            // Console.WriteLine($"{Name} may add one charge to and activate a single rune");
+            runePhaseHandler.HandleRunePhase(this);
         }
 
         public bool IsSpellReadyToCast()
@@ -73,6 +77,17 @@ namespace CosmageV2.PlayerInteraction
             //Console.WriteLine($"Adding {type.ToString()} catalyst to {Name}'s cauldron");
             Catalyst = type;
             return true;
+        }
+
+        public bool ChargeRune(int runeIndex)
+        {
+            return Runes[runeIndex].ChargeRune();
+        }
+
+        private void CreateRunes()
+        {
+            // TODO use runes from player loadout
+            Runes = new List<Rune> { new InstantRune(), new StandardRune(), new DelayedRune() };
         }
     }
 }
