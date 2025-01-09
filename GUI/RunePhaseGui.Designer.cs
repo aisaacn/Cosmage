@@ -33,6 +33,8 @@
             this.ChargeRune3Button = new System.Windows.Forms.Button();
             this.ChargeAndActivateButton = new System.Windows.Forms.Button();
             this.ChargeButton = new System.Windows.Forms.Button();
+            this.performanceCounter1 = new System.Diagnostics.PerformanceCounter();
+            ((System.ComponentModel.ISupportInitialize)(this.performanceCounter1)).BeginInit();
             this.SuspendLayout();
             // 
             // ChargeRune1Button
@@ -99,6 +101,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "RunePhaseGui";
             this.Load += new System.EventHandler(this.RunePhaseGui_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.performanceCounter1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -110,5 +113,6 @@
         private System.Windows.Forms.Button ChargeRune3Button;
         private System.Windows.Forms.Button ChargeAndActivateButton;
         private System.Windows.Forms.Button ChargeButton;
+        private System.Diagnostics.PerformanceCounter performanceCounter1;
     }
 }

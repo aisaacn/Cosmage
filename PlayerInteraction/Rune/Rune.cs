@@ -17,18 +17,18 @@ namespace CosmageV2.PlayerInteraction
 
         protected abstract List<int> EffectByCharge { get; set; }
 
-        private bool hasBeenActivated;
+        public bool IsActive {  get; private set; }
 
         public Rune()
         {
-            hasBeenActivated = false;
+            IsActive = false;
             currentDelayCounters = -1;
             currentCharges = 0;
         }
 
         public bool ChargeRune()
         {
-            if (currentCharges == MaxCharges)
+            if (IsMaxCharge())
             {
                 return false;
             }
@@ -37,11 +37,16 @@ namespace CosmageV2.PlayerInteraction
             return true;
         }
 
+        public bool IsMaxCharge()
+        {
+            return currentCharges == MaxCharges;
+        }
+
         public bool ActivateRune()
         {
-            if (hasBeenActivated) return false;
+            if (IsActive) return false;
 
-            hasBeenActivated = true;
+            IsActive = true;
             currentDelayCounters = MaxDelayCounters;
             return true;
         }
@@ -51,10 +56,15 @@ namespace CosmageV2.PlayerInteraction
             currentDelayCounters--;
             if (currentDelayCounters == 0)
             {
-                hasBeenActivated = false;
+                IsActive = false;
                 return true;
             }
             return false;
+        }
+
+        public String StatusToString()
+        {
+            return $"Charges: {currentCharges} Delay: {currentDelayCounters}";
         }
     }
 }

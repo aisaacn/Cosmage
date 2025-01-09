@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace CosmageV2.PlayerInteraction
 {
-    internal interface IGameBoardUpdater
+    public interface IGameBoardUpdater
     {
-        void UpdateCauldron(Player player);
+        void UpdateLabels(Player player);
     }
 }

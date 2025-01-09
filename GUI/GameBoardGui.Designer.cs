@@ -35,6 +35,10 @@
             this.Player2Catalyst = new System.Windows.Forms.Label();
             this.Player1Catalyst = new System.Windows.Forms.Label();
             this.CurrentPlayerLabel = new System.Windows.Forms.Label();
+            this.Player2RuneNames = new System.Windows.Forms.Label();
+            this.Player2RuneStatus = new System.Windows.Forms.Label();
+            this.Player1RuneNames = new System.Windows.Forms.Label();
+            this.Player1RuneStatus = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // Player2CauldronLabel
@@ -45,7 +49,6 @@
             this.Player2CauldronLabel.Size = new System.Drawing.Size(29, 20);
             this.Player2CauldronLabel.TabIndex = 0;
             this.Player2CauldronLabel.Text = "init";
-            //this.Player2CauldronLabel.Click += new System.EventHandler(this.Player2CauldronLabel_Click);
             // 
             // Player1CauldronLabel
             // 
@@ -59,7 +62,7 @@
             // Player2CauldronContents
             // 
             this.Player2CauldronContents.AutoSize = true;
-            this.Player2CauldronContents.Location = new System.Drawing.Point(194, 52);
+            this.Player2CauldronContents.Location = new System.Drawing.Point(71, 52);
             this.Player2CauldronContents.Name = "Player2CauldronContents";
             this.Player2CauldronContents.Size = new System.Drawing.Size(29, 20);
             this.Player2CauldronContents.TabIndex = 2;
@@ -68,7 +71,7 @@
             // Player1CauldronContents
             // 
             this.Player1CauldronContents.AutoSize = true;
-            this.Player1CauldronContents.Location = new System.Drawing.Point(194, 349);
+            this.Player1CauldronContents.Location = new System.Drawing.Point(71, 346);
             this.Player1CauldronContents.Name = "Player1CauldronContents";
             this.Player1CauldronContents.Size = new System.Drawing.Size(29, 20);
             this.Player1CauldronContents.TabIndex = 3;
@@ -77,7 +80,7 @@
             // Player2Catalyst
             // 
             this.Player2Catalyst.AutoSize = true;
-            this.Player2Catalyst.Location = new System.Drawing.Point(194, 72);
+            this.Player2Catalyst.Location = new System.Drawing.Point(71, 72);
             this.Player2Catalyst.Name = "Player2Catalyst";
             this.Player2Catalyst.Size = new System.Drawing.Size(29, 20);
             this.Player2Catalyst.TabIndex = 4;
@@ -86,7 +89,7 @@
             // Player1Catalyst
             // 
             this.Player1Catalyst.AutoSize = true;
-            this.Player1Catalyst.Location = new System.Drawing.Point(194, 369);
+            this.Player1Catalyst.Location = new System.Drawing.Point(71, 366);
             this.Player1Catalyst.Name = "Player1Catalyst";
             this.Player1Catalyst.Size = new System.Drawing.Size(29, 20);
             this.Player1Catalyst.TabIndex = 5;
@@ -101,11 +104,51 @@
             this.CurrentPlayerLabel.TabIndex = 6;
             this.CurrentPlayerLabel.Text = "init";
             // 
+            // Player2RuneNames
+            // 
+            this.Player2RuneNames.AutoSize = true;
+            this.Player2RuneNames.Location = new System.Drawing.Point(415, 52);
+            this.Player2RuneNames.Name = "Player2RuneNames";
+            this.Player2RuneNames.Size = new System.Drawing.Size(29, 20);
+            this.Player2RuneNames.TabIndex = 7;
+            this.Player2RuneNames.Text = "init";
+            // 
+            // Player2RuneStatus
+            // 
+            this.Player2RuneStatus.AutoSize = true;
+            this.Player2RuneStatus.Location = new System.Drawing.Point(591, 52);
+            this.Player2RuneStatus.Name = "Player2RuneStatus";
+            this.Player2RuneStatus.Size = new System.Drawing.Size(29, 20);
+            this.Player2RuneStatus.TabIndex = 10;
+            this.Player2RuneStatus.Text = "init";
+            // 
+            // Player1RuneNames
+            // 
+            this.Player1RuneNames.AutoSize = true;
+            this.Player1RuneNames.Location = new System.Drawing.Point(415, 346);
+            this.Player1RuneNames.Name = "Player1RuneNames";
+            this.Player1RuneNames.Size = new System.Drawing.Size(29, 20);
+            this.Player1RuneNames.TabIndex = 13;
+            this.Player1RuneNames.Text = "init";
+            // 
+            // Player1RuneStatus
+            // 
+            this.Player1RuneStatus.AutoSize = true;
+            this.Player1RuneStatus.Location = new System.Drawing.Point(591, 346);
+            this.Player1RuneStatus.Name = "Player1RuneStatus";
+            this.Player1RuneStatus.Size = new System.Drawing.Size(29, 20);
+            this.Player1RuneStatus.TabIndex = 16;
+            this.Player1RuneStatus.Text = "init";
+            // 
             // GameBoardGui
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.Player1RuneStatus);
+            this.Controls.Add(this.Player1RuneNames);
+            this.Controls.Add(this.Player2RuneStatus);
+            this.Controls.Add(this.Player2RuneNames);
             this.Controls.Add(this.CurrentPlayerLabel);
             this.Controls.Add(this.Player1Catalyst);
             this.Controls.Add(this.Player2Catalyst);
@@ -114,6 +157,7 @@
             this.Controls.Add(this.Player1CauldronLabel);
             this.Controls.Add(this.Player2CauldronLabel);
             this.Name = "GameBoardGui";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "GameBoard";
             this.Load += new System.EventHandler(this.GameBoardGui_Load);
             this.ResumeLayout(false);
@@ -130,5 +174,9 @@
         private System.Windows.Forms.Label Player2Catalyst;
         private System.Windows.Forms.Label Player1Catalyst;
         private System.Windows.Forms.Label CurrentPlayerLabel;
+        private System.Windows.Forms.Label Player2RuneNames;
+        private System.Windows.Forms.Label Player2RuneStatus;
+        private System.Windows.Forms.Label Player1RuneNames;
+        private System.Windows.Forms.Label Player1RuneStatus;
     }
 }

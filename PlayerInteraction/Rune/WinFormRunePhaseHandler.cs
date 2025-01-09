@@ -9,29 +9,48 @@ namespace CosmageV2.PlayerInteraction
 {
     internal class WinFormRunePhaseHandler : IRunePhaseHandler
     {
+        private int runeIndex;
+
         public void HandleRunePhase(Player player)
         {
             RunePhaseGui gui = new RunePhaseGui();
-            // gui.ShowDialog();
+            gui.ShowDialog();
+            runeIndex = gui.ChargedRuneIndex;
 
             if (gui.ActivateRune)
             {
-                TryActivatingAndChargingRune(player);
+                if (!TryActivatingAndChargingRune(player)) HandleRunePhase(player);
             }
             else
             {
-                TryChargingRune(player);
+                if (!TryChargingRune(player)) HandleRunePhase(player);
             }
         }
 
-        private void TryChargingRune(Player player)
+        private bool TryChargingRune(Player player)
         {
-            // TODO
+            if (player.IsRuneMaxCharge(runeIndex))
+            {
+                Console.WriteLine("Rune already max charge");
+                return false;
+            }
+
+            player.ChargeRune(runeIndex);
+            return true;
         }
 
-        private void TryActivatingAndChargingRune(Player player)
+        private bool TryActivatingAndChargingRune(Player player)
         {
-            // TODO
+            if (player.IsRuneActive(runeIndex))
+            {
+                Console.WriteLine("Rune already activated");
+                return false;
+            }
+
+            if (!TryChargingRune(player)) return false;
+            
+            player.ActivateRune(runeIndex);
+            return true;
         }
     }
 }

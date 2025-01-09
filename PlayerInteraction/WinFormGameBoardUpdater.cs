@@ -9,7 +9,7 @@ namespace CosmageV2.PlayerInteraction
 {
     public class WinFormGameBoardUpdater : IGameBoardUpdater
     {
-        void IGameBoardUpdater.UpdateCauldron(Player player)
+        public void UpdateLabels(Player player)
         {
             GamePhaseManager.Instance.GameBoard.UpdatePlayerLabels(player);
         }

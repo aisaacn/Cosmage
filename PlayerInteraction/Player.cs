@@ -41,7 +41,7 @@ namespace CosmageV2.PlayerInteraction
         public void HandleAddIngredient()
         {
             addIngredientHandler.HandleAddIngredient(this);
-            gameBoardUpdater.UpdateCauldron(this);
+            gameBoardUpdater.UpdateLabels(this);
         }
 
         public void HandleUseConsumables()
@@ -53,6 +53,7 @@ namespace CosmageV2.PlayerInteraction
         public void HandleRunePhase()
         {
             runePhaseHandler.HandleRunePhase(this);
+            gameBoardUpdater.UpdateLabels(this);
         }
 
         public bool IsSpellReadyToCast()
@@ -82,6 +83,41 @@ namespace CosmageV2.PlayerInteraction
         public bool ChargeRune(int runeIndex)
         {
             return Runes[runeIndex].ChargeRune();
+        }
+
+        public bool IsRuneMaxCharge(int runeIndex)
+        {
+            return Runes[runeIndex].IsMaxCharge();
+        }
+
+        public bool ActivateRune(int runeIndex)
+        {
+            return Runes[runeIndex].ActivateRune();
+        }
+
+        public bool IsRuneActive(int runeIndex)
+        {
+            return Runes[runeIndex].IsActive;
+        }
+
+        public String RuneNamesToString()
+        {
+            StringBuilder sb = new StringBuilder();
+            foreach (Rune rune in Runes)
+            {
+                sb.Append(rune.Name + ":\r\n");
+            }
+            return sb.ToString();
+        }
+
+        public String RuneStatusToString()
+        {
+            StringBuilder sb = new StringBuilder();
+            foreach (Rune rune in Runes)
+            {
+                sb.Append(rune.StatusToString() + "\r\n");
+            }
+            return sb.ToString();
         }
 
         private void CreateRunes()
