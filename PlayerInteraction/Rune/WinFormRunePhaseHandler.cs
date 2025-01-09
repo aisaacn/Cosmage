@@ -9,47 +9,54 @@ namespace CosmageV2.PlayerInteraction
 {
     internal class WinFormRunePhaseHandler : IRunePhaseHandler
     {
-        private int runeIndex;
+        int runeChargeIndex;
+        int runeActivateIndex;
 
         public void HandleRunePhase(Player player)
         {
             RunePhaseGui gui = new RunePhaseGui();
             gui.ShowDialog();
-            runeIndex = gui.ChargedRuneIndex;
+            runeChargeIndex = gui.RuneChargeIndex;
+            runeActivateIndex = gui.RuneActivateIndex;
 
-            if (gui.ActivateRune)
+            if (runeActivateIndex == -1)
             {
-                if (!TryActivatingAndChargingRune(player)) HandleRunePhase(player);
+                TryChargingRune(player);
             }
             else
             {
-                if (!TryChargingRune(player)) HandleRunePhase(player);
+                TryChargingAndActivatingRune(player);
             }
         }
 
         private bool TryChargingRune(Player player)
         {
-            if (player.IsRuneMaxCharge(runeIndex))
+            if (player.IsRuneMaxCharge(runeChargeIndex))
             {
-                Console.WriteLine("Rune already max charge");
+                Console.WriteLine("Rune is already max charge");
+                HandleRunePhase(player);
                 return false;
             }
 
-            player.ChargeRune(runeIndex);
+            player.ChargeRune(runeChargeIndex);
             return true;
         }
 
-        private bool TryActivatingAndChargingRune(Player player)
+        private bool TryChargingAndActivatingRune(Player player)
         {
-            if (player.IsRuneActive(runeIndex))
+            if (player.IsRuneActive(runeActivateIndex))
             {
-                Console.WriteLine("Rune already activated");
+                Console.WriteLine("Rune is already activated");
+                HandleRunePhase(player);
                 return false;
             }
 
-            if (!TryChargingRune(player)) return false;
-            
-            player.ActivateRune(runeIndex);
+            if (!TryChargingRune(player))
+            {
+                return false;
+            }
+
+            player.ActivateRune(runeActivateIndex);
             return true;
         }
     }

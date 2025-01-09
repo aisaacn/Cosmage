@@ -12,15 +12,15 @@ namespace CosmageV2.GUI
 {
     public partial class RunePhaseGui : Form
     {
-        public bool ActivateRune {  get; private set; }
-        public int ChargedRuneIndex { get; private set; }
+        public int RuneChargeIndex { get; private set; }
+        public int RuneActivateIndex { get; private set; }
 
         public RunePhaseGui()
         {
+            // TODO get rune names from Player
             InitializeComponent();
-            ActivateRune = false;
-            ChargedRuneIndex = -1;
-            // TODO retrieve and display runes from current player (probably shouldn't rely on PlayerInteraction, ideally should be clickable from GameBoard gui)
+            RuneChargeIndex = -2;
+            RuneActivateIndex = -2;
         }
 
         private void RunePhaseGui_Load(object sender, EventArgs e)
@@ -28,36 +28,31 @@ namespace CosmageV2.GUI
 
         }
 
-        private void ChargeRune1Button_Click(object sender, EventArgs e)
+        private void ConfirmButton_Click(object sender, EventArgs e)
         {
-            ChargedRuneIndex = 0;
+            GetChargedRune();
+            GetActivatedRune();
+            if (RuneChargeIndex != -2 && RuneActivateIndex != -2) Close();
         }
 
-        private void ChargeRune2Button_Click(object sender, EventArgs e)
+        private void GetChargedRune()
         {
-            ChargedRuneIndex = 1;
+            if (Rune1ChargeOption.Checked) RuneChargeIndex = 0;
+
+            if (Rune2ChargeOption.Checked) RuneChargeIndex = 1;
+
+            if (Rune3ChargeOption.Checked) RuneChargeIndex = 2;
         }
 
-        private void ChargeRune3Button_Click(object sender, EventArgs e)
+        private void GetActivatedRune()
         {
-            ChargedRuneIndex = 2;
-        }
+            if (Rune1ActivateOption.Checked) RuneActivateIndex = 0;
 
-        private void ChargeAndActivateButton_Click(object sender, EventArgs e)
-        {
-            if (ChargedRuneIndex != -1)
-            {
-                ActivateRune = true;
-                Close();
-            }
-        }
+            if (Rune2ActivateOption.Checked) RuneActivateIndex = 1;
 
-        private void ChargeButton_Click(object sender, EventArgs e)
-        {
-            if (ChargedRuneIndex != -1)
-            {
-                Close();
-            }
+            if (Rune3ActivateOption.Checked) RuneActivateIndex = 2;
+
+            if (NoneActivationOption.Checked) RuneActivateIndex = -1;
         }
     }
 }
