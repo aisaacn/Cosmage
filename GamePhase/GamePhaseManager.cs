@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 namespace CosmageV2.GamePhase
 {
-    internal class GamePhaseManager
+    public class GamePhaseManager
     {
         // TODO: reconsider lazy instantiation (it's just so easy)
         private static readonly Lazy<GamePhaseManager> lazy =
@@ -18,6 +18,7 @@ namespace CosmageV2.GamePhase
 
         private IGamePhaseExecutor currentPhaseExecutor;
         private IGamePhaseExecutorFactory gamePhaseExecutorFactory;
+        private ISpellExecutor spellExecutor;
 
         Player player1;
         Player player2;
@@ -38,6 +39,7 @@ namespace CosmageV2.GamePhase
 
             gamePhaseExecutorFactory = new DefaultGamePhaseExecutorFactory();
             currentPhaseExecutor = gamePhaseExecutorFactory.CreateInitialPhaseExecutor();
+            spellExecutor = new DefaultSpellExecutor(this);
         }
 
         public GamePhase GetCurrentPhase()
@@ -71,6 +73,7 @@ namespace CosmageV2.GamePhase
             while(!isGameOver)
             {
                 ExecuteCurrentPhase();
+                UpdateGameBoard();
                 TransitionToNextPhase();
                 isGameOver = IsGameOver();
             }
@@ -95,6 +98,12 @@ namespace CosmageV2.GamePhase
             currentPhaseExecutor.ExecuteGamePhase(this);
         }
 
+        private void UpdateGameBoard()
+        {
+            GameBoard.UpdatePlayerLabels(player1);
+            GameBoard.UpdatePlayerLabels(player2);
+        }
+
         private void TransitionToNextPhase()
         {
             currentPhaseExecutor = gamePhaseExecutorFactory.GetNextPhaseExecutor(GetCurrentPhase());
@@ -109,6 +118,11 @@ namespace CosmageV2.GamePhase
 
             GameBoard.UpdateCurrentPlayer(CurrentPlayer);
             // TODO update current round on GameBoard
+        }
+
+        public void ExecuteSpell(Spell spell)
+        {
+            spellExecutor.ExecuteSpell(spell);
         }
     }
 }

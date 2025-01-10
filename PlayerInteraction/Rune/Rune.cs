@@ -21,6 +21,11 @@ namespace CosmageV2.PlayerInteraction
 
         public Rune()
         {
+            Initialize();
+        }
+
+        private void Initialize()
+        {
             IsActive = false;
             currentDelayCounters = -1;
             currentCharges = 0;
@@ -53,13 +58,20 @@ namespace CosmageV2.PlayerInteraction
 
         public bool DecrementDelayAndCheckIfZero()
         {
+            if (!IsActive) return false;
+
             currentDelayCounters--;
             if (currentDelayCounters == 0)
             {
-                IsActive = false;
+                Initialize();
                 return true;
             }
             return false;
+        }
+
+        public int GetEffectByCharge()
+        {
+            return EffectByCharge[currentCharges];
         }
 
         public String StatusToString()

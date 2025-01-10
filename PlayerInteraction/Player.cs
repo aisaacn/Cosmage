@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.VisualStyles;
 
 namespace CosmageV2.PlayerInteraction
 {
@@ -18,7 +19,6 @@ namespace CosmageV2.PlayerInteraction
         public List<Rune> Runes { get; private set; }
 
         IAddIngredientHandler addIngredientHandler;
-        IGameBoardUpdater gameBoardUpdater;
         IRunePhaseHandler runePhaseHandler;
 
         public Player(Element element, string name) 
@@ -34,14 +34,12 @@ namespace CosmageV2.PlayerInteraction
 
             // TODO add ruleset manager to create all appropriate handlers
             addIngredientHandler = new WinFormAddIngredientHandler();
-            gameBoardUpdater = new WinFormGameBoardUpdater();
             runePhaseHandler = new WinFormRunePhaseHandler();
         }
 
         public void HandleAddIngredient()
         {
             addIngredientHandler.HandleAddIngredient(this);
-            gameBoardUpdater.UpdateLabels(this);
         }
 
         public void HandleUseConsumables()
@@ -53,13 +51,43 @@ namespace CosmageV2.PlayerInteraction
         public void HandleRunePhase()
         {
             runePhaseHandler.HandleRunePhase(this);
-            gameBoardUpdater.UpdateLabels(this);
         }
 
-        public bool IsSpellReadyToCast()
+        public Spell HandleExecutionPhaseAndGetPreparedSpell()
         {
-            // TODO rune system
-            return false;
+            int runeEffect = DecrementRuneDelayAndGetEffectIncrease();
+            if (runeEffect == int.MinValue)
+            {
+                return null;
+            }
+            return PrepareSpell(runeEffect);
+        }
+
+        private Spell PrepareSpell(int runeEffect)
+        {
+            // Don't cast spell if no essence, no catalyst, or if runeEffect reduces spell strength to less than 1
+            if (Cauldron.GetMagnitude() == 0
+                || Catalyst.Equals(CatalystType.None)
+                || Cauldron.GetMagnitude() <= -runeEffect) 
+                return null;
+            
+            if (runeEffect < 0)
+            {
+                // Removes strength from strongest element, or from Player's element if tied
+                // TODO consider which element should be removed from tie between both non-player elements
+                Cauldron.AddStrength(Cauldron.GetPrimaryElementWithTiebreakerPreference(Element), runeEffect);
+            }
+            else
+            {
+                Cauldron.AddStrength(Element, runeEffect);
+            }
+
+            Spell spell = new Spell(Cauldron, Catalyst);
+
+            Cauldron = new ElementalStrength();
+            Catalyst = CatalystType.None;
+
+            return spell;
         }
 
         public void AddToCauldron(ElementalStrength strength)
@@ -124,6 +152,19 @@ namespace CosmageV2.PlayerInteraction
         {
             // TODO use runes from player loadout
             Runes = new List<Rune> { new InstantRune(), new StandardRune(), new DelayedRune() };
+        }
+
+        private int DecrementRuneDelayAndGetEffectIncrease()
+        {
+            int effect = int.MinValue;
+            foreach (Rune rune in Runes)
+            {
+                if (rune.DecrementDelayAndCheckIfZero())
+                {
+                    effect = Math.Max(effect, rune.GetEffectByCharge());
+                }
+            }
+            return effect;
         }
     }
 }

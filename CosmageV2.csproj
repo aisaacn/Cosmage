@@ -39,6 +39,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GamePhase\DefaultSpellExecutor.cs" />
     <Compile Include="GamePhase\GamePhaseExecutor\ConstructPhaseExecutor.cs" />
     <Compile Include="GamePhase\GamePhaseExecutor\ConsumablePhaseExecutor.cs" />
     <Compile Include="GamePhase\DefaultGamePhaseExecutorFactory.cs" />
@@ -47,6 +48,7 @@
     <Compile Include="GamePhase\IGamePhaseExecutorFactory.cs" />
     <Compile Include="GamePhase\GamePhaseExecutor\IngredientPhaseExecutor.cs" />
     <Compile Include="GamePhase\GamePhaseExecutor\RunePhaseExecutor.cs" />
+    <Compile Include="GamePhase\ISpellExecutor.cs" />
     <Compile Include="GameRunner.cs" />
     <Compile Include="Enums\CatalystType.cs" />
     <Compile Include="Enums\Element.cs" />
@@ -80,7 +82,6 @@
     <Compile Include="PlayerInteraction\Construct.cs" />
     <Compile Include="PlayerInteraction\ElementalStrength.cs" />
     <Compile Include="PlayerInteraction\Item\IAddIngredientHandler.cs" />
-    <Compile Include="PlayerInteraction\IGameBoardUpdater.cs" />
     <Compile Include="PlayerInteraction\Player.cs" />
     <Compile Include="PlayerInteraction\Rune\DelayedRune.cs" />
     <Compile Include="PlayerInteraction\Rune\InstantRune.cs" />
@@ -89,7 +90,7 @@
     <Compile Include="PlayerInteraction\Rune\StandardRune.cs" />
     <Compile Include="PlayerInteraction\Rune\WinFormRunePhaseHandler.cs" />
     <Compile Include="PlayerInteraction\Item\WinFormAddIngredientHandler.cs" />
-    <Compile Include="PlayerInteraction\WinFormGameBoardUpdater.cs" />
+    <Compile Include="PlayerInteraction\Spell.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Tests\" />

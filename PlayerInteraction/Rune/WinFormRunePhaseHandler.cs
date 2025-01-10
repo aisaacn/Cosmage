@@ -33,7 +33,7 @@ namespace CosmageV2.PlayerInteraction
         {
             if (player.IsRuneMaxCharge(runeChargeIndex))
             {
-                Console.WriteLine("Rune is already max charge");
+                //Console.WriteLine("Rune is already max charge");
                 HandleRunePhase(player);
                 return false;
             }
@@ -46,7 +46,7 @@ namespace CosmageV2.PlayerInteraction
         {
             if (player.IsRuneActive(runeActivateIndex))
             {
-                Console.WriteLine("Rune is already activated");
+                //Console.WriteLine("Rune is already activated");
                 HandleRunePhase(player);
                 return false;
             }

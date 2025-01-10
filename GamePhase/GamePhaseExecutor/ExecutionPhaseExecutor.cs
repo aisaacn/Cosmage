@@ -1,4 +1,5 @@
 ﻿using System;
+using CosmageV2.PlayerInteraction;
 
 namespace CosmageV2.GamePhase
 {
@@ -14,13 +15,11 @@ namespace CosmageV2.GamePhase
         public void ExecuteGamePhase(GamePhaseManager manager)
         {
             // TODO
-            if (manager.CurrentPlayer.IsSpellReadyToCast())
+            Spell spell = manager.CurrentPlayer.HandleExecutionPhaseAndGetPreparedSpell();
+
+            if (spell != null)
             {
-                // TODO cast spell and modify game state as necessary
-            }
-            else
-            {
-                // Console.WriteLine($"{manager.CurrentPlayer.Name} is not ready to cast a spell");
+                manager.ExecuteSpell(spell);
             }
         }
     }

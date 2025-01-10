@@ -48,6 +48,21 @@ namespace CosmageV2.PlayerInteraction
             strengths[Element.Unnatural] += strengthsToAdd.GetStrength(Element.Unnatural);
         }
 
+        public int GetMagnitude()
+        {
+            return strengths.Values.Sum();
+        }
+
+        public Element GetPrimaryElementWithTiebreakerPreference(Element tiebreakerPreference)
+        {
+            Element primary = tiebreakerPreference;
+            foreach (Element e in strengths.Keys)
+            {
+                if (strengths[e] > strengths[primary]) primary = e;
+            }
+            return primary;
+        }
+
         public override string ToString()
         {
             return string.Join(" ", strengths);
