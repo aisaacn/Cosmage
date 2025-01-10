@@ -19,10 +19,12 @@ namespace CosmageV2.GamePhase
         private IGamePhaseExecutor currentPhaseExecutor;
         private IGamePhaseExecutorFactory gamePhaseExecutorFactory;
         private ISpellExecutor spellExecutor;
+        private IAttackHandler attackHandler;
 
         Player player1;
         Player player2;
         public Player CurrentPlayer { get; private set; }
+        public Player InactivePlayer { get; private set; }
         public int CurrentTurn { get; private set; }
         public GameBoardGui GameBoard { get; private set; }
 
@@ -39,7 +41,8 @@ namespace CosmageV2.GamePhase
 
             gamePhaseExecutorFactory = new DefaultGamePhaseExecutorFactory();
             currentPhaseExecutor = gamePhaseExecutorFactory.CreateInitialPhaseExecutor();
-            spellExecutor = new DefaultSpellExecutor(this);
+            spellExecutor = new DefaultSpellExecutor();
+            attackHandler = new DefaultAttackHandler();
         }
 
         public GamePhase GetCurrentPhase()
@@ -54,6 +57,7 @@ namespace CosmageV2.GamePhase
             player1 = new Player(Element.Natural, "Player1-N");
             player2 = new Player(Element.Mechanical, "Player2-M");
             CurrentPlayer = player1;
+            InactivePlayer = player2;
         }
 
         private void ConfigureGameBoard()
@@ -113,6 +117,7 @@ namespace CosmageV2.GamePhase
         {
             //Console.WriteLine("----switching active player----");
             CurrentTurn++;
+            InactivePlayer = CurrentPlayer;
             if (CurrentPlayer == player1) CurrentPlayer = player2;
             else CurrentPlayer = player1;
 
@@ -123,6 +128,11 @@ namespace CosmageV2.GamePhase
         public void ExecuteSpell(Spell spell)
         {
             spellExecutor.ExecuteSpell(spell);
+        }
+
+        public void HandleAttack(ElementalStrength attack)
+        {
+            attackHandler.HandleAttack(attack, InactivePlayer);
         }
     }
 }

@@ -159,10 +159,7 @@ namespace CosmageV2.PlayerInteraction
             int effect = int.MinValue;
             foreach (Rune rune in Runes)
             {
-                if (rune.DecrementDelayAndCheckIfZero())
-                {
-                    effect = Math.Max(effect, rune.GetEffectByCharge());
-                }
+                effect = Math.Max(effect, rune.DecrementDelayAndReturnEffectIfDelayBecomesZero());
             }
             return effect;
         }

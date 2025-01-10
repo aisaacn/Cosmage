@@ -9,17 +9,28 @@ namespace CosmageV2.GamePhase
 {
     public class DefaultSpellExecutor : ISpellExecutor
     {
-        GamePhaseManager manager;
-
-        public DefaultSpellExecutor(GamePhaseManager gpm)
-        {
-            manager = gpm;
-        }
-
         public void ExecuteSpell(Spell spell)
         {
-            // TODO switch on spell.Type
             Console.WriteLine($"Executing spell: {spell.Strength.ToString()} {spell.Type}");
+
+            GamePhaseManager manager = GamePhaseManager.Instance;
+            switch (spell.Type)
+            {
+                case CatalystType.Attack:
+                    manager.HandleAttack(spell.Strength);
+                    break;
+
+                case CatalystType.Ward:
+                    // TODO wards
+                    break;
+
+                case CatalystType.Construct:
+                    // TODO constructs
+                    break;
+
+                case CatalystType.None:
+                    throw new Exception("Spell cast with no catalyst");
+            }
         }
     }
 }

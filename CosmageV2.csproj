@@ -39,12 +39,14 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GamePhase\DefaultAttackHandler.cs" />
     <Compile Include="GamePhase\DefaultSpellExecutor.cs" />
     <Compile Include="GamePhase\GamePhaseExecutor\ConstructPhaseExecutor.cs" />
     <Compile Include="GamePhase\GamePhaseExecutor\ConsumablePhaseExecutor.cs" />
     <Compile Include="GamePhase\DefaultGamePhaseExecutorFactory.cs" />
     <Compile Include="GamePhase\GamePhaseExecutor\EndPhaseExecutor.cs" />
     <Compile Include="GamePhase\GamePhaseExecutor\ExecutionPhaseExecutor.cs" />
+    <Compile Include="GamePhase\IAttackHandler.cs" />
     <Compile Include="GamePhase\IGamePhaseExecutorFactory.cs" />
     <Compile Include="GamePhase\GamePhaseExecutor\IngredientPhaseExecutor.cs" />
     <Compile Include="GamePhase\GamePhaseExecutor\RunePhaseExecutor.cs" />

@@ -46,99 +46,99 @@
             this.Player2CauldronLabel.AutoSize = true;
             this.Player2CauldronLabel.Location = new System.Drawing.Point(55, 32);
             this.Player2CauldronLabel.Name = "Player2CauldronLabel";
-            this.Player2CauldronLabel.Size = new System.Drawing.Size(29, 20);
+            this.Player2CauldronLabel.Size = new System.Drawing.Size(164, 20);
             this.Player2CauldronLabel.TabIndex = 0;
-            this.Player2CauldronLabel.Text = "init";
+            this.Player2CauldronLabel.Text = "Player2CauldronLabel";
             // 
             // Player1CauldronLabel
             // 
             this.Player1CauldronLabel.AutoSize = true;
             this.Player1CauldronLabel.Location = new System.Drawing.Point(55, 326);
             this.Player1CauldronLabel.Name = "Player1CauldronLabel";
-            this.Player1CauldronLabel.Size = new System.Drawing.Size(29, 20);
+            this.Player1CauldronLabel.Size = new System.Drawing.Size(164, 20);
             this.Player1CauldronLabel.TabIndex = 1;
-            this.Player1CauldronLabel.Text = "init";
+            this.Player1CauldronLabel.Text = "Player1CauldronLabel";
             // 
             // Player2CauldronContents
             // 
             this.Player2CauldronContents.AutoSize = true;
             this.Player2CauldronContents.Location = new System.Drawing.Point(71, 52);
             this.Player2CauldronContents.Name = "Player2CauldronContents";
-            this.Player2CauldronContents.Size = new System.Drawing.Size(29, 20);
+            this.Player2CauldronContents.Size = new System.Drawing.Size(190, 20);
             this.Player2CauldronContents.TabIndex = 2;
-            this.Player2CauldronContents.Text = "init";
+            this.Player2CauldronContents.Text = "Player2CauldronContents";
             // 
             // Player1CauldronContents
             // 
             this.Player1CauldronContents.AutoSize = true;
             this.Player1CauldronContents.Location = new System.Drawing.Point(71, 346);
             this.Player1CauldronContents.Name = "Player1CauldronContents";
-            this.Player1CauldronContents.Size = new System.Drawing.Size(29, 20);
+            this.Player1CauldronContents.Size = new System.Drawing.Size(182, 20);
             this.Player1CauldronContents.TabIndex = 3;
-            this.Player1CauldronContents.Text = "init";
+            this.Player1CauldronContents.Text = "Player1CauldronContent";
             // 
             // Player2Catalyst
             // 
             this.Player2Catalyst.AutoSize = true;
             this.Player2Catalyst.Location = new System.Drawing.Point(71, 72);
             this.Player2Catalyst.Name = "Player2Catalyst";
-            this.Player2Catalyst.Size = new System.Drawing.Size(29, 20);
+            this.Player2Catalyst.Size = new System.Drawing.Size(118, 20);
             this.Player2Catalyst.TabIndex = 4;
-            this.Player2Catalyst.Text = "init";
+            this.Player2Catalyst.Text = "Player2Catalyst";
             // 
             // Player1Catalyst
             // 
             this.Player1Catalyst.AutoSize = true;
             this.Player1Catalyst.Location = new System.Drawing.Point(71, 366);
             this.Player1Catalyst.Name = "Player1Catalyst";
-            this.Player1Catalyst.Size = new System.Drawing.Size(29, 20);
+            this.Player1Catalyst.Size = new System.Drawing.Size(118, 20);
             this.Player1Catalyst.TabIndex = 5;
-            this.Player1Catalyst.Text = "init";
+            this.Player1Catalyst.Text = "Player1Catalyst";
             // 
             // CurrentPlayerLabel
             // 
             this.CurrentPlayerLabel.AutoSize = true;
             this.CurrentPlayerLabel.Location = new System.Drawing.Point(55, 203);
             this.CurrentPlayerLabel.Name = "CurrentPlayerLabel";
-            this.CurrentPlayerLabel.Size = new System.Drawing.Size(29, 20);
+            this.CurrentPlayerLabel.Size = new System.Drawing.Size(144, 20);
             this.CurrentPlayerLabel.TabIndex = 6;
-            this.CurrentPlayerLabel.Text = "init";
+            this.CurrentPlayerLabel.Text = "CurrentPlayerLabel";
             // 
             // Player2RuneNames
             // 
             this.Player2RuneNames.AutoSize = true;
-            this.Player2RuneNames.Location = new System.Drawing.Point(415, 52);
+            this.Player2RuneNames.Location = new System.Drawing.Point(446, 52);
             this.Player2RuneNames.Name = "Player2RuneNames";
-            this.Player2RuneNames.Size = new System.Drawing.Size(29, 20);
+            this.Player2RuneNames.Size = new System.Drawing.Size(150, 20);
             this.Player2RuneNames.TabIndex = 7;
-            this.Player2RuneNames.Text = "init";
+            this.Player2RuneNames.Text = "Player2RuneNames";
             // 
             // Player2RuneStatus
             // 
             this.Player2RuneStatus.AutoSize = true;
             this.Player2RuneStatus.Location = new System.Drawing.Point(591, 52);
             this.Player2RuneStatus.Name = "Player2RuneStatus";
-            this.Player2RuneStatus.Size = new System.Drawing.Size(29, 20);
+            this.Player2RuneStatus.Size = new System.Drawing.Size(147, 20);
             this.Player2RuneStatus.TabIndex = 10;
-            this.Player2RuneStatus.Text = "init";
+            this.Player2RuneStatus.Text = "Player2RuneStatus";
             // 
             // Player1RuneNames
             // 
             this.Player1RuneNames.AutoSize = true;
-            this.Player1RuneNames.Location = new System.Drawing.Point(415, 346);
+            this.Player1RuneNames.Location = new System.Drawing.Point(446, 346);
             this.Player1RuneNames.Name = "Player1RuneNames";
-            this.Player1RuneNames.Size = new System.Drawing.Size(29, 20);
+            this.Player1RuneNames.Size = new System.Drawing.Size(150, 20);
             this.Player1RuneNames.TabIndex = 13;
-            this.Player1RuneNames.Text = "init";
+            this.Player1RuneNames.Text = "Player1RuneNames";
             // 
             // Player1RuneStatus
             // 
             this.Player1RuneStatus.AutoSize = true;
             this.Player1RuneStatus.Location = new System.Drawing.Point(591, 346);
             this.Player1RuneStatus.Name = "Player1RuneStatus";
-            this.Player1RuneStatus.Size = new System.Drawing.Size(29, 20);
+            this.Player1RuneStatus.Size = new System.Drawing.Size(147, 20);
             this.Player1RuneStatus.TabIndex = 16;
-            this.Player1RuneStatus.Text = "init";
+            this.Player1RuneStatus.Text = "Player1RuneStatus";
             // 
             // GameBoardGui
             // 

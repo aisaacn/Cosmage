@@ -56,22 +56,30 @@ namespace CosmageV2.PlayerInteraction
             return true;
         }
 
-        public bool DecrementDelayAndCheckIfZero()
+        public int DecrementDelayAndReturnEffectIfDelayBecomesZero()
         {
-            if (!IsActive) return false;
+            int effect = int.MinValue;
+            if (!IsActive) return effect;
 
             currentDelayCounters--;
             if (currentDelayCounters == 0)
             {
+                if (currentCharges == 0)
+                {
+                    // Rune cannot cast spell without at least 1 charge
+                    Initialize();
+                    return effect;
+                }
+                effect = GetEffectByCharge();
                 Initialize();
-                return true;
+                return effect;
             }
-            return false;
+            return effect;
         }
 
         public int GetEffectByCharge()
         {
-            return EffectByCharge[currentCharges];
+            return EffectByCharge[currentCharges - 1];
         }
 
         public String StatusToString()
