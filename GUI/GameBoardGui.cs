@@ -17,6 +17,8 @@ namespace CosmageV2.GUI
         Dictionary<Player, Label> catalystByPlayer;
         Dictionary<Player, Label> runeNamesByPlayer;
         Dictionary<Player, Label> runeStatusByPlayer;
+        Dictionary<Player, Label> wardByPlayer;
+        Dictionary<Player, Label> constructsByPlayer;
 
         public GameBoardGui()
         {
@@ -25,6 +27,8 @@ namespace CosmageV2.GUI
             catalystByPlayer = new Dictionary<Player, Label>();
             runeNamesByPlayer = new Dictionary<Player, Label>();
             runeStatusByPlayer = new Dictionary<Player, Label>();
+            wardByPlayer = new Dictionary<Player, Label>();
+            constructsByPlayer = new Dictionary<Player, Label>();
         }
 
         private void GameBoardGui_Load(object sender, EventArgs e)
@@ -50,9 +54,17 @@ namespace CosmageV2.GUI
             runeStatusByPlayer.Add(player1, Player1RuneStatus);
             runeStatusByPlayer.Add(player2, Player2RuneStatus);
 
+            // Wards
+            wardByPlayer.Add(player1, Player1Ward);
+            wardByPlayer.Add(player2, Player2Ward);
+
+            // Constructs
+            constructsByPlayer.Add(player1, Player1Constructs);
+            constructsByPlayer.Add(player2, Player2Constructs);
+
             // Player Names
-            Player1CauldronLabel.Text = player1.Name + "'s Cauldron:";
-            Player2CauldronLabel.Text = player2.Name + "'s Cauldron:";
+            Player1CauldronLabel.Text = player1.Name + ":";
+            Player2CauldronLabel.Text = player2.Name + ":";
 
             UpdatePlayerLabels(player1);
             UpdatePlayerLabels(player2);
@@ -64,11 +76,15 @@ namespace CosmageV2.GUI
             Label catalystLabel = catalystByPlayer[player];
             Label runeNamesLabel = runeNamesByPlayer[player];
             Label runeStatusLabel = runeStatusByPlayer[player];
+            Label wardLabel = wardByPlayer[player];
+            Label constructsLabel = constructsByPlayer[player];
 
-            cauldronLabel.Text = player.Cauldron.ToString();
+            cauldronLabel.Text = "Cauldron: " + player.Cauldron.ToString();
             catalystLabel.Text = "Catalyst: " + player.Catalyst.ToString();
             runeNamesLabel.Text = player.RuneNamesToString();
             runeStatusLabel.Text = player.RuneStatusToString();
+            wardLabel.Text = "Ward: " + player.Ward.ToString();
+            constructsLabel.Text = player.ConstructsToString();
         }
 
         public void UpdateCurrentPlayer(Player player)

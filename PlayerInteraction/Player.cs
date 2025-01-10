@@ -13,6 +13,7 @@ namespace CosmageV2.PlayerInteraction
         public Element Element { get; }
         public string Name { get; }
         public int Health { get; private set; }
+        public ElementalStrength Ward { get; private set; }
         public List<Construct> Constructs { get; private set; }
         public ElementalStrength Cauldron {  get; private set; }
         public CatalystType Catalyst { get; private set; }
@@ -27,6 +28,7 @@ namespace CosmageV2.PlayerInteraction
             Name = name;
             Health = 20; //TODO: abstract health for different rulesets
 
+            Ward = new ElementalStrength();
             Constructs = new List<Construct>();
             Cauldron = new ElementalStrength();
             Catalyst = CatalystType.None;
@@ -144,6 +146,27 @@ namespace CosmageV2.PlayerInteraction
             foreach (Rune rune in Runes)
             {
                 sb.Append(rune.StatusToString() + "\r\n");
+            }
+            return sb.ToString();
+        }
+
+        public void AddWard(ElementalStrength strength)
+        {
+            Ward.AddStrengths(strength);
+        }
+
+        public void AddConstruct(ElementalStrength strength)
+        {
+            Constructs.Add(new Construct(strength));
+        }
+
+        public string ConstructsToString()
+        {
+            StringBuilder sb = new StringBuilder();
+            foreach (Construct construct in Constructs)
+            {
+                sb.Append(construct.Strength.ToString());
+                sb.Append("\r\n");
             }
             return sb.ToString();
         }

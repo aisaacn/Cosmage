@@ -21,11 +21,11 @@ namespace CosmageV2.GamePhase
                     break;
 
                 case CatalystType.Ward:
-                    // TODO wards
+                    manager.CurrentPlayer.AddWard(spell.Strength);
                     break;
 
                 case CatalystType.Construct:
-                    // TODO constructs
+                    manager.CurrentPlayer.AddConstruct(spell.Strength);
                     break;
 
                 case CatalystType.None:

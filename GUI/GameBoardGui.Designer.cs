@@ -39,12 +39,16 @@
             this.Player2RuneStatus = new System.Windows.Forms.Label();
             this.Player1RuneNames = new System.Windows.Forms.Label();
             this.Player1RuneStatus = new System.Windows.Forms.Label();
+            this.Player2Ward = new System.Windows.Forms.Label();
+            this.Player1Ward = new System.Windows.Forms.Label();
+            this.Player2Constructs = new System.Windows.Forms.Label();
+            this.Player1Constructs = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // Player2CauldronLabel
             // 
             this.Player2CauldronLabel.AutoSize = true;
-            this.Player2CauldronLabel.Location = new System.Drawing.Point(55, 32);
+            this.Player2CauldronLabel.Location = new System.Drawing.Point(6, 32);
             this.Player2CauldronLabel.Name = "Player2CauldronLabel";
             this.Player2CauldronLabel.Size = new System.Drawing.Size(164, 20);
             this.Player2CauldronLabel.TabIndex = 0;
@@ -53,7 +57,7 @@
             // Player1CauldronLabel
             // 
             this.Player1CauldronLabel.AutoSize = true;
-            this.Player1CauldronLabel.Location = new System.Drawing.Point(55, 326);
+            this.Player1CauldronLabel.Location = new System.Drawing.Point(6, 326);
             this.Player1CauldronLabel.Name = "Player1CauldronLabel";
             this.Player1CauldronLabel.Size = new System.Drawing.Size(164, 20);
             this.Player1CauldronLabel.TabIndex = 1;
@@ -62,7 +66,7 @@
             // Player2CauldronContents
             // 
             this.Player2CauldronContents.AutoSize = true;
-            this.Player2CauldronContents.Location = new System.Drawing.Point(71, 52);
+            this.Player2CauldronContents.Location = new System.Drawing.Point(22, 52);
             this.Player2CauldronContents.Name = "Player2CauldronContents";
             this.Player2CauldronContents.Size = new System.Drawing.Size(190, 20);
             this.Player2CauldronContents.TabIndex = 2;
@@ -71,7 +75,7 @@
             // Player1CauldronContents
             // 
             this.Player1CauldronContents.AutoSize = true;
-            this.Player1CauldronContents.Location = new System.Drawing.Point(71, 346);
+            this.Player1CauldronContents.Location = new System.Drawing.Point(22, 346);
             this.Player1CauldronContents.Name = "Player1CauldronContents";
             this.Player1CauldronContents.Size = new System.Drawing.Size(182, 20);
             this.Player1CauldronContents.TabIndex = 3;
@@ -80,7 +84,7 @@
             // Player2Catalyst
             // 
             this.Player2Catalyst.AutoSize = true;
-            this.Player2Catalyst.Location = new System.Drawing.Point(71, 72);
+            this.Player2Catalyst.Location = new System.Drawing.Point(22, 72);
             this.Player2Catalyst.Name = "Player2Catalyst";
             this.Player2Catalyst.Size = new System.Drawing.Size(118, 20);
             this.Player2Catalyst.TabIndex = 4;
@@ -89,7 +93,7 @@
             // Player1Catalyst
             // 
             this.Player1Catalyst.AutoSize = true;
-            this.Player1Catalyst.Location = new System.Drawing.Point(71, 366);
+            this.Player1Catalyst.Location = new System.Drawing.Point(22, 366);
             this.Player1Catalyst.Name = "Player1Catalyst";
             this.Player1Catalyst.Size = new System.Drawing.Size(118, 20);
             this.Player1Catalyst.TabIndex = 5;
@@ -98,7 +102,7 @@
             // CurrentPlayerLabel
             // 
             this.CurrentPlayerLabel.AutoSize = true;
-            this.CurrentPlayerLabel.Location = new System.Drawing.Point(55, 203);
+            this.CurrentPlayerLabel.Location = new System.Drawing.Point(6, 200);
             this.CurrentPlayerLabel.Name = "CurrentPlayerLabel";
             this.CurrentPlayerLabel.Size = new System.Drawing.Size(144, 20);
             this.CurrentPlayerLabel.TabIndex = 6;
@@ -107,16 +111,17 @@
             // Player2RuneNames
             // 
             this.Player2RuneNames.AutoSize = true;
-            this.Player2RuneNames.Location = new System.Drawing.Point(446, 52);
+            this.Player2RuneNames.Location = new System.Drawing.Point(475, 52);
             this.Player2RuneNames.Name = "Player2RuneNames";
             this.Player2RuneNames.Size = new System.Drawing.Size(150, 20);
             this.Player2RuneNames.TabIndex = 7;
             this.Player2RuneNames.Text = "Player2RuneNames";
+            this.Player2RuneNames.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // Player2RuneStatus
             // 
             this.Player2RuneStatus.AutoSize = true;
-            this.Player2RuneStatus.Location = new System.Drawing.Point(591, 52);
+            this.Player2RuneStatus.Location = new System.Drawing.Point(607, 56);
             this.Player2RuneStatus.Name = "Player2RuneStatus";
             this.Player2RuneStatus.Size = new System.Drawing.Size(147, 20);
             this.Player2RuneStatus.TabIndex = 10;
@@ -125,26 +130,68 @@
             // Player1RuneNames
             // 
             this.Player1RuneNames.AutoSize = true;
-            this.Player1RuneNames.Location = new System.Drawing.Point(446, 346);
+            this.Player1RuneNames.Location = new System.Drawing.Point(475, 346);
             this.Player1RuneNames.Name = "Player1RuneNames";
             this.Player1RuneNames.Size = new System.Drawing.Size(150, 20);
             this.Player1RuneNames.TabIndex = 13;
             this.Player1RuneNames.Text = "Player1RuneNames";
+            this.Player1RuneNames.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // Player1RuneStatus
             // 
             this.Player1RuneStatus.AutoSize = true;
-            this.Player1RuneStatus.Location = new System.Drawing.Point(591, 346);
+            this.Player1RuneStatus.Location = new System.Drawing.Point(607, 350);
             this.Player1RuneStatus.Name = "Player1RuneStatus";
             this.Player1RuneStatus.Size = new System.Drawing.Size(147, 20);
             this.Player1RuneStatus.TabIndex = 16;
             this.Player1RuneStatus.Text = "Player1RuneStatus";
+            // 
+            // Player2Ward
+            // 
+            this.Player2Ward.AutoSize = true;
+            this.Player2Ward.Location = new System.Drawing.Point(22, 92);
+            this.Player2Ward.Name = "Player2Ward";
+            this.Player2Ward.Size = new System.Drawing.Size(99, 20);
+            this.Player2Ward.TabIndex = 17;
+            this.Player2Ward.Text = "Player2Ward";
+            // 
+            // Player1Ward
+            // 
+            this.Player1Ward.AutoSize = true;
+            this.Player1Ward.Location = new System.Drawing.Point(22, 386);
+            this.Player1Ward.Name = "Player1Ward";
+            this.Player1Ward.Size = new System.Drawing.Size(99, 20);
+            this.Player1Ward.TabIndex = 18;
+            this.Player1Ward.Text = "Player1Ward";
+            // 
+            // Player2Constructs
+            // 
+            this.Player2Constructs.AutoSize = true;
+            this.Player2Constructs.Location = new System.Drawing.Point(253, 112);
+            this.Player2Constructs.Name = "Player2Constructs";
+            this.Player2Constructs.Size = new System.Drawing.Size(138, 20);
+            this.Player2Constructs.TabIndex = 20;
+            this.Player2Constructs.Text = "Player2Constructs";
+            // 
+            // Player1Constructs
+            // 
+            this.Player1Constructs.AutoSize = true;
+            this.Player1Constructs.Location = new System.Drawing.Point(253, 306);
+            this.Player1Constructs.Name = "Player1Constructs";
+            this.Player1Constructs.Size = new System.Drawing.Size(138, 20);
+            this.Player1Constructs.TabIndex = 21;
+            this.Player1Constructs.Text = "Player1Constructs";
+            this.Player1Constructs.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             // 
             // GameBoardGui
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.Player1Constructs);
+            this.Controls.Add(this.Player2Constructs);
+            this.Controls.Add(this.Player1Ward);
+            this.Controls.Add(this.Player2Ward);
             this.Controls.Add(this.Player1RuneStatus);
             this.Controls.Add(this.Player1RuneNames);
             this.Controls.Add(this.Player2RuneStatus);
@@ -178,5 +225,9 @@
         private System.Windows.Forms.Label Player2RuneStatus;
         private System.Windows.Forms.Label Player1RuneNames;
         private System.Windows.Forms.Label Player1RuneStatus;
+        private System.Windows.Forms.Label Player2Ward;
+        private System.Windows.Forms.Label Player1Ward;
+        private System.Windows.Forms.Label Player2Constructs;
+        private System.Windows.Forms.Label Player1Constructs;
     }
 }

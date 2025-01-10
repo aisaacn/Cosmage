@@ -79,6 +79,7 @@ namespace CosmageV2.PlayerInteraction
 
         public int GetEffectByCharge()
         {
+            // TODO evaluate potential bug with charge effects
             return EffectByCharge[currentCharges - 1];
         }
 

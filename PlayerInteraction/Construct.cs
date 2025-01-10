@@ -8,11 +8,11 @@ namespace CosmageV2.PlayerInteraction
 {
     public class Construct
     {
-        public ElementalStrength Strengths { get; private set; }
+        public ElementalStrength Strength { get; private set; }
 
-        public Construct(ElementalStrength strengths)
+        public Construct(ElementalStrength strength)
         {
-            this.Strengths = strengths;
+            Strength = strength;
         }
     }
 }
