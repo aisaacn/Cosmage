@@ -21,7 +21,7 @@ namespace CosmageV2.PlayerInteraction
 
         IAddIngredientHandler addIngredientHandler;
         IRunePhaseHandler runePhaseHandler;
-        IElementalRelationshipManager elementalRelationshipManager;
+        IDamageHandler damageHandler;
 
         public Player(Element element, string name) 
         {
@@ -38,7 +38,7 @@ namespace CosmageV2.PlayerInteraction
             // TODO add ruleset manager to create all appropriate handlers
             addIngredientHandler = new WinFormAddIngredientHandler();
             runePhaseHandler = new WinFormRunePhaseHandler();
-            elementalRelationshipManager = new DefaultElementalRelationshipManager();
+            damageHandler = new DefaultDamageHandler();
         }
 
         public void HandleAddIngredient()
@@ -173,18 +173,10 @@ namespace CosmageV2.PlayerInteraction
             return sb.ToString();
         }
 
-        public void ReceiveDamage(Element element, int damage)
+        public void ReceiveDamage(Element damageElement, int damageAmount)
         {
-            // TODO consider calculating adjusted damage in ElementalRelationshipManager (or something like IDamageHandler)
-            int adjDamage = damage;
-            if (element.Equals(elementalRelationshipManager.GetElementStrongAgainst(Element)))
-                adjDamage++;
-
-            if (element.Equals(elementalRelationshipManager.GetElementWeakAgainst(Element)))
-                adjDamage--;
-
             // TODO factor in ward
-
+            int adjDamage = damageHandler.CalculateAdjustedDamage(Element, damageAmount, damageElement);
             LoseHealth(adjDamage);
         }
 
