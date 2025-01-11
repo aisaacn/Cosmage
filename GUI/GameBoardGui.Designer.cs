@@ -43,6 +43,8 @@
             this.Player1Ward = new System.Windows.Forms.Label();
             this.Player2Constructs = new System.Windows.Forms.Label();
             this.Player1Constructs = new System.Windows.Forms.Label();
+            this.Player2Health = new System.Windows.Forms.Label();
+            this.Player1Health = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // Player2CauldronLabel
@@ -183,11 +185,31 @@
             this.Player1Constructs.Text = "Player1Constructs";
             this.Player1Constructs.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             // 
+            // Player2Health
+            // 
+            this.Player2Health.AutoSize = true;
+            this.Player2Health.Location = new System.Drawing.Point(22, 112);
+            this.Player2Health.Name = "Player2Health";
+            this.Player2Health.Size = new System.Drawing.Size(108, 20);
+            this.Player2Health.TabIndex = 22;
+            this.Player2Health.Text = "Player2Health";
+            // 
+            // Player1Health
+            // 
+            this.Player1Health.AutoSize = true;
+            this.Player1Health.Location = new System.Drawing.Point(22, 406);
+            this.Player1Health.Name = "Player1Health";
+            this.Player1Health.Size = new System.Drawing.Size(108, 20);
+            this.Player1Health.TabIndex = 23;
+            this.Player1Health.Text = "Player1Health";
+            // 
             // GameBoardGui
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.Player1Health);
+            this.Controls.Add(this.Player2Health);
             this.Controls.Add(this.Player1Constructs);
             this.Controls.Add(this.Player2Constructs);
             this.Controls.Add(this.Player1Ward);
@@ -229,5 +251,7 @@
         private System.Windows.Forms.Label Player1Ward;
         private System.Windows.Forms.Label Player2Constructs;
         private System.Windows.Forms.Label Player1Constructs;
+        private System.Windows.Forms.Label Player2Health;
+        private System.Windows.Forms.Label Player1Health;
     }
 }

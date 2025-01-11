@@ -19,6 +19,7 @@ namespace CosmageV2.GUI
         Dictionary<Player, Label> runeStatusByPlayer;
         Dictionary<Player, Label> wardByPlayer;
         Dictionary<Player, Label> constructsByPlayer;
+        Dictionary<Player, Label> healthByPlayer;
 
         public GameBoardGui()
         {
@@ -29,6 +30,7 @@ namespace CosmageV2.GUI
             runeStatusByPlayer = new Dictionary<Player, Label>();
             wardByPlayer = new Dictionary<Player, Label>();
             constructsByPlayer = new Dictionary<Player, Label>();
+            healthByPlayer = new Dictionary<Player, Label>();
         }
 
         private void GameBoardGui_Load(object sender, EventArgs e)
@@ -62,6 +64,10 @@ namespace CosmageV2.GUI
             constructsByPlayer.Add(player1, Player1Constructs);
             constructsByPlayer.Add(player2, Player2Constructs);
 
+            // Health
+            healthByPlayer.Add(player1, Player1Health);
+            healthByPlayer.Add(player2, Player2Health);
+
             // Player Names
             Player1CauldronLabel.Text = player1.Name + ":";
             Player2CauldronLabel.Text = player2.Name + ":";
@@ -78,6 +84,7 @@ namespace CosmageV2.GUI
             Label runeStatusLabel = runeStatusByPlayer[player];
             Label wardLabel = wardByPlayer[player];
             Label constructsLabel = constructsByPlayer[player];
+            Label healthLabel = healthByPlayer[player];
 
             cauldronLabel.Text = "Cauldron: " + player.Cauldron.ToString();
             catalystLabel.Text = "Catalyst: " + player.Catalyst.ToString();
@@ -85,6 +92,7 @@ namespace CosmageV2.GUI
             runeStatusLabel.Text = player.RuneStatusToString();
             wardLabel.Text = "Ward: " + player.Ward.ToString();
             constructsLabel.Text = player.ConstructsToString();
+            healthLabel.Text = player.Health + " HP";
         }
 
         public void UpdateCurrentPlayer(Player player)

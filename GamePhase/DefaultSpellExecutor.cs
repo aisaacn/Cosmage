@@ -11,8 +11,8 @@ namespace CosmageV2.GamePhase
     {
         public void ExecuteSpell(Spell spell)
         {
-            Console.WriteLine($"Executing spell: {spell.Strength.ToString()} {spell.Type}");
-
+            //Console.WriteLine($"Executing spell: {spell.Strength.ToString()} {spell.Type}");
+            
             GamePhaseManager manager = GamePhaseManager.Instance;
             switch (spell.Type)
             {

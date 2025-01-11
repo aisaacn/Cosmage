@@ -171,6 +171,18 @@ namespace CosmageV2.PlayerInteraction
             return sb.ToString();
         }
 
+        public void ReceiveDamage(Element element, int damage)
+        {
+            // TODO +1 if weak, -1 if strong; create class to determine Element weaknesses/strengths
+            // TODO factor in ward
+            LoseHealth(damage);
+        }
+
+        private void LoseHealth(int damage)
+        {
+            Health -= damage;
+        }
+
         private void CreateRunes()
         {
             // TODO use runes from player loadout
