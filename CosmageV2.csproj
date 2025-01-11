@@ -82,7 +82,9 @@
       <DependentUpon>StartScreenGui.cs</DependentUpon>
     </Compile>
     <Compile Include="PlayerInteraction\Construct.cs" />
+    <Compile Include="PlayerInteraction\DefaultElementalRelationshipManager.cs" />
     <Compile Include="PlayerInteraction\ElementalStrength.cs" />
+    <Compile Include="PlayerInteraction\IElementalRelationshipManager.cs" />
     <Compile Include="PlayerInteraction\Item\IAddIngredientHandler.cs" />
     <Compile Include="PlayerInteraction\Player.cs" />
     <Compile Include="PlayerInteraction\Rune\DelayedRune.cs" />

@@ -21,6 +21,7 @@ namespace CosmageV2.PlayerInteraction
 
         IAddIngredientHandler addIngredientHandler;
         IRunePhaseHandler runePhaseHandler;
+        IElementalRelationshipManager elementalRelationshipManager;
 
         public Player(Element element, string name) 
         {
@@ -37,6 +38,7 @@ namespace CosmageV2.PlayerInteraction
             // TODO add ruleset manager to create all appropriate handlers
             addIngredientHandler = new WinFormAddIngredientHandler();
             runePhaseHandler = new WinFormRunePhaseHandler();
+            elementalRelationshipManager = new DefaultElementalRelationshipManager();
         }
 
         public void HandleAddIngredient()
@@ -173,9 +175,17 @@ namespace CosmageV2.PlayerInteraction
 
         public void ReceiveDamage(Element element, int damage)
         {
-            // TODO +1 if weak, -1 if strong; create class to determine Element weaknesses/strengths
+            // TODO consider calculating adjusted damage in ElementalRelationshipManager (or something like IDamageHandler)
+            int adjDamage = damage;
+            if (element.Equals(elementalRelationshipManager.GetElementStrongAgainst(Element)))
+                adjDamage++;
+
+            if (element.Equals(elementalRelationshipManager.GetElementWeakAgainst(Element)))
+                adjDamage--;
+
             // TODO factor in ward
-            LoseHealth(damage);
+
+            LoseHealth(adjDamage);
         }
 
         private void LoseHealth(int damage)
