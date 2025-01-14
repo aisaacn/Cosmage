@@ -70,6 +70,21 @@ namespace CosmageV2.PlayerInteraction
             return PrepareSpell(runeEffect);
         }
 
+        public void DecrementAllConstructs()
+        {
+            List<Construct> toDestroy = new List<Construct>();
+            foreach (Construct c in Constructs)
+            {
+                c.DecrementAllStrengths();
+                if (c.IsDestroyed()) toDestroy.Add(c);
+            }
+            
+            foreach (Construct c in toDestroy)
+            {
+                Constructs.Remove(c);
+            }
+        }
+
         private Spell PrepareSpell(int runeEffect)
         {
             // Don't cast spell if no essence, no catalyst, or if runeEffect reduces spell strength to less than 1

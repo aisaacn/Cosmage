@@ -1,6 +1,7 @@
 ﻿using CosmageV2.PlayerInteraction;
 using System;
 using System.Collections.Generic;
+using System.Windows.Media.Animation;
 
 namespace CosmageV2.GamePhase
 {
@@ -18,11 +19,14 @@ namespace CosmageV2.GamePhase
             List<Construct> currentPlayerConstructs = manager.CurrentPlayer.Constructs;
             if (currentPlayerConstructs.Count > 0)
             {
-                // TODO deal damage to opposing player for each construct
-            }
-            else
-            {
-                // Console.WriteLine($"{manager.CurrentPlayer.Name} has no constructs");
+                foreach (Construct c in currentPlayerConstructs)
+                {
+                    if (!c.HasSummoningSickness)
+                    {
+                        manager.HandleAttack(c.Strength);
+                    }
+                }
+                manager.CurrentPlayer.DecrementAllConstructs();
             }
         }
     }
