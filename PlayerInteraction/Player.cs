@@ -22,6 +22,7 @@ namespace CosmageV2.PlayerInteraction
         IAddIngredientHandler addIngredientHandler;
         IRunePhaseHandler runePhaseHandler;
         IDamageHandler damageHandler;
+        IWardHandler wardHandler;
 
         public Player(Element element, string name) 
         {
@@ -36,9 +37,11 @@ namespace CosmageV2.PlayerInteraction
             CreateRunes();
 
             // TODO add ruleset manager to create all appropriate handlers
+            IElementalRelationshipManager relationshipManager = new DefaultElementalRelationshipManager();
             addIngredientHandler = new WinFormAddIngredientHandler();
             runePhaseHandler = new WinFormRunePhaseHandler();
-            damageHandler = new DefaultDamageHandler();
+            damageHandler = new DefaultDamageHandler(relationshipManager);
+            wardHandler = new DefaultWardHandler(relationshipManager);
         }
 
         public void HandleAddIngredient()
@@ -103,7 +106,7 @@ namespace CosmageV2.PlayerInteraction
         {
             if (Catalyst != CatalystType.None)
             {
-                Console.WriteLine($"{Name} already has a catalyst");
+                //Console.WriteLine($"{Name} already has a catalyst");
                 return false;
             }
 
@@ -175,14 +178,15 @@ namespace CosmageV2.PlayerInteraction
 
         public void ReceiveDamage(Element damageElement, int damageAmount)
         {
-            // TODO factor in ward
             int adjDamage = damageHandler.CalculateAdjustedDamage(Element, damageAmount, damageElement);
-            LoseHealth(adjDamage);
+            LoseHealthAfterFactoringWard(damageElement, adjDamage);
         }
 
-        private void LoseHealth(int damage)
+        private void LoseHealthAfterFactoringWard(Element damageElement, int damage)
         {
-            Health -= damage;
+            WardAndDamageWrapper damageResult = wardHandler.GetAdjustedWardAndFinalDamageAmount(Ward, damageElement, damage);
+            Ward = damageResult.Ward;
+            Health -= damageResult.Damage;
         }
 
         private void CreateRunes()

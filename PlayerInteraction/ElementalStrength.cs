@@ -41,6 +41,12 @@ namespace CosmageV2.PlayerInteraction
             strengths[element] = cur + strength;
         }
 
+        public void RemoveStrength(Element element, int strength)
+        {
+            int cur = strengths[element];
+            strengths[element] = Math.Max(cur - strength, 0);
+        }
+
         public void AddStrengths(ElementalStrength strengthsToAdd)
         {
             strengths[Element.Natural] += strengthsToAdd.GetStrength(Element.Natural);

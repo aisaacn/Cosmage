@@ -9,11 +9,12 @@ namespace CosmageV2.PlayerInteraction
 {
     public class DefaultDamageHandler : IDamageHandler
     {
+        // TODO combine with IElementalRelationshipManager or IWardHandler ?
         IElementalRelationshipManager elementalRelationshipManager;
 
-        public DefaultDamageHandler()
+        public DefaultDamageHandler(IElementalRelationshipManager erm)
         {
-            elementalRelationshipManager = new DefaultElementalRelationshipManager();
+            elementalRelationshipManager = erm;
         }
 
         public int CalculateAdjustedDamage(Element targetElement, int damage, Element damageElement)
