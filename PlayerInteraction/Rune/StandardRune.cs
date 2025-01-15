@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace CosmageV2.PlayerInteraction
 {
-    internal class StandardRune : Rune
+    /*
+     * Rune type that executes the turn after it is activated.
+     * Created 1/7/25
+     */
+    public class StandardRune : Rune
     {
         public override string Name { get; protected set; }
         protected override int MaxDelayCounters { get; set; }

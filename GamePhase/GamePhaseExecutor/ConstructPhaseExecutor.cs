@@ -5,6 +5,10 @@ using System.Windows.Media.Animation;
 
 namespace CosmageV2.GamePhase
 {
+    /*
+     * Default execution of Construct phase: all current Constructs attack and then lose 1 strength of each element.
+     * Created 1/2/25
+     */
     internal class ConstructPhaseExecutor : IGamePhaseExecutor
     {
         public GamePhase Phase { get; }

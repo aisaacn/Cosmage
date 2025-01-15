@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 
 namespace CosmageV2.PlayerInteraction
 {
+    /*
+     * Defines the properties of a Spell when fully cast.
+     * Created 1/10/25
+     */
     public class Spell
     {
         public ElementalStrength Strength { get; private set; }

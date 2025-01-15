@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 
 namespace CosmageV2.PlayerInteraction
 {
+    /*
+     * Default elemental relationships. Natural>Mechanical>Unnatural>Natural.....
+     * Default elemental attack order. Strong->Weak->Neutral
+     */
     public class DefaultElementalRelationshipManager : IElementalRelationshipManager
     {
         static List<Element> orderIfTargetNatural = new List<Element>() { Element.Unnatural, Element.Mechanical, Element.Natural };

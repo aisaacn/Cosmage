@@ -7,6 +7,10 @@ using System.Threading.Tasks;
 
 namespace CosmageV2.GamePhase
 {
+    /*
+     * Handles default spell execution.
+     * Created 1/11/25
+     */
     public class DefaultSpellExecutor : ISpellExecutor
     {
         public void ExecuteSpell(Spell spell)

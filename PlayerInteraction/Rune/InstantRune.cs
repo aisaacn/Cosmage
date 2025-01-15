@@ -6,7 +6,12 @@ using System.Threading.Tasks;
 
 namespace CosmageV2.PlayerInteraction
 {
-    internal class InstantRune : Rune
+    /*
+     * Rune type that triggers the same turn it is activated.
+     * Reduces the strength of cast spell when executed with only one charge.
+     * Created 1/7/25
+     */
+    public class InstantRune : Rune
     {
         public override string Name { get; protected set; }
         protected override int MaxDelayCounters { get; set; }

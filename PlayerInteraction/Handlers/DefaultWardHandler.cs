@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 
 namespace CosmageV2.PlayerInteraction
 {
+    /*
+     * Default behavior for Ward interactions.
+     * Created 1/14/25
+     */
     public class DefaultWardHandler : IWardHandler
     {
         IElementalRelationshipManager elementalRelationshipManager;

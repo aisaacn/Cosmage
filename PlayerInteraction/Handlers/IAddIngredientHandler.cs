@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace CosmageV2.PlayerInteraction
 {
-    internal interface IAddIngredientHandler
+    /*
+     * Facilitates adding ingredient to Player's Cauldron.
+     * Created 1/3/25
+     */
+    public interface IAddIngredientHandler
     {
         void HandleAddIngredient(Player player);
     }

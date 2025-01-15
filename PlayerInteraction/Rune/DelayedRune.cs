@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace CosmageV2.PlayerInteraction
 {
-    internal class DelayedRune : Rune
+    /*
+     * Rune type that executes two turns after it is activated.
+     * Created 1/7/25
+     */
+    public class DelayedRune : Rune
     {
         public override string Name { get; protected set; }
         protected override int MaxDelayCounters { get; set; }

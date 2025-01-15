@@ -8,6 +8,11 @@ using System.Windows.Forms.VisualStyles;
 
 namespace CosmageV2.PlayerInteraction
 {
+    /*
+     * Handles Player info and functionality. Tracks Health, Ward, Constructs, Runes, and Cauldron status.
+     * Facilitates casting spells, creating Construct, charging Runes, and calculating damage based on Ward and Element.
+     * Created 1/1/25
+     */
     public class Player
     {
         public Element Element { get; }

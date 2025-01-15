@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace CosmageV2.PlayerInteraction
 {
-    // Data structure to define magnitudes of each element for active spells, wards, and constructs.
+    /*
+     * Data structure to define magnitudes of each element for active spells, wards, and constructs.
+     * Created 1/5/25
+     */
     public class ElementalStrength
     {
         Dictionary<Element, int> strengths;

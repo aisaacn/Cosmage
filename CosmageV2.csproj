@@ -39,18 +39,18 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="GamePhase\DefaultAttackHandler.cs" />
-    <Compile Include="GamePhase\DefaultSpellExecutor.cs" />
+    <Compile Include="GamePhase\Handlers\DefaultAttackHandler.cs" />
+    <Compile Include="GamePhase\Handlers\DefaultSpellExecutor.cs" />
     <Compile Include="GamePhase\GamePhaseExecutor\ConstructPhaseExecutor.cs" />
     <Compile Include="GamePhase\GamePhaseExecutor\ConsumablePhaseExecutor.cs" />
-    <Compile Include="GamePhase\DefaultGamePhaseExecutorFactory.cs" />
+    <Compile Include="GamePhase\GamePhaseExecutor\DefaultGamePhaseExecutorFactory.cs" />
     <Compile Include="GamePhase\GamePhaseExecutor\EndPhaseExecutor.cs" />
     <Compile Include="GamePhase\GamePhaseExecutor\ExecutionPhaseExecutor.cs" />
-    <Compile Include="GamePhase\IAttackHandler.cs" />
-    <Compile Include="GamePhase\IGamePhaseExecutorFactory.cs" />
+    <Compile Include="GamePhase\Handlers\IAttackHandler.cs" />
+    <Compile Include="GamePhase\GamePhaseExecutor\IGamePhaseExecutorFactory.cs" />
     <Compile Include="GamePhase\GamePhaseExecutor\IngredientPhaseExecutor.cs" />
     <Compile Include="GamePhase\GamePhaseExecutor\RunePhaseExecutor.cs" />
-    <Compile Include="GamePhase\ISpellExecutor.cs" />
+    <Compile Include="GamePhase\Handlers\ISpellExecutor.cs" />
     <Compile Include="GameRunner.cs" />
     <Compile Include="Enums\CatalystType.cs" />
     <Compile Include="Enums\Element.cs" />
@@ -82,22 +82,37 @@
       <DependentUpon>StartScreenGui.cs</DependentUpon>
     </Compile>
     <Compile Include="PlayerInteraction\Construct.cs" />
-    <Compile Include="PlayerInteraction\DefaultDamageHandler.cs" />
-    <Compile Include="PlayerInteraction\DefaultElementalRelationshipManager.cs" />
-    <Compile Include="PlayerInteraction\DefaultWardHandler.cs" />
+    <Compile Include="PlayerInteraction\Handlers\DefaultDamageHandler.cs" />
+    <Compile Include="PlayerInteraction\Handlers\DefaultElementalRelationshipManager.cs" />
+    <Compile Include="PlayerInteraction\Handlers\DefaultWardHandler.cs" />
     <Compile Include="PlayerInteraction\ElementalStrength.cs" />
-    <Compile Include="PlayerInteraction\IDamageHandler.cs" />
-    <Compile Include="PlayerInteraction\IElementalRelationshipManager.cs" />
-    <Compile Include="PlayerInteraction\Item\IAddIngredientHandler.cs" />
-    <Compile Include="PlayerInteraction\IWardHandler.cs" />
+    <Compile Include="PlayerInteraction\Handlers\IDamageHandler.cs" />
+    <Compile Include="PlayerInteraction\Handlers\IElementalRelationshipManager.cs" />
+    <Compile Include="PlayerInteraction\Item\Ingredient\Catalyst\AttackCrystal.cs" />
+    <Compile Include="PlayerInteraction\Item\Ingredient\Catalyst\Catalyst.cs" />
+    <Compile Include="PlayerInteraction\Item\Consumable.cs" />
+    <Compile Include="PlayerInteraction\Item\Ingredient\Catalyst\ConstructCrystal.cs" />
+    <Compile Include="PlayerInteraction\Item\Ingredient\Catalyst\WardCrystal.cs" />
+    <Compile Include="PlayerInteraction\Item\Ingredient\Essence\AdvancedMechanicalEssence.cs" />
+    <Compile Include="PlayerInteraction\Item\Ingredient\Essence\AdvancedNaturalEssence.cs" />
+    <Compile Include="PlayerInteraction\Item\Ingredient\Essence\AdvancedUnnaturalEssence.cs" />
+    <Compile Include="PlayerInteraction\Item\Ingredient\Essence\BasicMechnanicalEssence.cs" />
+    <Compile Include="PlayerInteraction\Item\Ingredient\Essence\BasicNaturalEssence.cs" />
+    <Compile Include="PlayerInteraction\Item\Ingredient\Essence\BasicUnnaturalEssence.cs" />
+    <Compile Include="PlayerInteraction\Item\Ingredient\Essence\Essence.cs" />
+    <Compile Include="PlayerInteraction\Handlers\IAddIngredientHandler.cs" />
+    <Compile Include="PlayerInteraction\Item\Ingredient\Ingredient.cs" />
+    <Compile Include="PlayerInteraction\Item\Item.cs" />
+    <Compile Include="PlayerInteraction\Item\PassiveItem.cs" />
+    <Compile Include="PlayerInteraction\Handlers\IWardHandler.cs" />
     <Compile Include="PlayerInteraction\Player.cs" />
     <Compile Include="PlayerInteraction\Rune\DelayedRune.cs" />
     <Compile Include="PlayerInteraction\Rune\InstantRune.cs" />
-    <Compile Include="PlayerInteraction\Rune\IRunePhaseHandler.cs" />
+    <Compile Include="PlayerInteraction\Handlers\IRunePhaseHandler.cs" />
     <Compile Include="PlayerInteraction\Rune\Rune.cs" />
     <Compile Include="PlayerInteraction\Rune\StandardRune.cs" />
-    <Compile Include="PlayerInteraction\Rune\WinFormRunePhaseHandler.cs" />
-    <Compile Include="PlayerInteraction\Item\WinFormAddIngredientHandler.cs" />
+    <Compile Include="PlayerInteraction\Handlers\WinFormRunePhaseHandler.cs" />
+    <Compile Include="PlayerInteraction\Handlers\WinFormAddIngredientHandler.cs" />
     <Compile Include="PlayerInteraction\Spell.cs" />
   </ItemGroup>
   <ItemGroup>

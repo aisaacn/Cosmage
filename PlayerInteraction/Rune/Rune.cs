@@ -6,6 +6,12 @@ using System.Threading.Tasks;
 
 namespace CosmageV2.PlayerInteraction
 {
+    /*
+     * Abstract type for Player Runes. Facilitates casting spells.
+     * Runes can have multiple charges that yield different effects when used to cast a spell (+1 strength, for example). Needs at least one charge to execute.
+     * Runes have different casting speeds based on delay counters; when activated, add max delay counters and decrement each turn. When delay reaches zero, execute spell.
+     * Created 1/7/25
+     */
     public abstract class Rune
     {
         public abstract string Name { get; protected set; }

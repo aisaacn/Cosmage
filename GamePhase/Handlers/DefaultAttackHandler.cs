@@ -7,6 +7,10 @@ using System.Threading.Tasks;
 
 namespace CosmageV2.GamePhase
 {
+    /*
+     * Default attack implementation.
+     * Created 1/11/25
+     */
     public class DefaultAttackHandler : IAttackHandler
     {
         IElementalRelationshipManager elementalRelationshipManager;

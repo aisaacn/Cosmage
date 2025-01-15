@@ -7,6 +7,9 @@ using System.Windows;
 
 namespace CosmageV2.PlayerInteraction
 {
+    /*
+     * Defines default elemental interactions: +1 when strong against target element, -1 when weak.
+     */
     public class DefaultDamageHandler : IDamageHandler
     {
         // TODO combine with IElementalRelationshipManager or IWardHandler ?

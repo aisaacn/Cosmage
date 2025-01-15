@@ -2,6 +2,10 @@
 
 namespace CosmageV2.GamePhase
 {
+    /*
+     * Defines default End phase execution: switch players
+     * Created 1/8/25
+     */
     internal class EndPhaseExecutor : IGamePhaseExecutor
     {
         public GamePhase Phase { get; }

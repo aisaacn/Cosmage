@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 
 namespace CosmageV2.PlayerInteraction
 {
+    /*
+     * Contains elemental strength/weakness relationships and damage order for multi-elemental interactions.
+     * Created 1/7/25
+     */
     public interface IElementalRelationshipManager
     {
         Element GetElementStrongAgainst(Element target);

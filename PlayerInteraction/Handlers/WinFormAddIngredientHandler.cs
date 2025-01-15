@@ -7,7 +7,11 @@ using System.Threading.Tasks;
 
 namespace CosmageV2.PlayerInteraction
 {
-    internal class WinFormAddIngredientHandler : IAddIngredientHandler
+    /*
+     * Uses rudimentary WinForm GUI to accept user input to add a single Ingredient to Player's Cauldron.
+     * Created 1/5/25
+     */
+    public class WinFormAddIngredientHandler : IAddIngredientHandler
     {
         public void HandleAddIngredient(Player player)
         {

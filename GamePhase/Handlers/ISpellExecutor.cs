@@ -7,6 +7,10 @@ using System.Threading.Tasks;
 
 namespace CosmageV2.GamePhase
 {
+    /*
+     * Facilitates spell effects between players.
+     * Created 1/11/25
+     */
     public interface ISpellExecutor
     {
         void ExecuteSpell(Spell spell);

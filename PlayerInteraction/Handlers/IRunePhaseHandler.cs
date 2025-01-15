@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace CosmageV2.PlayerInteraction
 {
-    internal interface IRunePhaseHandler
+    /*
+     * Facilitates Rune charge and activation on Player's turn.
+     * Created 1/7/25
+     */
+    public interface IRunePhaseHandler
     {
         void HandleRunePhase(Player player);
     }

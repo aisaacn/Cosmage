@@ -9,6 +9,10 @@ using System.Windows.Forms;
 
 namespace CosmageV2.GamePhase
 {
+    /*
+     * Facilitates gameplay cycle and Player interaction. Communicates with GUI to reflect gamestate.
+     * Created 1/1/25
+     */
     public class GamePhaseManager
     {
         // TODO: reconsider lazy instantiation (it's just so easy)

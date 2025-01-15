@@ -7,7 +7,11 @@ using System.Threading.Tasks;
 
 namespace CosmageV2.PlayerInteraction
 {
-    internal class WinFormRunePhaseHandler : IRunePhaseHandler
+    /*
+     * Uses rudimentary WinForm GUI to accept user input when handling Rune charging and activation.
+     * Created 1/5/25
+     */
+    public class WinFormRunePhaseHandler : IRunePhaseHandler
     {
         int runeChargeIndex;
         int runeActivateIndex;

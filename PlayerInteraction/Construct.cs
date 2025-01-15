@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 
 namespace CosmageV2.PlayerInteraction
 {
+    /*
+     * Tracks properties and handles decay of Player Constructs.
+     * Created 1/5/25
+     */
     public class Construct
     {
         public ElementalStrength Strength { get; private set; }
