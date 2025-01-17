@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CosmageV2.PlayerInteraction.Item
+namespace CosmageV2.PlayerInteraction.Itemization
 {
     /*
      * Items that are not used or added to the Cauldron, but passively affect the player or battlefield (typically at the start of a game)

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CosmageV2.PlayerInteraction.Item
+namespace CosmageV2.PlayerInteraction.Itemization
 {
     /*
      * Items that are added to the Cauldron to modify the functionality of the current spell.

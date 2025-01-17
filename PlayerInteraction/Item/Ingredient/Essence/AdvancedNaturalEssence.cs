@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CosmageV2.PlayerInteraction.Item
+namespace CosmageV2.PlayerInteraction.Itemization
 {
     /*
      * Adds 2 Natural strength to Cauldron.
