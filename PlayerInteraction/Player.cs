@@ -23,6 +23,7 @@ namespace CosmageV2.PlayerInteraction
         public ElementalStrength Cauldron {  get; private set; }
         public CatalystType Catalyst { get; private set; }
         public List<Rune> Runes { get; private set; }
+        public Satchel Satchel { get; private set; }
 
         IAddIngredientHandler addIngredientHandler;
         IRunePhaseHandler runePhaseHandler;
@@ -47,6 +48,12 @@ namespace CosmageV2.PlayerInteraction
             runePhaseHandler = new WinFormRunePhaseHandler();
             damageHandler = new DefaultDamageHandler(relationshipManager);
             wardHandler = new DefaultWardHandler(relationshipManager);
+        }
+
+        public void SetSatchel(Satchel newSatchel)
+        {
+            // TODO satchel size check. If newSatchel.Size <= rulesManager.MaxSatchelSize
+            Satchel = newSatchel;
         }
 
         public void HandleAddIngredient()

@@ -39,8 +39,8 @@ namespace CosmageV2.GamePhase
 
         private void SetupGamePhaseManager()
         {
-            CreatePlayers();
-            ConfigureGameBoard();
+            //CreatePlayers();
+            //ConfigureGameBoard();
             CurrentTurn = 0;
 
             gamePhaseExecutorFactory = new DefaultGamePhaseExecutorFactory();
@@ -56,10 +56,24 @@ namespace CosmageV2.GamePhase
 
         // Player creation happens here because different amounts of players will require a different IGamePhaseManager
         // Default GamePhaseManager will always only support two players
-        private void CreatePlayers()
+        //private void CreatePlayers()
+        //{
+        //    player1 = new Player(Element.Natural, "Player1-N-init");
+        //    player2 = new Player(Element.Mechanical, "Player2-M-init");
+        //    DecideTurnOrder();
+        //}
+
+        public void SetPlayers(Player p1, Player p2)
         {
-            player1 = new Player(Element.Natural, "Player1-N");
-            player2 = new Player(Element.Mechanical, "Player2-M");
+            player1 = p1;
+            player2 = p2;
+            DecideTurnOrder();
+            // ConfigureGameBoard();
+        }
+
+        private void DecideTurnOrder()
+        {
+            // TODO roll dice, check for Hasty Tomes, etc
             CurrentPlayer = player1;
             InactivePlayer = player2;
         }
@@ -76,6 +90,7 @@ namespace CosmageV2.GamePhase
         {
             if (player1 is null || player2 is null)
                 throw new Exception("Players must be added to GamePhaseManager before starting game.");
+            ConfigureGameBoard();
 
             bool isGameOver = false;
             while(!isGameOver)

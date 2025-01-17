@@ -24,10 +24,5 @@ namespace CosmageV2.PlayerInteraction.Itemization
             Type = CatalystType.Attack;
             IsReusable = true;
         }
-
-        public override void AddToCauldron()
-        {
-            
-        }
     }
 }

@@ -24,10 +24,5 @@ namespace CosmageV2.PlayerInteraction.Itemization
             Element = Element.Natural;
             Magnitude = 2;
         }
-
-        public override void AddToCauldron()
-        {
-
-        }
     }
 }

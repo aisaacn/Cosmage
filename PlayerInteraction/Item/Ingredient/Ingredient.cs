@@ -12,6 +12,16 @@ namespace CosmageV2.PlayerInteraction.Itemization
      */
     public abstract class Ingredient : Item
     {
-        public abstract void AddToCauldron();
+        public bool HasBeenAddedToCauldron { get; private set; }
+
+        public Ingredient()
+        {
+            HasBeenAddedToCauldron = false;
+        }
+
+        public void AddToCauldron()
+        {
+            HasBeenAddedToCauldron = true;
+        }
     }
 }

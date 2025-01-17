@@ -13,7 +13,7 @@ namespace CosmageV2.PlayerInteraction
         public List<Ingredient> Ingredients { get { return AllItems.OfType<Ingredient>().ToList(); } }
         public List<Consumable> Consumables { get { return AllItems.OfType<Consumable>().ToList(); } }
         public List<PassiveItem> PassiveItems { get { return AllItems.OfType<PassiveItem>().ToList(); } }
-        public int TotalWeight 
+        public int TotalWeight // TODO this might be overcomplicating it. Maybe just keep a running total
         {
             get
             {
@@ -25,10 +25,22 @@ namespace CosmageV2.PlayerInteraction
                 return weight;
             }
         }
+        //private int currentWeight;
+        //private int maxWeight; // TODO probably shouldn't be Satchel's responsibility to care about max Satchel size
 
-        public Satchel()
+        public Satchel(List<Item> items)
         {
-            AllItems = new List<Item>();
+            AllItems = items;
         }
+
+
+        //public bool AddItem(Item itemToAdd)
+        //{
+        //    if (currentWeight + itemToAdd.SatchelWeight > maxWeight) return false;
+
+        //    AllItems.Add(itemToAdd);
+        //    currentWeight += itemToAdd.SatchelWeight;
+        //    return true;
+        //}
     }
 }
