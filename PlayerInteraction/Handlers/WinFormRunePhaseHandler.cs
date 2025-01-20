@@ -23,6 +23,12 @@ namespace CosmageV2.PlayerInteraction
             runeChargeIndex = gui.RuneChargeIndex;
             runeActivateIndex = gui.RuneActivateIndex;
 
+            if (runeChargeIndex < 0)
+            {
+                HandleRunePhase(player);
+                return;
+            }
+
             if (runeActivateIndex == -1)
             {
                 TryChargingRune(player);

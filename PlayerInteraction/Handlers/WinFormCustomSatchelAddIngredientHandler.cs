@@ -25,6 +25,12 @@ namespace CosmageV2.PlayerInteraction
                 else
                 {
                     Essence essence = gui.selectedIngredient as Essence;
+                    if (essence is null)
+                    {
+                        HandleAddIngredient(player);
+                        return;
+                    }
+
                     player.AddEssenceAndRemoveFromSatchel(essence);
                 }
             }
