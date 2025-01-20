@@ -1,4 +1,5 @@
 ﻿using CosmageV2.GamePhase;
+using CosmageV2.PlayerInteraction;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,16 +14,52 @@ namespace CosmageV2.GUI
 {
     public partial class StartScreenGui : Form
     {
+        public Player player1;
+        public Player player2;
+
         public StartScreenGui()
         {
             InitializeComponent();
+            UpdatePlayerInfo();
+        }
+
+        private void UpdatePlayerInfo()
+        {
+            if (player1 == null) CreatePlayer1Button.Text = "Create Player 1";
+            else CreatePlayer1Button.Text = $"Modify {player1.Name}";
+
+            if (player2 == null) CreatePlayer2Button.Text = "Create Player 2";
+            else CreatePlayer2Button.Text = $"Modify {player2.Name}";
         }
 
         private void StartGameButton_Click(object sender, EventArgs e)
         {
-            // this.Close();
-            this.Hide();
-            GamePhaseManager.Instance.StartGame();
+            if (player1 != null && player2 != null)
+            {
+                this.Hide();
+                GamePhaseManager.Instance.SetPlayers(player1, player2);
+                GamePhaseManager.Instance.StartGame();
+            } 
+        }
+
+        private void CreatePlayer1Button_Click(object sender, EventArgs e)
+        {
+            player1 = OpenPlayerCreatorGui(player1);
+            UpdatePlayerInfo();
+        }
+
+        private void CreatePlayer2Button_Click(object sender, EventArgs e)
+        {
+            player2 = OpenPlayerCreatorGui(player2);
+            UpdatePlayerInfo();
+        }
+
+        private Player OpenPlayerCreatorGui(Player player)
+        {
+            PlayerCreatorGui gui = new PlayerCreatorGui(player);
+            gui.ShowDialog();
+
+            return gui.Player;
         }
     }
 }

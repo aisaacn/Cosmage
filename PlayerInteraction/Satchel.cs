@@ -29,10 +29,19 @@ namespace CosmageV2.PlayerInteraction
         }
         //private int currentWeight;
         //private int maxWeight; // TODO probably shouldn't be Satchel's responsibility to care about max Satchel size
+        public Satchel()
+        {
+            AllItems = new List<Item>();
+        }
 
         public Satchel(List<Item> items)
         {
             AllItems = items;
+        }
+
+        public void AddItem(Item item)
+        {
+            AllItems.Add(item);
         }
 
         public bool RemoveItem(Item item)

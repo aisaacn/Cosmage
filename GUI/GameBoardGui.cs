@@ -69,8 +69,8 @@ namespace CosmageV2.GUI
             healthByPlayer.Add(player2, Player2Health);
 
             // Player Names
-            Player1CauldronLabel.Text = player1.Name + ":";
-            Player2CauldronLabel.Text = player2.Name + ":";
+            Player1CauldronLabel.Text = $"{player1.Name}-{player1.Element}:";
+            Player2CauldronLabel.Text = $"{player2.Name}-{player2.Element}:";
 
             UpdatePlayerLabels(player1);
             UpdatePlayerLabels(player2);

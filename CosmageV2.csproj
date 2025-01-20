@@ -63,6 +63,12 @@
     <Compile Include="GUI\IngredientPhaseGuiCustomSatchel.Designer.cs">
       <DependentUpon>IngredientPhaseGuiCustomSatchel.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\PlayerCreatorGui.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\PlayerCreatorGui.Designer.cs">
+      <DependentUpon>PlayerCreatorGui.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\RunePhaseGui.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -74,12 +80,6 @@
     </Compile>
     <Compile Include="GUI\GameBoardGui.Designer.cs">
       <DependentUpon>GameBoardGui.cs</DependentUpon>
-    </Compile>
-    <Compile Include="GUI\IngredientPhaseGui.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="GUI\IngredientPhaseGui.Designer.cs">
-      <DependentUpon>IngredientPhaseGui.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\StartScreenGui.cs">
       <SubType>Form</SubType>
@@ -140,14 +140,14 @@
     <EmbeddedResource Include="GUI\IngredientPhaseGuiCustomSatchel.resx">
       <DependentUpon>IngredientPhaseGuiCustomSatchel.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GUI\PlayerCreatorGui.resx">
+      <DependentUpon>PlayerCreatorGui.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI\RunePhaseGui.resx">
       <DependentUpon>RunePhaseGui.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\GameBoardGui.resx">
       <DependentUpon>GameBoardGui.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="GUI\IngredientPhaseGui.resx">
-      <DependentUpon>IngredientPhaseGui.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\StartScreenGui.resx">
       <DependentUpon>StartScreenGui.cs</DependentUpon>
