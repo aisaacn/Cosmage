@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 
 namespace CosmageV2.GUI
 {
+    // TODO fix bug where locally modifying a sample player modifies the saved Player in SamplePlayers
     public partial class PlayerCreatorGui : Form
     {
         public Player Player { get; private set; }
@@ -39,6 +40,7 @@ namespace CosmageV2.GUI
 
             CreateIngredientOptions();
             GenerateButtons();
+            GenerateSamplePlayers();
         }
 
         private void UpdateExistingPlayerInfo(Player existingPlayer)
@@ -132,6 +134,43 @@ namespace CosmageV2.GUI
             {
                 new AttackCrystal(), new WardCrystal(), new ConstructCrystal()
             };
+        }
+
+        private void GenerateSamplePlayers()
+        {
+            SamplePlayerList.Items.Clear();
+            foreach (string playerName in SamplePlayers.Samples.Keys)
+            {
+                SamplePlayerList.Items.Add(playerName);
+            }
+            SamplePlayerList.Items.Add("Create new sample player...");
+        }
+
+        private void SamplePlayer_Select(object sender, EventArgs e)
+        {
+            string selection = (string) SamplePlayerList.SelectedItem;
+            if (selection.Equals("Create new sample player..."))
+            {
+                SaveNewSamplePlayer();
+            }
+            else
+            {
+                UpdateExistingPlayerInfo(SamplePlayers.Samples[selection]);
+            }
+        }
+
+        private void SaveNewSamplePlayer()
+        {
+            if (GetName() && GetElement())
+            {
+                Player samplePlayer = new Player(element, name);
+                samplePlayer.SetSatchel(satchel);
+                SamplePlayers.AddCustomSamplePlayer(samplePlayer);
+
+                SamplePlayerList.SelectedText = samplePlayer.Name;
+                UpdateSatchelContents();
+                GenerateSamplePlayers();
+            }
         }
 
         private void GenerateButtons()

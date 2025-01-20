@@ -119,6 +119,7 @@
     <Compile Include="PlayerInteraction\Rune\Rune.cs" />
     <Compile Include="PlayerInteraction\Rune\StandardRune.cs" />
     <Compile Include="PlayerInteraction\Handlers\WinFormRunePhaseHandler.cs" />
+    <Compile Include="PlayerInteraction\SamplePlayers.cs" />
     <Compile Include="PlayerInteraction\Satchel.cs" />
     <Compile Include="PlayerInteraction\Spell.cs" />
   </ItemGroup>

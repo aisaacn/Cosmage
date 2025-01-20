@@ -42,7 +42,7 @@
             this.essenceLabel = new System.Windows.Forms.Label();
             this.catalystLabel = new System.Windows.Forms.Label();
             this.ConfirmButton = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
+            this.SamplePlayerList = new System.Windows.Forms.ComboBox();
             this.ElementBox.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -177,21 +177,22 @@
             this.ConfirmButton.UseVisualStyleBackColor = true;
             this.ConfirmButton.Click += new System.EventHandler(this.ConfirmButton_Click);
             // 
-            // label2
+            // SamplePlayerList
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(61, 624);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(309, 20);
-            this.label2.TabIndex = 11;
-            this.label2.Text = "TODO: drop-down of default player configs";
+            this.SamplePlayerList.FormattingEnabled = true;
+            this.SamplePlayerList.Location = new System.Drawing.Point(101, 624);
+            this.SamplePlayerList.Name = "SamplePlayerList";
+            this.SamplePlayerList.Size = new System.Drawing.Size(256, 28);
+            this.SamplePlayerList.TabIndex = 11;
+            this.SamplePlayerList.Text = "Choose Sample Player...";
+            this.SamplePlayerList.SelectedIndexChanged += new System.EventHandler(this.SamplePlayer_Select);
             // 
             // PlayerCreatorGui
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1058, 664);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.SamplePlayerList);
             this.Controls.Add(this.ConfirmButton);
             this.Controls.Add(this.catalystLabel);
             this.Controls.Add(this.essenceLabel);
@@ -229,6 +230,6 @@
         private System.Windows.Forms.Label essenceLabel;
         private System.Windows.Forms.Label catalystLabel;
         private System.Windows.Forms.Button ConfirmButton;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ComboBox SamplePlayerList;
     }
 }
