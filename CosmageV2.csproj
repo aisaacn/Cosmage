@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{B17D2336-B4D4-43FF-9F91-268E4ABD71AB}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <OutputType>WinExe</OutputType>
     <RootNamespace>CosmageV2</RootNamespace>
     <AssemblyName>CosmageV2</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
@@ -32,33 +32,89 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GamePhase\Handlers\DefaultAttackHandler.cs" />
+    <Compile Include="GamePhase\Handlers\DefaultSpellExecutor.cs" />
     <Compile Include="GamePhase\GamePhaseExecutor\ConstructPhaseExecutor.cs" />
     <Compile Include="GamePhase\GamePhaseExecutor\ConsumablePhaseExecutor.cs" />
-    <Compile Include="GamePhase\DefaultGamePhaseExecutorFactory.cs" />
+    <Compile Include="GamePhase\GamePhaseExecutor\DefaultGamePhaseExecutorFactory.cs" />
     <Compile Include="GamePhase\GamePhaseExecutor\EndPhaseExecutor.cs" />
     <Compile Include="GamePhase\GamePhaseExecutor\ExecutionPhaseExecutor.cs" />
-    <Compile Include="GamePhase\IGamePhaseExecutorFactory.cs" />
+    <Compile Include="GamePhase\Handlers\IAttackHandler.cs" />
+    <Compile Include="GamePhase\GamePhaseExecutor\IGamePhaseExecutorFactory.cs" />
     <Compile Include="GamePhase\GamePhaseExecutor\IngredientPhaseExecutor.cs" />
     <Compile Include="GamePhase\GamePhaseExecutor\RunePhaseExecutor.cs" />
+    <Compile Include="GamePhase\Handlers\ISpellExecutor.cs" />
     <Compile Include="GameRunner.cs" />
     <Compile Include="Enums\CatalystType.cs" />
     <Compile Include="Enums\Element.cs" />
     <Compile Include="GamePhase\GamePhase.cs" />
     <Compile Include="GamePhase\GamePhaseManager.cs" />
     <Compile Include="GamePhase\GamePhaseExecutor\IGamePhaseExecutor.cs" />
-    <Compile Include="GUI\GUIForm.cs">
+    <Compile Include="GUI\RunePhaseGui.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GUI\GUIForm.Designer.cs">
-      <DependentUpon>GUIForm.cs</DependentUpon>
+    <Compile Include="GUI\RunePhaseGui.Designer.cs">
+      <DependentUpon>RunePhaseGui.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\GameBoardGui.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\GameBoardGui.Designer.cs">
+      <DependentUpon>GameBoardGui.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\IngredientPhaseGui.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\IngredientPhaseGui.Designer.cs">
+      <DependentUpon>IngredientPhaseGui.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\StartScreenGui.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\StartScreenGui.Designer.cs">
+      <DependentUpon>StartScreenGui.cs</DependentUpon>
     </Compile>
     <Compile Include="PlayerInteraction\Construct.cs" />
+    <Compile Include="PlayerInteraction\Handlers\DefaultDamageHandler.cs" />
+    <Compile Include="PlayerInteraction\Handlers\DefaultElementalRelationshipManager.cs" />
+    <Compile Include="PlayerInteraction\Handlers\DefaultWardHandler.cs" />
     <Compile Include="PlayerInteraction\ElementalStrength.cs" />
+    <Compile Include="PlayerInteraction\Handlers\IDamageHandler.cs" />
+    <Compile Include="PlayerInteraction\Handlers\IElementalRelationshipManager.cs" />
+    <Compile Include="PlayerInteraction\Item\Ingredient\Catalyst\AttackCrystal.cs" />
+    <Compile Include="PlayerInteraction\Item\Ingredient\Catalyst\Catalyst.cs" />
+    <Compile Include="PlayerInteraction\Item\Consumable.cs" />
+    <Compile Include="PlayerInteraction\Item\Ingredient\Catalyst\ConstructCrystal.cs" />
+    <Compile Include="PlayerInteraction\Item\Ingredient\Catalyst\WardCrystal.cs" />
+    <Compile Include="PlayerInteraction\Item\Ingredient\Essence\AdvancedMechanicalEssence.cs" />
+    <Compile Include="PlayerInteraction\Item\Ingredient\Essence\AdvancedNaturalEssence.cs" />
+    <Compile Include="PlayerInteraction\Item\Ingredient\Essence\AdvancedUnnaturalEssence.cs" />
+    <Compile Include="PlayerInteraction\Item\Ingredient\Essence\BasicMechnanicalEssence.cs" />
+    <Compile Include="PlayerInteraction\Item\Ingredient\Essence\BasicNaturalEssence.cs" />
+    <Compile Include="PlayerInteraction\Item\Ingredient\Essence\BasicUnnaturalEssence.cs" />
+    <Compile Include="PlayerInteraction\Item\Ingredient\Essence\Essence.cs" />
+    <Compile Include="PlayerInteraction\Handlers\IAddIngredientHandler.cs" />
+    <Compile Include="PlayerInteraction\Item\Ingredient\Ingredient.cs" />
+    <Compile Include="PlayerInteraction\Item\Item.cs" />
+    <Compile Include="PlayerInteraction\Item\PassiveItem.cs" />
+    <Compile Include="PlayerInteraction\Handlers\IWardHandler.cs" />
     <Compile Include="PlayerInteraction\Player.cs" />
+    <Compile Include="PlayerInteraction\Rune\DelayedRune.cs" />
+    <Compile Include="PlayerInteraction\Rune\InstantRune.cs" />
+    <Compile Include="PlayerInteraction\Handlers\IRunePhaseHandler.cs" />
+    <Compile Include="PlayerInteraction\Rune\Rune.cs" />
+    <Compile Include="PlayerInteraction\Rune\StandardRune.cs" />
+    <Compile Include="PlayerInteraction\Handlers\WinFormRunePhaseHandler.cs" />
+    <Compile Include="PlayerInteraction\Handlers\WinFormAddIngredientHandler.cs" />
+    <Compile Include="PlayerInteraction\Satchel.cs" />
+    <Compile Include="PlayerInteraction\Spell.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Tests\" />
@@ -75,8 +131,17 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="GUI\GUIForm.resx">
-      <DependentUpon>GUIForm.cs</DependentUpon>
+    <EmbeddedResource Include="GUI\RunePhaseGui.resx">
+      <DependentUpon>RunePhaseGui.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\GameBoardGui.resx">
+      <DependentUpon>GameBoardGui.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\IngredientPhaseGui.resx">
+      <DependentUpon>IngredientPhaseGui.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\StartScreenGui.resx">
+      <DependentUpon>StartScreenGui.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 
 namespace CosmageV2.GamePhase
 {
+    /*
+     * Default game phase order and executors.
+     * Created 1/2/25
+     */
     internal class DefaultGamePhaseExecutorFactory : IGamePhaseExecutorFactory
     {
         public IGamePhaseExecutor CreateInitialPhaseExecutor()

@@ -6,13 +6,37 @@ using System.Threading.Tasks;
 
 namespace CosmageV2.PlayerInteraction
 {
-    internal class Construct
+    /*
+     * Tracks properties and handles decay of Player Constructs.
+     * Created 1/5/25
+     */
+    public class Construct
     {
-        public ElementalStrength Strengths { get; private set; }
+        public ElementalStrength Strength { get; private set; }
+        public bool HasSummoningSickness { get; private set; }
 
-        public Construct(ElementalStrength strengths)
+        public Construct(ElementalStrength strength)
         {
-            this.Strengths = strengths;
+            Strength = strength;
+            HasSummoningSickness = true;
+        }
+
+        public void DecrementAllStrengths()
+        {
+            if (HasSummoningSickness)
+            {
+                HasSummoningSickness = false;
+                return;
+            }
+
+            Strength.RemoveStrength(Element.Natural, 1);
+            Strength.RemoveStrength(Element.Mechanical, 1);
+            Strength.RemoveStrength(Element.Unnatural, 1);
+        }
+
+        public bool IsDestroyed()
+        {
+            return Strength.GetMagnitude() <= 0;
         }
     }
 }

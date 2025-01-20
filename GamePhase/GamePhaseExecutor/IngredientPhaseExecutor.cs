@@ -2,6 +2,10 @@
 
 namespace CosmageV2.GamePhase
 {
+    /*
+     * Defines default Ingredient phase: Player adds one Ingredient to their Cauldron
+     * Created 1/2/25
+     */
     internal class IngredientPhaseExecutor : IGamePhaseExecutor
     {
         public GamePhase Phase { get; }

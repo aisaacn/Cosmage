@@ -2,6 +2,10 @@
 
 namespace CosmageV2.GamePhase
 {
+    /*
+     * Prompts current Player to handle their Rune phase.
+     * Created 1/2/25
+     */
     internal class RunePhaseExecutor : IGamePhaseExecutor
     {
         public GamePhase Phase { get; }
@@ -13,7 +17,7 @@ namespace CosmageV2.GamePhase
 
         public void ExecuteGamePhase(GamePhaseManager manager)
         {
-            manager.CurrentPlayer.HandleRuneActivation();
+            manager.CurrentPlayer.HandleRunePhase();
         }
     }
 }

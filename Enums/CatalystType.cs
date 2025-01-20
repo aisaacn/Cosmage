@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 
 namespace CosmageV2
 {
-    internal enum CatalystType
+    public enum CatalystType
     {
         Attack,
         Ward,
-        Construct
+        Construct,
+        None
     }
 }

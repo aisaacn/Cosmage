@@ -2,6 +2,10 @@
 
 namespace CosmageV2.GamePhase
 {
+    /*
+     * Defines default End phase execution: switch players
+     * Created 1/8/25
+     */
     internal class EndPhaseExecutor : IGamePhaseExecutor
     {
         public GamePhase Phase { get; }
@@ -13,8 +17,7 @@ namespace CosmageV2.GamePhase
 
         public void ExecuteGamePhase(GamePhaseManager manager)
         {
-            // TODO
-            Console.WriteLine($"Ending {manager.CurrentPlayer.Name}'s turn");
+            //Console.WriteLine($"Ending {manager.CurrentPlayer.Name}'s turn");
             manager.SwitchPlayer();
         }
     }
