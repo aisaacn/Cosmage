@@ -57,6 +57,12 @@
     <Compile Include="GamePhase\GamePhase.cs" />
     <Compile Include="GamePhase\GamePhaseManager.cs" />
     <Compile Include="GamePhase\GamePhaseExecutor\IGamePhaseExecutor.cs" />
+    <Compile Include="GUI\IngredientPhaseGuiCustomSatchel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\IngredientPhaseGuiCustomSatchel.Designer.cs">
+      <DependentUpon>IngredientPhaseGuiCustomSatchel.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\RunePhaseGui.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -88,6 +94,7 @@
     <Compile Include="PlayerInteraction\ElementalStrength.cs" />
     <Compile Include="PlayerInteraction\Handlers\IDamageHandler.cs" />
     <Compile Include="PlayerInteraction\Handlers\IElementalRelationshipManager.cs" />
+    <Compile Include="PlayerInteraction\Handlers\WinFormCustomSatchelAddIngredientHandler.cs" />
     <Compile Include="PlayerInteraction\Item\Ingredient\Catalyst\AttackCrystal.cs" />
     <Compile Include="PlayerInteraction\Item\Ingredient\Catalyst\Catalyst.cs" />
     <Compile Include="PlayerInteraction\Item\Consumable.cs" />
@@ -131,6 +138,9 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="GUI\IngredientPhaseGuiCustomSatchel.resx">
+      <DependentUpon>IngredientPhaseGuiCustomSatchel.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI\RunePhaseGui.resx">
       <DependentUpon>RunePhaseGui.cs</DependentUpon>
     </EmbeddedResource>

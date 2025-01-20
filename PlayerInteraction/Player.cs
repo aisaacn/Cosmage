@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CosmageV2.PlayerInteraction.Itemization;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -44,7 +45,7 @@ namespace CosmageV2.PlayerInteraction
 
             // TODO add ruleset manager to create all appropriate handlers
             IElementalRelationshipManager relationshipManager = new DefaultElementalRelationshipManager();
-            addIngredientHandler = new WinFormAddIngredientHandler();
+            addIngredientHandler = new WinFormCustomSatchelAddIngredientHandler();
             runePhaseHandler = new WinFormRunePhaseHandler();
             damageHandler = new DefaultDamageHandler(relationshipManager);
             wardHandler = new DefaultWardHandler(relationshipManager);
@@ -124,12 +125,13 @@ namespace CosmageV2.PlayerInteraction
             return spell;
         }
 
-        public void AddToCauldron(ElementalStrength strength)
+        public void AddEssenceAndRemoveFromSatchel(Essence essence)
         {
-            Cauldron.AddStrengths(strength);
+            Cauldron.AddStrength(essence.Element, essence.Magnitude);
+            Satchel.RemoveItem(essence);
         }
 
-        public bool AddCatalyst(CatalystType type)
+        public bool AddCatalystAndRemoveFromSatchel(Catalyst catalyst)
         {
             if (Catalyst != CatalystType.None)
             {
@@ -138,7 +140,11 @@ namespace CosmageV2.PlayerInteraction
             }
 
             //Console.WriteLine($"Adding {type.ToString()} catalyst to {Name}'s cauldron");
-            Catalyst = type;
+            Catalyst = catalyst.Type;
+            if (!catalyst.IsReusable)
+            {
+                Satchel.RemoveItem(catalyst);
+            }
             return true;
         }
 
