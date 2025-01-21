@@ -31,6 +31,8 @@ namespace CosmageV2.PlayerInteraction
 
         IAddIngredientHandler addIngredientHandler;
         IRunePhaseHandler runePhaseHandler;
+        IConsumablePhaseHandler consumablePhaseHandler;
+
         IDamageHandler damageHandler;
         IWardHandler wardHandler;
 
@@ -50,6 +52,8 @@ namespace CosmageV2.PlayerInteraction
             IElementalRelationshipManager relationshipManager = new DefaultElementalRelationshipManager();
             addIngredientHandler = new WinFormCustomSatchelAddIngredientHandler();
             runePhaseHandler = new WinFormRunePhaseHandler();
+            consumablePhaseHandler = new WinFormConsumablePhaseHandler();
+
             damageHandler = new DefaultDamageHandler(relationshipManager);
             wardHandler = new DefaultWardHandler(relationshipManager);
         }
@@ -67,8 +71,7 @@ namespace CosmageV2.PlayerInteraction
 
         public void HandleUseConsumables()
         {
-            // TODO implement user interaction (consumables will simply modify cauldron for now)
-            // Console.WriteLine($"{Name} may use any number of consumables");
+            consumablePhaseHandler.HandleConsumablePhase(this);
         }
 
         public void HandleRunePhase()
@@ -150,6 +153,11 @@ namespace CosmageV2.PlayerInteraction
                 Satchel.RemoveItem(catalyst);
             }
             return true;
+        }
+
+        public bool RemoveConsumableFromSatchel(Consumable consumable)
+        {
+            return Satchel.RemoveItem(consumable);
         }
 
         public bool ChargeRune(int runeIndex)

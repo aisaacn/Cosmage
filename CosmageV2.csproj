@@ -57,6 +57,12 @@
     <Compile Include="GamePhase\GamePhase.cs" />
     <Compile Include="GamePhase\GamePhaseManager.cs" />
     <Compile Include="GamePhase\GamePhaseExecutor\IGamePhaseExecutor.cs" />
+    <Compile Include="GUI\ConsumablePhaseGui.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\ConsumablePhaseGui.Designer.cs">
+      <DependentUpon>ConsumablePhaseGui.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\IngredientPhaseGuiCustomSatchel.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -92,12 +98,18 @@
     <Compile Include="PlayerInteraction\Handlers\DefaultElementalRelationshipManager.cs" />
     <Compile Include="PlayerInteraction\Handlers\DefaultWardHandler.cs" />
     <Compile Include="PlayerInteraction\ElementalStrength.cs" />
+    <Compile Include="PlayerInteraction\Handlers\IConsumablePhaseHandler.cs" />
     <Compile Include="PlayerInteraction\Handlers\IDamageHandler.cs" />
     <Compile Include="PlayerInteraction\Handlers\IElementalRelationshipManager.cs" />
+    <Compile Include="PlayerInteraction\Handlers\WinFormConsumablePhaseHandler.cs" />
     <Compile Include="PlayerInteraction\Handlers\WinFormCustomSatchelAddIngredientHandler.cs" />
+    <Compile Include="PlayerInteraction\Item\Consumable\Augment.cs" />
+    <Compile Include="PlayerInteraction\Item\Consumable\Fractal.cs" />
+    <Compile Include="PlayerInteraction\Item\Consumable\Tesseract.cs" />
+    <Compile Include="PlayerInteraction\Item\Consumable\Wormhole.cs" />
     <Compile Include="PlayerInteraction\Item\Ingredient\Catalyst\AttackCrystal.cs" />
     <Compile Include="PlayerInteraction\Item\Ingredient\Catalyst\Catalyst.cs" />
-    <Compile Include="PlayerInteraction\Item\Consumable.cs" />
+    <Compile Include="PlayerInteraction\Item\Consumable\Consumable.cs" />
     <Compile Include="PlayerInteraction\Item\Ingredient\Catalyst\ConstructCrystal.cs" />
     <Compile Include="PlayerInteraction\Item\Ingredient\Catalyst\WardCrystal.cs" />
     <Compile Include="PlayerInteraction\Item\Ingredient\Essence\AdvancedMechanicalEssence.cs" />
@@ -139,6 +151,9 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="GUI\ConsumablePhaseGui.resx">
+      <DependentUpon>ConsumablePhaseGui.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI\IngredientPhaseGuiCustomSatchel.resx">
       <DependentUpon>IngredientPhaseGuiCustomSatchel.cs</DependentUpon>
     </EmbeddedResource>

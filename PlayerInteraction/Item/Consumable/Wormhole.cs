@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CosmageV2.GamePhase;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -29,8 +30,8 @@ namespace CosmageV2.PlayerInteraction.Itemization
 
         public override void UseConsumableWithWormhole()
         {
-            // TODO add two wormholes to satchel? aka no effect?
-            throw new NotImplementedException();
+            GamePhaseManager.Instance.CurrentPlayer.Satchel.AddItem(ItemRegistry.Consumables.Wormhole);
+            GamePhaseManager.Instance.CurrentPlayer.Satchel.AddItem(ItemRegistry.Consumables.Wormhole);
         }
     }
 }

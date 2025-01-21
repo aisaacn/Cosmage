@@ -120,7 +120,7 @@ namespace CosmageV2.GamePhase
             currentPhaseExecutor.ExecuteGamePhase(this);
         }
 
-        private void UpdateGameBoard()
+        public void UpdateGameBoard()
         {
             GameBoard.UpdatePlayerLabels(player1);
             GameBoard.UpdatePlayerLabels(player2);

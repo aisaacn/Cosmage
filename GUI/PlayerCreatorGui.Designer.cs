@@ -43,6 +43,10 @@
             this.catalystLabel = new System.Windows.Forms.Label();
             this.ConfirmButton = new System.Windows.Forms.Button();
             this.SamplePlayerList = new System.Windows.Forms.ComboBox();
+            this.ConsumablePanel = new System.Windows.Forms.FlowLayoutPanel();
+            this.consumableLabel = new System.Windows.Forms.Label();
+            this.PassivePanel = new System.Windows.Forms.FlowLayoutPanel();
+            this.passiveLabel = new System.Windows.Forms.Label();
             this.ElementBox.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -138,15 +142,15 @@
             this.EssencePanel.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.EssencePanel.Location = new System.Drawing.Point(12, 115);
             this.EssencePanel.Name = "EssencePanel";
-            this.EssencePanel.Size = new System.Drawing.Size(452, 218);
+            this.EssencePanel.Size = new System.Drawing.Size(386, 218);
             this.EssencePanel.TabIndex = 6;
             // 
             // CatalystPanel
             // 
             this.CatalystPanel.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.CatalystPanel.Location = new System.Drawing.Point(470, 115);
+            this.CatalystPanel.Location = new System.Drawing.Point(404, 115);
             this.CatalystPanel.Name = "CatalystPanel";
-            this.CatalystPanel.Size = new System.Drawing.Size(300, 218);
+            this.CatalystPanel.Size = new System.Drawing.Size(200, 218);
             this.CatalystPanel.TabIndex = 7;
             // 
             // essenceLabel
@@ -161,7 +165,7 @@
             // catalystLabel
             // 
             this.catalystLabel.AutoSize = true;
-            this.catalystLabel.Location = new System.Drawing.Point(466, 92);
+            this.catalystLabel.Location = new System.Drawing.Point(400, 92);
             this.catalystLabel.Name = "catalystLabel";
             this.catalystLabel.Size = new System.Drawing.Size(127, 20);
             this.catalystLabel.TabIndex = 9;
@@ -187,11 +191,51 @@
             this.SamplePlayerList.Text = "Choose Sample Player...";
             this.SamplePlayerList.SelectedIndexChanged += new System.EventHandler(this.SamplePlayer_Select);
             // 
+            // ConsumablePanel
+            // 
+            this.ConsumablePanel.AutoScroll = true;
+            this.ConsumablePanel.Location = new System.Drawing.Point(607, 115);
+            this.ConsumablePanel.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
+            this.ConsumablePanel.Name = "ConsumablePanel";
+            this.ConsumablePanel.Size = new System.Drawing.Size(220, 218);
+            this.ConsumablePanel.TabIndex = 8;
+            // 
+            // consumableLabel
+            // 
+            this.consumableLabel.AutoSize = true;
+            this.consumableLabel.Location = new System.Drawing.Point(603, 92);
+            this.consumableLabel.Name = "consumableLabel";
+            this.consumableLabel.Size = new System.Drawing.Size(159, 20);
+            this.consumableLabel.TabIndex = 12;
+            this.consumableLabel.Text = "Select Consumables:";
+            // 
+            // PassivePanel
+            // 
+            this.PassivePanel.AutoScroll = true;
+            this.PassivePanel.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.PassivePanel.Location = new System.Drawing.Point(830, 115);
+            this.PassivePanel.Name = "PassivePanel";
+            this.PassivePanel.Size = new System.Drawing.Size(200, 218);
+            this.PassivePanel.TabIndex = 9;
+            // 
+            // passiveLabel
+            // 
+            this.passiveLabel.AutoSize = true;
+            this.passiveLabel.Location = new System.Drawing.Point(826, 92);
+            this.passiveLabel.Name = "passiveLabel";
+            this.passiveLabel.Size = new System.Drawing.Size(160, 20);
+            this.passiveLabel.TabIndex = 13;
+            this.passiveLabel.Text = "Select Passive Items:";
+            // 
             // PlayerCreatorGui
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1058, 664);
+            this.Controls.Add(this.passiveLabel);
+            this.Controls.Add(this.PassivePanel);
+            this.Controls.Add(this.consumableLabel);
+            this.Controls.Add(this.ConsumablePanel);
             this.Controls.Add(this.SamplePlayerList);
             this.Controls.Add(this.ConfirmButton);
             this.Controls.Add(this.catalystLabel);
@@ -231,5 +275,9 @@
         private System.Windows.Forms.Label catalystLabel;
         private System.Windows.Forms.Button ConfirmButton;
         private System.Windows.Forms.ComboBox SamplePlayerList;
+        private System.Windows.Forms.FlowLayoutPanel ConsumablePanel;
+        private System.Windows.Forms.Label consumableLabel;
+        private System.Windows.Forms.FlowLayoutPanel PassivePanel;
+        private System.Windows.Forms.Label passiveLabel;
     }
 }

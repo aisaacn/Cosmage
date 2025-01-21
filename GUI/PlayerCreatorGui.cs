@@ -26,8 +26,10 @@ namespace CosmageV2.GUI
 
         private List<Essence> essenceOptions;
         private List<Catalyst> catalystOptions;
+        private List<Consumable> consumableOptions;
+        private List<PassiveItem> passiveOptions;
 
-        readonly int buttonWidth = 125;
+        readonly int buttonWidth = 120;
         readonly int buttonHeight = 35;
         readonly int padding = 5;
 
@@ -41,7 +43,7 @@ namespace CosmageV2.GUI
                 UpdateExistingPlayerInfo(player);
             }
 
-            CreateIngredientOptions();
+            CreateItemOptions();
             GenerateButtons();
             GenerateSamplePlayers();
         }
@@ -71,7 +73,7 @@ namespace CosmageV2.GUI
         private void AddEssence_Click(object sender, EventArgs e)
         {
             Button clickedButton = sender as Button;
-            int index = (int)clickedButton.Tag;
+            int index = (int) clickedButton.Tag;
 
             satchel.AddItem(essenceOptions[index]);
             UpdateSatchelContents();
@@ -80,7 +82,7 @@ namespace CosmageV2.GUI
         private void AddCatalyst_Click(object sender, EventArgs e)
         {
             Button clickedButton = sender as Button;
-            int index = (int)clickedButton.Tag;
+            int index = (int) clickedButton.Tag;
             Catalyst catalyst = catalystOptions[index];
 
             if (catalyst.IsReusable)
@@ -93,6 +95,25 @@ namespace CosmageV2.GUI
             }
 
             satchel.AddItem(catalyst);
+            UpdateSatchelContents();
+        }
+
+        private void AddConsumable_Click(object sender, EventArgs e)
+        {
+            // TODO simplify these three click handlers to one method
+            Button clickedButton = sender as Button;
+            int index = (int) clickedButton.Tag;
+
+            satchel.AddItem(consumableOptions[index]);
+            UpdateSatchelContents();
+        }
+
+        private void AddPassive_Click(object sender, EventArgs e)
+        {
+            Button clickedButton = sender as Button;
+            int index = (int) clickedButton.Tag;
+
+            satchel.AddItem(passiveOptions[index]);
             UpdateSatchelContents();
         }
 
@@ -125,21 +146,12 @@ namespace CosmageV2.GUI
             SatchelWeightLabel.Text = satchel.TotalWeight.ToString();
         }
 
-        private void CreateIngredientOptions()
+        private void CreateItemOptions()
         {
-            essenceOptions = new List<Essence>()
-            {
-                //new BasicNaturalEssence(), new BasicMechanicalEssence(), new BasicUnnaturalEssence(),
-                //new AdvancedNaturalEssence(), new AdvancedMechanicalEssence(), new AdvancedUnnaturalEssence()
-                ItemRegistry.Essences.BasicNatural, ItemRegistry.Essences.BasicMechanical, ItemRegistry.Essences.BasicUnnatural,
-                ItemRegistry.Essences.AdvancedNatural, ItemRegistry.Essences.AdvancedMechanical, ItemRegistry.Essences.AdvancedUnnatural
-            };
-
-            catalystOptions = new List<Catalyst>()
-            {
-                //new AttackCrystal(), new WardCrystal(), new ConstructCrystal()
-                ItemRegistry.Catalysts.Attack, ItemRegistry.Catalysts.Ward, ItemRegistry.Catalysts.Construct
-            };
+            essenceOptions = ItemRegistry.Essences.Options;
+            catalystOptions = ItemRegistry.Catalysts.Options;
+            consumableOptions = ItemRegistry.Consumables.Options;
+            passiveOptions = ItemRegistry.PassiveItems.Options;
         }
 
         private void GenerateSamplePlayers()
@@ -183,6 +195,8 @@ namespace CosmageV2.GUI
         {
             GenerateIngredientButtons();
             GenerateCatalystButtons();
+            GenerateConsumableButtons();
+            GeneratePassiveButtons();
         }
 
         private void GenerateIngredientButtons()
@@ -214,6 +228,38 @@ namespace CosmageV2.GUI
                 };
                 button.Click += AddCatalyst_Click;
                 CatalystPanel.Controls.Add(button);
+            }
+        }
+
+        private void GenerateConsumableButtons()
+        {
+            for (int i = 0; i < consumableOptions.Count; i++)
+            {
+                Button button = new Button
+                {
+                    Text = $"{consumableOptions[i].Name} ({consumableOptions[i].SatchelWeight})",
+                    Size = new Size(buttonWidth, buttonHeight),
+                    Margin = new Padding(padding),
+                    Tag = i
+                };
+                button.Click += AddConsumable_Click;
+                ConsumablePanel.Controls.Add(button);
+            }
+        }
+
+        private void GeneratePassiveButtons()
+        {
+            for (int i = 0; i < passiveOptions.Count; i++)
+            {
+                Button button = new Button()
+                {
+                    Text = $"{passiveOptions[i].Name} ({passiveOptions[i].SatchelWeight})",
+                    Size = new Size(buttonWidth, buttonHeight),
+                    Margin = new Padding(padding),
+                    Tag = i
+                };
+                button.Click += AddPassive_Click;
+                PassivePanel.Controls.Add(button);
             }
         }
 
