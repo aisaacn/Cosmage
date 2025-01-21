@@ -32,10 +32,10 @@ namespace CosmageV2.PlayerInteraction
         {
             List<Item> items = new List<Item>()
             {
-                new AttackCrystal(), new WardCrystal(), new ConstructCrystal(),
-                new BasicNaturalEssence(), new AdvancedNaturalEssence(),
-                new BasicMechanicalEssence(), new AdvancedMechanicalEssence(), new AdvancedMechanicalEssence(),
-                new BasicUnnaturalEssence(), new AdvancedUnnaturalEssence(), new AdvancedUnnaturalEssence()
+                ItemRegistry.Catalysts.Attack, ItemRegistry.Catalysts.Ward, ItemRegistry.Catalysts.Construct,
+                ItemRegistry.Essences.BasicNatural, ItemRegistry.Essences.AdvancedNatural,
+                ItemRegistry.Essences.BasicMechanical, ItemRegistry.Essences.AdvancedMechanical, ItemRegistry.Essences.AdvancedMechanical,
+                ItemRegistry.Essences.BasicUnnatural, ItemRegistry.Essences.AdvancedUnnatural, ItemRegistry.Essences.AdvancedUnnatural
             };
             Player player = new Player(Element.Natural, "Natural Sample Player");
             player.SetSatchel(new Satchel(items));
@@ -47,10 +47,11 @@ namespace CosmageV2.PlayerInteraction
         {
             List<Item> items = new List<Item>()
             {
-                new AttackCrystal(), new WardCrystal(), new ConstructCrystal(),
-                new BasicNaturalEssence(), new AdvancedNaturalEssence(), new AdvancedMechanicalEssence(),
-                new BasicMechanicalEssence(), new AdvancedMechanicalEssence(),
-                new BasicUnnaturalEssence(), new AdvancedUnnaturalEssence(), new AdvancedUnnaturalEssence()
+                // REPLACE WITH iTEMrEGISTRY
+                ItemRegistry.Catalysts.Attack, ItemRegistry.Catalysts.Ward, ItemRegistry.Catalysts.Construct,
+                ItemRegistry.Essences.BasicNatural, ItemRegistry.Essences.AdvancedNatural, ItemRegistry.Essences.AdvancedMechanical,
+                ItemRegistry.Essences.BasicMechanical, ItemRegistry.Essences.AdvancedMechanical,
+                ItemRegistry.Essences.BasicUnnatural, ItemRegistry.Essences.AdvancedUnnatural, ItemRegistry.Essences.AdvancedUnnatural
             };
             Player player = new Player(Element.Mechanical, "Mechanical Sample Player");
             player.SetSatchel(new Satchel(items));
@@ -62,10 +63,10 @@ namespace CosmageV2.PlayerInteraction
         {
             List<Item> items = new List<Item>()
             {
-                new AttackCrystal(), new WardCrystal(), new ConstructCrystal(),
-                new BasicNaturalEssence(), new AdvancedNaturalEssence(), new AdvancedNaturalEssence(),
-                new BasicMechanicalEssence(), new AdvancedMechanicalEssence(), new AdvancedMechanicalEssence(),
-                new BasicUnnaturalEssence(), new AdvancedUnnaturalEssence()
+                ItemRegistry.Catalysts.Attack, ItemRegistry.Catalysts.Ward, ItemRegistry.Catalysts.Construct,
+                ItemRegistry.Essences.BasicNatural, ItemRegistry.Essences.AdvancedNatural, ItemRegistry.Essences.AdvancedNatural,
+                ItemRegistry.Essences.BasicMechanical, ItemRegistry.Essences.AdvancedMechanical, ItemRegistry.Essences.AdvancedMechanical,
+                ItemRegistry.Essences.BasicUnnatural, ItemRegistry.Essences.AdvancedUnnatural
             };
             Player player = new Player(Element.Unnatural, "Unnatural Sample Player");
             player.SetSatchel(new Satchel(items));

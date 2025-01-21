@@ -110,6 +110,7 @@
     <Compile Include="PlayerInteraction\Handlers\IAddIngredientHandler.cs" />
     <Compile Include="PlayerInteraction\Item\Ingredient\Ingredient.cs" />
     <Compile Include="PlayerInteraction\Item\Item.cs" />
+    <Compile Include="PlayerInteraction\Item\ItemRegistry.cs" />
     <Compile Include="PlayerInteraction\Item\PassiveItem.cs" />
     <Compile Include="PlayerInteraction\Handlers\IWardHandler.cs" />
     <Compile Include="PlayerInteraction\Player.cs" />

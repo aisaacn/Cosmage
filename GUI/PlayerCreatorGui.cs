@@ -14,6 +14,8 @@ using System.Windows.Media.Imaging;
 namespace CosmageV2.GUI
 {
     // TODO fix bug where locally modifying a sample player modifies the saved Player in SamplePlayers
+    // only happens when adding/removing item from satchel
+    // TODO refactor Item type to implement flyweight pattern
     public partial class PlayerCreatorGui : Form
     {
         public Player Player { get; private set; }
@@ -46,7 +48,7 @@ namespace CosmageV2.GUI
         private void UpdateExistingPlayerInfo(Player existingPlayer)
         {
             PlayerName.Text = existingPlayer.Name;
-            satchel = existingPlayer.Satchel;
+            satchel = existingPlayer.Satchel.Clone();
 
             switch (existingPlayer.Element)
             {
@@ -126,13 +128,16 @@ namespace CosmageV2.GUI
         {
             essenceOptions = new List<Essence>()
             {
-                new BasicNaturalEssence(), new BasicMechanicalEssence(), new BasicUnnaturalEssence(),
-                new AdvancedNaturalEssence(), new AdvancedMechanicalEssence(), new AdvancedUnnaturalEssence()
+                //new BasicNaturalEssence(), new BasicMechanicalEssence(), new BasicUnnaturalEssence(),
+                //new AdvancedNaturalEssence(), new AdvancedMechanicalEssence(), new AdvancedUnnaturalEssence()
+                ItemRegistry.Essences.BasicNatural, ItemRegistry.Essences.BasicMechanical, ItemRegistry.Essences.BasicUnnatural,
+                ItemRegistry.Essences.AdvancedNatural, ItemRegistry.Essences.AdvancedMechanical, ItemRegistry.Essences.AdvancedUnnatural
             };
 
             catalystOptions = new List<Catalyst>()
             {
-                new AttackCrystal(), new WardCrystal(), new ConstructCrystal()
+                //new AttackCrystal(), new WardCrystal(), new ConstructCrystal()
+                ItemRegistry.Catalysts.Attack, ItemRegistry.Catalysts.Ward, ItemRegistry.Catalysts.Construct
             };
         }
 
