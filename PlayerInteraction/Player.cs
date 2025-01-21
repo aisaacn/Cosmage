@@ -114,9 +114,8 @@ namespace CosmageV2.PlayerInteraction
         private Spell PrepareSpell(int runeEffect)
         {
             // Don't cast spell if no essence, no catalyst, or if runeEffect reduces spell strength to less than 1
-            if (Cauldron.GetMagnitude() == 0
-                || Catalyst.Equals(CatalystType.None)
-                || Cauldron.GetMagnitude() <= -runeEffect) 
+            if (Cauldron.GetMagnitude() <= -runeEffect
+                || Catalyst.Equals(CatalystType.None))
                 return null;
             
             if (runeEffect < 0)
