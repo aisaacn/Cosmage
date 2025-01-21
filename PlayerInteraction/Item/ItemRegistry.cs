@@ -25,7 +25,13 @@ namespace CosmageV2.PlayerInteraction.Itemization
             public static readonly Catalyst Construct = new ConstructCrystal();
         }
 
-        public static class Consumables { } // TODO
+        public static class Consumables
+        {
+            public static readonly Consumable Fractal = new Fractal();
+            public static readonly Consumable Tesseract = new Tesseract();
+            public static readonly Consumable Augment = new Augment();
+            public static readonly Consumable Wormhole = new Wormhole();
+        }
 
         public static class PassiveItems { } // TODO
     }

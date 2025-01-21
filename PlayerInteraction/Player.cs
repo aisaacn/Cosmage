@@ -21,10 +21,13 @@ namespace CosmageV2.PlayerInteraction
         public int Health { get; private set; }
         public ElementalStrength Ward { get; private set; }
         public List<Construct> Constructs { get; private set; }
-        public ElementalStrength Cauldron {  get; private set; }
+        public ElementalStrength Cauldron { get; private set; }
         public CatalystType Catalyst { get; private set; }
         public List<Rune> Runes { get; private set; }
         public Satchel Satchel { get; private set; }
+
+        public Essence LastEssence { get; private set; }
+        public Rune LastActivatedRune { get; private set; }
 
         IAddIngredientHandler addIngredientHandler;
         IRunePhaseHandler runePhaseHandler;
@@ -127,6 +130,7 @@ namespace CosmageV2.PlayerInteraction
 
         public void AddEssenceAndRemoveFromSatchel(Essence essence)
         {
+            LastEssence = essence;
             Cauldron.AddStrength(essence.Element, essence.Magnitude);
             Satchel.RemoveItem(essence);
         }
@@ -160,6 +164,7 @@ namespace CosmageV2.PlayerInteraction
 
         public bool ActivateRune(int runeIndex)
         {
+            LastActivatedRune = Runes[runeIndex];
             return Runes[runeIndex].ActivateRune();
         }
 

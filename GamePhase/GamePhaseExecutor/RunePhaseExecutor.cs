@@ -17,7 +17,8 @@ namespace CosmageV2.GamePhase
 
         public void ExecuteGamePhase(GamePhaseManager manager)
         {
-            manager.CurrentPlayer.HandleRunePhase();
+            if (manager.CurrentTurn != 0)
+                manager.CurrentPlayer.HandleRunePhase();
         }
     }
 }

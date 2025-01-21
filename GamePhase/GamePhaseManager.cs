@@ -68,7 +68,6 @@ namespace CosmageV2.GamePhase
             player1 = p1;
             player2 = p2;
             DecideTurnOrder();
-            // ConfigureGameBoard();
         }
 
         private void DecideTurnOrder()
@@ -107,7 +106,7 @@ namespace CosmageV2.GamePhase
         private bool IsGameOver()
         {
             //TODO: check if player health is zero
-            return CurrentTurn > 60;
+            return false;
         }
 
         private void DeclareWinner()
@@ -136,9 +135,9 @@ namespace CosmageV2.GamePhase
         {
             //Console.WriteLine("----switching active player----");
             CurrentTurn++;
-            InactivePlayer = CurrentPlayer;
-            if (CurrentPlayer == player1) CurrentPlayer = player2;
-            else CurrentPlayer = player1;
+            Player tempCurrent = CurrentPlayer;
+            CurrentPlayer = InactivePlayer;
+            InactivePlayer = tempCurrent;
 
             GameBoard.UpdateCurrentPlayer(CurrentPlayer);
             // TODO update current round on GameBoard

@@ -16,17 +16,6 @@ namespace CosmageV2.PlayerInteraction
         public List<Consumable> Consumables { get { return AllItems.OfType<Consumable>().ToList(); } }
         public List<PassiveItem> PassiveItems { get { return AllItems.OfType<PassiveItem>().ToList(); } }
         public int TotalWeight => AllItems.Sum(item => item.SatchelWeight);
-        //{
-        //    get
-        //    {
-        //        int weight = 0;
-        //        foreach (Item item in AllItems)
-        //        {
-        //            weight += item.SatchelWeight;
-        //        }
-        //        return weight;
-        //    }
-        //}
 
         public Satchel()
         {

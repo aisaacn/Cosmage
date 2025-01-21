@@ -13,9 +13,10 @@ using System.Windows.Media.Imaging;
 
 namespace CosmageV2.GUI
 {
-    // TODO fix bug where locally modifying a sample player modifies the saved Player in SamplePlayers
-    // only happens when adding/removing item from satchel
-    // TODO refactor Item type to implement flyweight pattern
+    /*
+     * GUI for customizing all aspects of Player, including Name, Element, and Satchel.
+     * Created 1/20/25
+     */
     public partial class PlayerCreatorGui : Form
     {
         public Player Player { get; private set; }

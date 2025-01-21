@@ -14,20 +14,13 @@ namespace CosmageV2.PlayerInteraction
     {
         Dictionary<Element, int> strengths;
 
-        public ElementalStrength() 
-        {
-            strengths = new Dictionary<Element, int>();
-
-            // TODO: probably don't hardcode this. Foreach Element in enum??
-            strengths.Add(Element.Natural, 0);
-            strengths.Add(Element.Mechanical, 0);
-            strengths.Add(Element.Unnatural, 0);
-        }
+        public ElementalStrength() : this(0, 0, 0) { }
 
         public ElementalStrength(int natural, int mechanical, int unnatural)
         {
             strengths = new Dictionary<Element, int>();
 
+            // TODO: probably don't hardcode this. Foreach Element in enum??
             strengths.Add(Element.Natural, natural);
             strengths.Add(Element.Mechanical, mechanical);
             strengths.Add(Element.Unnatural, unnatural);

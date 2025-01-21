@@ -47,7 +47,6 @@ namespace CosmageV2.PlayerInteraction
         {
             List<Item> items = new List<Item>()
             {
-                // REPLACE WITH iTEMrEGISTRY
                 ItemRegistry.Catalysts.Attack, ItemRegistry.Catalysts.Ward, ItemRegistry.Catalysts.Construct,
                 ItemRegistry.Essences.BasicNatural, ItemRegistry.Essences.AdvancedNatural, ItemRegistry.Essences.AdvancedMechanical,
                 ItemRegistry.Essences.BasicMechanical, ItemRegistry.Essences.AdvancedMechanical,
