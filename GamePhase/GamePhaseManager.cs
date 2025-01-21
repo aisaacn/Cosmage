@@ -56,15 +56,6 @@ namespace CosmageV2.GamePhase
             return currentPhaseExecutor.Phase;
         }
 
-        // Player creation happens here because different amounts of players will require a different IGamePhaseManager
-        // Default GamePhaseManager will always only support two players
-        //private void CreatePlayers()
-        //{
-        //    player1 = new Player(Element.Natural, "Player1-N-init");
-        //    player2 = new Player(Element.Mechanical, "Player2-M-init");
-        //    DecideTurnOrder();
-        //}
-
         public void SetPlayers(Player p1, Player p2)
         {
             player1 = p1;
@@ -118,13 +109,11 @@ namespace CosmageV2.GamePhase
             DecideTurnOrder();
             ConfigureGameBoard();
 
-            bool isGameOver = false;
-            while(!isGameOver)
+            while(!IsGameOver())
             {
                 ExecuteCurrentPhase();
                 UpdateGameBoard();
                 TransitionToNextPhase();
-                isGameOver = IsGameOver();
             }
             DeclareWinner();
             // TODO persist GameBoard GUI

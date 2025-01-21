@@ -147,11 +147,13 @@
             // 
             // CatalystPanel
             // 
+            this.CatalystPanel.AutoScroll = true;
             this.CatalystPanel.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.CatalystPanel.Location = new System.Drawing.Point(404, 115);
             this.CatalystPanel.Name = "CatalystPanel";
             this.CatalystPanel.Size = new System.Drawing.Size(200, 218);
             this.CatalystPanel.TabIndex = 7;
+            this.CatalystPanel.WrapContents = false;
             // 
             // essenceLabel
             // 
@@ -194,11 +196,13 @@
             // ConsumablePanel
             // 
             this.ConsumablePanel.AutoScroll = true;
+            this.ConsumablePanel.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.ConsumablePanel.Location = new System.Drawing.Point(607, 115);
             this.ConsumablePanel.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.ConsumablePanel.Name = "ConsumablePanel";
             this.ConsumablePanel.Size = new System.Drawing.Size(220, 218);
             this.ConsumablePanel.TabIndex = 8;
+            this.ConsumablePanel.WrapContents = false;
             // 
             // consumableLabel
             // 
@@ -212,11 +216,13 @@
             // PassivePanel
             // 
             this.PassivePanel.AutoScroll = true;
+            this.PassivePanel.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.PassivePanel.Location = new System.Drawing.Point(830, 115);
             this.PassivePanel.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.PassivePanel.Name = "PassivePanel";
             this.PassivePanel.Size = new System.Drawing.Size(220, 218);
             this.PassivePanel.TabIndex = 9;
+            this.PassivePanel.WrapContents = false;
             // 
             // passiveLabel
             // 
