@@ -40,6 +40,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="GamePhase\Handlers\DefaultAttackHandler.cs" />
+    <Compile Include="GamePhase\Handlers\DefaultPassiveHandler.cs" />
     <Compile Include="GamePhase\Handlers\DefaultSpellExecutor.cs" />
     <Compile Include="GamePhase\GamePhaseExecutor\ConstructPhaseExecutor.cs" />
     <Compile Include="GamePhase\GamePhaseExecutor\ConsumablePhaseExecutor.cs" />
@@ -50,6 +51,7 @@
     <Compile Include="GamePhase\GamePhaseExecutor\IGamePhaseExecutorFactory.cs" />
     <Compile Include="GamePhase\GamePhaseExecutor\IngredientPhaseExecutor.cs" />
     <Compile Include="GamePhase\GamePhaseExecutor\RunePhaseExecutor.cs" />
+    <Compile Include="GamePhase\Handlers\IPassiveHandler.cs" />
     <Compile Include="GamePhase\Handlers\ISpellExecutor.cs" />
     <Compile Include="GameRunner.cs" />
     <Compile Include="Enums\CatalystType.cs" />
@@ -123,8 +125,16 @@
     <Compile Include="PlayerInteraction\Item\Ingredient\Ingredient.cs" />
     <Compile Include="PlayerInteraction\Item\Item.cs" />
     <Compile Include="PlayerInteraction\Item\ItemRegistry.cs" />
-    <Compile Include="PlayerInteraction\Item\PassiveItem.cs" />
+    <Compile Include="PlayerInteraction\Item\Passive\AllWardTome.cs" />
+    <Compile Include="PlayerInteraction\Item\Passive\BreakWardTome.cs" />
+    <Compile Include="PlayerInteraction\Item\Passive\HastyTome.cs" />
+    <Compile Include="PlayerInteraction\Item\Passive\MechanicalWardTome.cs" />
+    <Compile Include="PlayerInteraction\Item\Passive\NaturalWardTome.cs" />
+    <Compile Include="PlayerInteraction\Item\Passive\PassiveItem.cs" />
     <Compile Include="PlayerInteraction\Handlers\IWardHandler.cs" />
+    <Compile Include="PlayerInteraction\Item\Passive\PreparatoryTome.cs" />
+    <Compile Include="PlayerInteraction\Item\Passive\SturdyTome.cs" />
+    <Compile Include="PlayerInteraction\Item\Passive\UnnaturalWardTome.cs" />
     <Compile Include="PlayerInteraction\Player.cs" />
     <Compile Include="PlayerInteraction\Rune\DelayedRune.cs" />
     <Compile Include="PlayerInteraction\Rune\InstantRune.cs" />

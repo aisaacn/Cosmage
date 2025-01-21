@@ -15,6 +15,12 @@ namespace CosmageV2.PlayerInteraction
 
         public void HandleConsumablePhase(Player player)
         {
+            if (player.Satchel.Consumables.Count == 0)
+            {
+                //Console.WriteLine($"{player.Name} has no Consumables");
+                return;
+            }
+
             ConsumablePhaseGui gui = new ConsumablePhaseGui(player.Satchel.Consumables);
             gui.ShowDialog();
 

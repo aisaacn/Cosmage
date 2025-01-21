@@ -65,6 +65,15 @@ namespace CosmageV2.PlayerInteraction
             return primary;
         }
 
+        public void SetZero()
+        {
+            strengths = new Dictionary<Element, int>();
+
+            strengths.Add(Element.Natural, 0);
+            strengths.Add(Element.Mechanical, 0);
+            strengths.Add(Element.Unnatural, 0);
+        }
+
         public override string ToString()
         {
             return string.Join(" ", strengths);

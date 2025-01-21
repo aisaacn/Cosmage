@@ -24,7 +24,7 @@ namespace CosmageV2.PlayerInteraction.Itemization
 
         public override void UseConsumable()
         {
-            // TODO probably set a bool in IConsumableHandler called usingWormhole
+            // This should never be called
             throw new NotImplementedException();
         }
 

@@ -212,10 +212,10 @@
             // PassivePanel
             // 
             this.PassivePanel.AutoScroll = true;
-            this.PassivePanel.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.PassivePanel.Location = new System.Drawing.Point(830, 115);
+            this.PassivePanel.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.PassivePanel.Name = "PassivePanel";
-            this.PassivePanel.Size = new System.Drawing.Size(200, 218);
+            this.PassivePanel.Size = new System.Drawing.Size(220, 218);
             this.PassivePanel.TabIndex = 9;
             // 
             // passiveLabel

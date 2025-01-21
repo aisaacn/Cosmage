@@ -24,6 +24,7 @@ namespace CosmageV2.GamePhase
         private IGamePhaseExecutorFactory gamePhaseExecutorFactory;
         private ISpellExecutor spellExecutor;
         private IAttackHandler attackHandler;
+        private IPassiveHandler passiveHandler;
 
         Player player1;
         Player player2;
@@ -47,6 +48,7 @@ namespace CosmageV2.GamePhase
             currentPhaseExecutor = gamePhaseExecutorFactory.CreateInitialPhaseExecutor();
             spellExecutor = new DefaultSpellExecutor();
             attackHandler = new DefaultAttackHandler();
+            passiveHandler = new DefaultPassiveHandler();
         }
 
         public GamePhase GetCurrentPhase()
@@ -67,14 +69,36 @@ namespace CosmageV2.GamePhase
         {
             player1 = p1;
             player2 = p2;
-            DecideTurnOrder();
         }
 
         private void DecideTurnOrder()
         {
-            // TODO roll dice, check for Hasty Tomes, etc
-            CurrentPlayer = player1;
-            InactivePlayer = player2;
+            // TODO polish
+            if (player1.Haste > player2.Haste)
+            {
+                CurrentPlayer = player1;
+                InactivePlayer = player2;
+            }
+            else if (player1.Haste < player2.Haste)
+            {
+                CurrentPlayer = player2;
+                InactivePlayer = player1;
+            }
+            else
+            {
+                Random rand = new Random();
+                int num = rand.Next(2);
+                if (num == 0)
+                {
+                    CurrentPlayer = player1;
+                    InactivePlayer = player2;
+                }
+                else
+                {
+                    CurrentPlayer = player2;
+                    InactivePlayer = player1;
+                }
+            }
         }
 
         private void ConfigureGameBoard()
@@ -89,6 +113,9 @@ namespace CosmageV2.GamePhase
         {
             if (player1 is null || player2 is null)
                 throw new Exception("Players must be added to GamePhaseManager before starting game.");
+
+            passiveHandler.HandlePassives(player1, player2);
+            DecideTurnOrder();
             ConfigureGameBoard();
 
             bool isGameOver = false;

@@ -18,7 +18,7 @@ namespace CosmageV2.PlayerInteraction
     {
         public Element Element { get; }
         public string Name { get; }
-        public int Health { get; private set; }
+        public int Health { get; set; }
         public ElementalStrength Ward { get; private set; }
         public List<Construct> Constructs { get; private set; }
         public ElementalStrength Cauldron { get; private set; }
@@ -28,6 +28,9 @@ namespace CosmageV2.PlayerInteraction
 
         public Essence LastEssence { get; private set; }
         public Rune LastActivatedRune { get; private set; }
+        public int Haste {  get; set; }
+        public bool Prepared { get; set; }
+        public bool WardPrevented { get; set; }
 
         IAddIngredientHandler addIngredientHandler;
         IRunePhaseHandler runePhaseHandler;
@@ -41,6 +44,10 @@ namespace CosmageV2.PlayerInteraction
             Element = element;
             Name = name;
             Health = 20; //TODO: abstract health for different rulesets
+
+            Haste = 0;
+            Prepared = false;
+            WardPrevented = false;
 
             Ward = new ElementalStrength();
             Constructs = new List<Construct>();
