@@ -21,7 +21,5 @@
   <ItemGroup>
     <Compile Remove="GUI\GuiEventListener.cs" />
     <Compile Remove="GUI\IGuiEventListener.cs" />
-    <Compile Remove="PlayerInteraction\Serialization\ItemConverterFactory.cs" />
-    <Compile Remove="PlayerInteraction\Serialization\PlayerSerializable.cs" />
   </ItemGroup>
 </Project>
