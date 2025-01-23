@@ -173,7 +173,7 @@ namespace CosmageV2.GUI
             }
             else
             {
-                UpdateExistingPlayerInfo(SamplePlayers.Samples[selection]);
+                UpdateExistingPlayerInfo(SamplePlayers.GetPlayer(selection));
             }
         }
 

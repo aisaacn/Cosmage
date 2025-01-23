@@ -11,6 +11,7 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
+    <Folder Include="SamplePlayers\" />
     <Folder Include="Tests\" />
   </ItemGroup>
   <ItemGroup>
