@@ -11,29 +11,29 @@ namespace CosmageV2.PlayerInteraction.Itemization
     {
         public static class Essences
         {
-            public static readonly Essence BasicNatural = new BasicNaturalEssence();
-            public static readonly Essence BasicMechanical = new BasicMechanicalEssence();
-            public static readonly Essence BasicUnnatural = new BasicUnnaturalEssence();
-            public static readonly Essence AdvancedNatural = new AdvancedNaturalEssence();
-            public static readonly Essence AdvancedMechanical = new AdvancedMechanicalEssence();
-            public static readonly Essence AdvancedUnnatural = new AdvancedUnnaturalEssence();
+            public static readonly Essence BasicNaturalEssence = new BasicNaturalEssence();
+            public static readonly Essence BasicMechanicalEssence = new BasicMechanicalEssence();
+            public static readonly Essence BasicUnnaturalEssence = new BasicUnnaturalEssence();
+            public static readonly Essence AdvancedNaturalEssence = new AdvancedNaturalEssence();
+            public static readonly Essence AdvancedMechanicalEssence = new AdvancedMechanicalEssence();
+            public static readonly Essence AdvancedUnnaturalEssence = new AdvancedUnnaturalEssence();
 
             public static readonly List<Essence> Options = new List<Essence>()
             {
-                BasicNatural, BasicMechanical, BasicUnnatural,
-                AdvancedNatural, AdvancedMechanical, AdvancedUnnatural
+                BasicNaturalEssence, BasicMechanicalEssence, BasicUnnaturalEssence,
+                AdvancedNaturalEssence, AdvancedMechanicalEssence, AdvancedUnnaturalEssence
             };
         }
 
         public static class Catalysts
         {
-            public static readonly Catalyst Attack = new AttackCrystal();
-            public static readonly Catalyst Ward = new WardCrystal();
-            public static readonly Catalyst Construct = new ConstructCrystal();
+            public static readonly Catalyst AttackCrystal = new AttackCrystal();
+            public static readonly Catalyst WardCrystal = new WardCrystal();
+            public static readonly Catalyst ConstructCrystal = new ConstructCrystal();
 
             public static readonly List<Catalyst> Options = new List<Catalyst>()
             {
-                Attack, Ward, Construct
+                AttackCrystal, WardCrystal, ConstructCrystal
             };
         }
 

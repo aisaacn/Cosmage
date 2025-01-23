@@ -17,6 +17,7 @@ namespace CosmageV2.PlayerInteraction
         {
             WriteIndented = true,
             PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
+            Converters = { new ItemFlyweightJsonConverter() }
         };
 
         static SamplePlayers()
