@@ -1,0 +1,36 @@
+{
+  "name": "big guy",
+  "element": 0,
+  "items": [
+    {
+      "itemType": "AdvancedNaturalEssence"
+    },
+    {
+      "itemType": "AttackCrystal"
+    },
+    {
+      "itemType": "Fractal"
+    },
+    {
+      "itemType": "Fractal"
+    },
+    {
+      "itemType": "Fractal"
+    },
+    {
+      "itemType": "Fractal"
+    },
+    {
+      "itemType": "Augment"
+    },
+    {
+      "itemType": "HastyTome"
+    },
+    {
+      "itemType": "PreparatoryTome"
+    },
+    {
+      "itemType": "BreakWardTome"
+    }
+  ]
+}

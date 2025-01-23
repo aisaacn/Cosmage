@@ -1,0 +1,39 @@
+{
+  "name": "Natural Sample Player",
+  "element": 0,
+  "items": [
+    {
+      "itemType": "AttackCrystal"
+    },
+    {
+      "itemType": "WardCrystal"
+    },
+    {
+      "itemType": "ConstructCrystal"
+    },
+    {
+      "itemType": "BasicNaturalEssence"
+    },
+    {
+      "itemType": "AdvancedNaturalEssence"
+    },
+    {
+      "itemType": "BasicMechanicalEssence"
+    },
+    {
+      "itemType": "AdvancedMechanicalEssence"
+    },
+    {
+      "itemType": "AdvancedMechanicalEssence"
+    },
+    {
+      "itemType": "BasicUnnaturalEssence"
+    },
+    {
+      "itemType": "AdvancedUnnaturalEssence"
+    },
+    {
+      "itemType": "AdvancedUnnaturalEssence"
+    }
+  ]
+}

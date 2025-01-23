@@ -1,6 +1,5 @@
 *.vsidx
 *.suo
-*.json
 *.testlog
 *.manifest
 *.exe

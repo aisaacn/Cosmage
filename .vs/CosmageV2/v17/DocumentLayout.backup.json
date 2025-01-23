@@ -1,0 +1,122 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Isaac\\source\\repos\\CosmageV2\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{B17D2336-B4D4-43FF-9F91-268E4ABD71AB}|CosmageV2.csproj|c:\\users\\isaac\\source\\repos\\cosmagev2\\playerinteraction\\sampleplayers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B17D2336-B4D4-43FF-9F91-268E4ABD71AB}|CosmageV2.csproj|solutionrelative:playerinteraction\\sampleplayers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B17D2336-B4D4-43FF-9F91-268E4ABD71AB}|CosmageV2.csproj|c:\\users\\isaac\\source\\repos\\cosmagev2\\playerinteraction\\item\\itemregistry.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B17D2336-B4D4-43FF-9F91-268E4ABD71AB}|CosmageV2.csproj|solutionrelative:playerinteraction\\item\\itemregistry.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B17D2336-B4D4-43FF-9F91-268E4ABD71AB}|CosmageV2.csproj|c:\\users\\isaac\\source\\repos\\cosmagev2\\playerinteraction\\serialization\\itemflyweightjsonconverter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B17D2336-B4D4-43FF-9F91-268E4ABD71AB}|CosmageV2.csproj|solutionrelative:playerinteraction\\serialization\\itemflyweightjsonconverter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B17D2336-B4D4-43FF-9F91-268E4ABD71AB}|CosmageV2.csproj|c:\\users\\isaac\\source\\repos\\cosmagev2\\gui\\playercreatorgui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B17D2336-B4D4-43FF-9F91-268E4ABD71AB}|CosmageV2.csproj|solutionrelative:gui\\playercreatorgui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B17D2336-B4D4-43FF-9F91-268E4ABD71AB}|CosmageV2.csproj|c:\\users\\isaac\\source\\repos\\cosmagev2\\playerinteraction\\serialization\\playerserializable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B17D2336-B4D4-43FF-9F91-268E4ABD71AB}|CosmageV2.csproj|solutionrelative:playerinteraction\\serialization\\playerserializable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B17D2336-B4D4-43FF-9F91-268E4ABD71AB}|CosmageV2.csproj|c:\\users\\isaac\\source\\repos\\cosmagev2\\playerinteraction\\item\\item.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B17D2336-B4D4-43FF-9F91-268E4ABD71AB}|CosmageV2.csproj|solutionrelative:playerinteraction\\item\\item.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 3,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ItemRegistry.cs",
+              "DocumentMoniker": "C:\\Users\\Isaac\\source\\repos\\CosmageV2\\PlayerInteraction\\Item\\ItemRegistry.cs",
+              "RelativeDocumentMoniker": "PlayerInteraction\\Item\\ItemRegistry.cs",
+              "ToolTip": "C:\\Users\\Isaac\\source\\repos\\CosmageV2\\PlayerInteraction\\Item\\ItemRegistry.cs",
+              "RelativeToolTip": "PlayerInteraction\\Item\\ItemRegistry.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAABBAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-23T20:08:00.546Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ItemFlyweightJsonConverter.cs",
+              "DocumentMoniker": "C:\\Users\\Isaac\\source\\repos\\CosmageV2\\PlayerInteraction\\Serialization\\ItemFlyweightJsonConverter.cs",
+              "RelativeDocumentMoniker": "PlayerInteraction\\Serialization\\ItemFlyweightJsonConverter.cs",
+              "ToolTip": "C:\\Users\\Isaac\\source\\repos\\CosmageV2\\PlayerInteraction\\Serialization\\ItemFlyweightJsonConverter.cs",
+              "RelativeToolTip": "PlayerInteraction\\Serialization\\ItemFlyweightJsonConverter.cs",
+              "ViewState": "AgIAABsAAAAAAAAAAAArwCsAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-23T19:59:06.172Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "PlayerCreatorGui.cs",
+              "DocumentMoniker": "C:\\Users\\Isaac\\source\\repos\\CosmageV2\\GUI\\PlayerCreatorGui.cs",
+              "RelativeDocumentMoniker": "GUI\\PlayerCreatorGui.cs",
+              "ToolTip": "C:\\Users\\Isaac\\source\\repos\\CosmageV2\\GUI\\PlayerCreatorGui.cs",
+              "RelativeToolTip": "GUI\\PlayerCreatorGui.cs",
+              "ViewState": "AgIAAAcAAAAAAAAAAAAnwLEAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-23T17:58:06.509Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "SamplePlayers.cs",
+              "DocumentMoniker": "C:\\Users\\Isaac\\source\\repos\\CosmageV2\\PlayerInteraction\\SamplePlayers.cs",
+              "RelativeDocumentMoniker": "PlayerInteraction\\SamplePlayers.cs",
+              "ToolTip": "C:\\Users\\Isaac\\source\\repos\\CosmageV2\\PlayerInteraction\\SamplePlayers.cs",
+              "RelativeToolTip": "PlayerInteraction\\SamplePlayers.cs",
+              "ViewState": "AgIAAAcAAAAAAAAAAAAIwBsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-23T17:50:52.749Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "PlayerSerializable.cs",
+              "DocumentMoniker": "C:\\Users\\Isaac\\source\\repos\\CosmageV2\\PlayerInteraction\\Serialization\\PlayerSerializable.cs",
+              "RelativeDocumentMoniker": "PlayerInteraction\\Serialization\\PlayerSerializable.cs",
+              "ToolTip": "C:\\Users\\Isaac\\source\\repos\\CosmageV2\\PlayerInteraction\\Serialization\\PlayerSerializable.cs",
+              "RelativeToolTip": "PlayerInteraction\\Serialization\\PlayerSerializable.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-23T17:49:39.73Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Item.cs",
+              "DocumentMoniker": "C:\\Users\\Isaac\\source\\repos\\CosmageV2\\PlayerInteraction\\Item\\Item.cs",
+              "RelativeDocumentMoniker": "PlayerInteraction\\Item\\Item.cs",
+              "ToolTip": "C:\\Users\\Isaac\\source\\repos\\CosmageV2\\PlayerInteraction\\Item\\Item.cs",
+              "RelativeToolTip": "PlayerInteraction\\Item\\Item.cs",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAABQAAABUAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-23T17:48:32.872Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
