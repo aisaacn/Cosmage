@@ -36,9 +36,20 @@ namespace CosmageV2.GUI
         {
             if (player1 != null && player2 != null)
             {
-                this.Hide();
                 GamePhaseManager.Instance.SetPlayers(player1, player2);
-                GamePhaseManager.Instance.StartGame();
+                GameBoardGui gameBoard = new GameBoardGui();
+                GamePhaseManager.Instance.GameBoard = gameBoard;
+                this.Hide();
+
+                Task.Run(() =>
+                {
+                    GamePhaseManager.Instance.StartGame();
+                });
+
+                //if (gameBoard.ShowDialog() == DialogResult.Cancel)
+                //{
+                    //this.Show(); //leave this if you want the StartScreenGui to show again after closing GameBoard
+                //}
             } 
         }
 

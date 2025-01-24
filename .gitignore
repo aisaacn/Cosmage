@@ -7,5 +7,7 @@
 *.cache
 bin/Debug*
 obj/Debug*
-.vs/*.json
-obj/*.json
+*.json
+
+!SamplePlayers/
+!SamplePlayers/*

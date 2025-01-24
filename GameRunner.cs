@@ -15,8 +15,12 @@ namespace CosmageV2
     {
         static void Main()
         {
-            Form gui = new StartScreenGui();
-            gui.ShowDialog();
+            //Form gui = new StartScreenGui();
+            //gui.ShowDialog();
+
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+            Application.Run(new StartScreenGui());
         }
     }
 }

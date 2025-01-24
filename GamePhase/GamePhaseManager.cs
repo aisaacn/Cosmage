@@ -28,10 +28,11 @@ namespace CosmageV2.GamePhase
 
         Player player1;
         Player player2;
+        Player winner;
         public Player CurrentPlayer { get; private set; }
         public Player InactivePlayer { get; private set; }
         public int CurrentTurn { get; private set; }
-        public GameBoardGui GameBoard { get; private set; }
+        public GameBoardGui GameBoard { get; set; }
 
         private GamePhaseManager()
         {
@@ -42,10 +43,8 @@ namespace CosmageV2.GamePhase
         {
             //CreatePlayers();
             //ConfigureGameBoard();
-            CurrentTurn = 0;
 
             gamePhaseExecutorFactory = new DefaultGamePhaseExecutorFactory();
-            currentPhaseExecutor = gamePhaseExecutorFactory.CreateInitialPhaseExecutor();
             spellExecutor = new DefaultSpellExecutor();
             attackHandler = new DefaultAttackHandler();
             passiveHandler = new DefaultPassiveHandler();
@@ -94,16 +93,21 @@ namespace CosmageV2.GamePhase
 
         private void ConfigureGameBoard()
         {
-            GameBoard = new GameBoardGui();
-            GameBoard.AssignPlayersToLabels(player1, player2);
-            GameBoard.UpdateCurrentPlayer(CurrentPlayer);
-            GameBoard.Show();
+            GameBoard.Invoke((MethodInvoker)delegate
+            {
+                GameBoard.AssignPlayersToLabels(player1, player2);
+                GameBoard.UpdateCurrentPlayer(CurrentPlayer);
+            });
         }
 
         public void StartGame()
         {
             if (player1 is null || player2 is null)
                 throw new Exception("Players must be added to GamePhaseManager before starting game.");
+
+            CurrentTurn = 0;
+            winner = null;
+            currentPhaseExecutor = gamePhaseExecutorFactory.CreateInitialPhaseExecutor();
 
             passiveHandler.HandlePassives(player1, player2);
             DecideTurnOrder();
@@ -121,12 +125,29 @@ namespace CosmageV2.GamePhase
 
         private bool IsGameOver()
         {
-            //TODO: check if player health is zero
+            //TODO: check if player health is zero and set this.winner
+            if (InactivePlayer.Health <= 0)
+            {
+                winner = CurrentPlayer;
+                return true;
+            }
+
+            // this block might be unnecessary, I dont think CurrentPlayer can take damage on their turn
+            if (CurrentPlayer.Health <= 0)
+            {
+                winner = InactivePlayer;
+                return true;
+            }
+
             return false;
         }
 
         private void DeclareWinner()
         {
+            GameBoard.Invoke((MethodInvoker)delegate
+            {
+                GameBoard.ShowWinner(winner);
+            });
             //TODO determine winning player
             //Console.WriteLine($"Player {CurrentPlayer.Name} wins!");
         }
@@ -138,8 +159,11 @@ namespace CosmageV2.GamePhase
 
         public void UpdateGameBoard()
         {
-            GameBoard.UpdatePlayerLabels(player1);
-            GameBoard.UpdatePlayerLabels(player2);
+            GameBoard.Invoke((MethodInvoker)delegate
+            {
+                GameBoard.UpdatePlayerLabels(player1);
+                GameBoard.UpdatePlayerLabels(player2);
+            });
         }
 
         private void TransitionToNextPhase()
@@ -155,8 +179,11 @@ namespace CosmageV2.GamePhase
             CurrentPlayer = InactivePlayer;
             InactivePlayer = tempCurrent;
 
-            GameBoard.UpdateCurrentPlayer(CurrentPlayer);
-            // TODO update current round on GameBoard
+            GameBoard.Invoke((MethodInvoker)delegate
+            {
+                GameBoard.UpdateCurrentPlayer(CurrentPlayer);
+                // TODO update current round on GameBoard
+            });
         }
 
         public void ExecuteSpell(Spell spell)
