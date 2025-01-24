@@ -1,13 +1,16 @@
 *.vsidx
+*.vs
 *.suo
 *.testlog
 *.manifest
 *.exe
 *.pdb
 *.cache
-bin/Debug*
-obj/Debug*
 *.json
+bin/
+obj/
+packages/
+.vs/
 
 !SamplePlayers/
 !SamplePlayers/*
