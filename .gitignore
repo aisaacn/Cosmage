@@ -7,3 +7,5 @@
 *.cache
 bin/Debug*
 obj/Debug*
+.vs/*.json
+obj/*.json
