@@ -83,6 +83,13 @@ namespace CosmageV2.PlayerInteraction
             return effect;
         }
 
+        public void ModifyDelay(int delta)
+        {
+            currentDelayCounters += delta;
+            if (currentDelayCounters == 0)
+                currentDelayCounters++;
+        }
+
         public int GetEffectByCharge()
         {
             // TODO evaluate potential bug with charge effects

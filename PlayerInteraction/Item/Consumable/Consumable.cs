@@ -13,5 +13,12 @@ namespace CosmageV2.PlayerInteraction.Itemization
     public abstract class Consumable : Item
     {
         public abstract void UseConsumable();
+        public abstract void UseConsumableWithWormhole();
+
+        public void UseConsumable(bool withWormhole)
+        {
+            if (withWormhole) UseConsumableWithWormhole();
+            else UseConsumable();
+        }
     }
 }

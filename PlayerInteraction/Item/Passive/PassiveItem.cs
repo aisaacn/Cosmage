@@ -12,6 +12,7 @@ namespace CosmageV2.PlayerInteraction.Itemization
      */
     public abstract class PassiveItem : Item
     {
-        public abstract void HandlePassiveEffect();
+        public abstract bool TargetsOtherPlayer { get; protected set; }
+        public abstract void HandlePassiveEffect(Player player);
     }
 }

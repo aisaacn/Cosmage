@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectView>ShowAllFiles</ProjectView>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Update="GUI\ConsumablePhaseGui.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="GUI\GameBoardGui.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="GUI\IngredientPhaseGuiCustomSatchel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="GUI\PlayerCreatorGui.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="GUI\RunePhaseGui.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="GUI\StartScreenGui.cs">
+      <SubType>Form</SubType>
+    </Compile>
+  </ItemGroup>
+</Project>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CosmageV2.PlayerInteraction.Itemization;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,16 +18,24 @@ namespace CosmageV2.PlayerInteraction
     {
         public Element Element { get; }
         public string Name { get; }
-        public int Health { get; private set; }
+        public int Health { get; set; }
         public ElementalStrength Ward { get; private set; }
         public List<Construct> Constructs { get; private set; }
-        public ElementalStrength Cauldron {  get; private set; }
+        public ElementalStrength Cauldron { get; private set; }
         public CatalystType Catalyst { get; private set; }
         public List<Rune> Runes { get; private set; }
         public Satchel Satchel { get; private set; }
 
+        public Essence LastEssence { get; private set; }
+        public Rune LastActivatedRune { get; private set; }
+        public int Haste {  get; set; }
+        public bool Prepared { get; set; }
+        public bool WardPrevented { get; set; }
+
         IAddIngredientHandler addIngredientHandler;
         IRunePhaseHandler runePhaseHandler;
+        IConsumablePhaseHandler consumablePhaseHandler;
+
         IDamageHandler damageHandler;
         IWardHandler wardHandler;
 
@@ -36,6 +45,10 @@ namespace CosmageV2.PlayerInteraction
             Name = name;
             Health = 20; //TODO: abstract health for different rulesets
 
+            Haste = 0;
+            Prepared = false;
+            WardPrevented = false;
+
             Ward = new ElementalStrength();
             Constructs = new List<Construct>();
             Cauldron = new ElementalStrength();
@@ -44,8 +57,10 @@ namespace CosmageV2.PlayerInteraction
 
             // TODO add ruleset manager to create all appropriate handlers
             IElementalRelationshipManager relationshipManager = new DefaultElementalRelationshipManager();
-            addIngredientHandler = new WinFormAddIngredientHandler();
+            addIngredientHandler = new WinFormCustomSatchelAddIngredientHandler();
             runePhaseHandler = new WinFormRunePhaseHandler();
+            consumablePhaseHandler = new WinFormConsumablePhaseHandler();
+
             damageHandler = new DefaultDamageHandler(relationshipManager);
             wardHandler = new DefaultWardHandler(relationshipManager);
         }
@@ -63,8 +78,7 @@ namespace CosmageV2.PlayerInteraction
 
         public void HandleUseConsumables()
         {
-            // TODO implement user interaction (consumables will simply modify cauldron for now)
-            // Console.WriteLine($"{Name} may use any number of consumables");
+            consumablePhaseHandler.HandleConsumablePhase(this);
         }
 
         public void HandleRunePhase()
@@ -100,9 +114,8 @@ namespace CosmageV2.PlayerInteraction
         private Spell PrepareSpell(int runeEffect)
         {
             // Don't cast spell if no essence, no catalyst, or if runeEffect reduces spell strength to less than 1
-            if (Cauldron.GetMagnitude() == 0
-                || Catalyst.Equals(CatalystType.None)
-                || Cauldron.GetMagnitude() <= -runeEffect) 
+            if (Cauldron.GetMagnitude() <= -runeEffect
+                || Catalyst.Equals(CatalystType.None))
                 return null;
             
             if (runeEffect < 0)
@@ -124,12 +137,14 @@ namespace CosmageV2.PlayerInteraction
             return spell;
         }
 
-        public void AddToCauldron(ElementalStrength strength)
+        public void AddEssenceAndRemoveFromSatchel(Essence essence)
         {
-            Cauldron.AddStrengths(strength);
+            LastEssence = essence;
+            Cauldron.AddStrength(essence.Element, essence.Magnitude);
+            Satchel.RemoveItem(essence);
         }
 
-        public bool AddCatalyst(CatalystType type)
+        public bool AddCatalystAndRemoveFromSatchel(Catalyst catalyst)
         {
             if (Catalyst != CatalystType.None)
             {
@@ -138,8 +153,17 @@ namespace CosmageV2.PlayerInteraction
             }
 
             //Console.WriteLine($"Adding {type.ToString()} catalyst to {Name}'s cauldron");
-            Catalyst = type;
+            Catalyst = catalyst.Type;
+            if (!catalyst.IsReusable)
+            {
+                Satchel.RemoveItem(catalyst);
+            }
             return true;
+        }
+
+        public bool RemoveConsumableFromSatchel(Consumable consumable)
+        {
+            return Satchel.RemoveItem(consumable);
         }
 
         public bool ChargeRune(int runeIndex)
@@ -154,6 +178,7 @@ namespace CosmageV2.PlayerInteraction
 
         public bool ActivateRune(int runeIndex)
         {
+            LastActivatedRune = Runes[runeIndex];
             return Runes[runeIndex].ActivateRune();
         }
 

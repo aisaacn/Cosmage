@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CosmageV2.GUI
+namespace CosmageV2.PlayerInteraction
 {
-    internal class IGuiEventListener
+    public interface IConsumablePhaseHandler
     {
+        void HandleConsumablePhase(Player player);
     }
 }

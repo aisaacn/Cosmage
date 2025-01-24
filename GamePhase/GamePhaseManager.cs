@@ -24,13 +24,15 @@ namespace CosmageV2.GamePhase
         private IGamePhaseExecutorFactory gamePhaseExecutorFactory;
         private ISpellExecutor spellExecutor;
         private IAttackHandler attackHandler;
+        private IPassiveHandler passiveHandler;
 
         Player player1;
         Player player2;
+        Player winner;
         public Player CurrentPlayer { get; private set; }
         public Player InactivePlayer { get; private set; }
         public int CurrentTurn { get; private set; }
-        public GameBoardGui GameBoard { get; private set; }
+        public GameBoardGui GameBoard { get; set; }
 
         private GamePhaseManager()
         {
@@ -41,12 +43,11 @@ namespace CosmageV2.GamePhase
         {
             //CreatePlayers();
             //ConfigureGameBoard();
-            CurrentTurn = 0;
 
             gamePhaseExecutorFactory = new DefaultGamePhaseExecutorFactory();
-            currentPhaseExecutor = gamePhaseExecutorFactory.CreateInitialPhaseExecutor();
             spellExecutor = new DefaultSpellExecutor();
             attackHandler = new DefaultAttackHandler();
+            passiveHandler = new DefaultPassiveHandler();
         }
 
         public GamePhase GetCurrentPhase()
@@ -54,51 +55,69 @@ namespace CosmageV2.GamePhase
             return currentPhaseExecutor.Phase;
         }
 
-        // Player creation happens here because different amounts of players will require a different IGamePhaseManager
-        // Default GamePhaseManager will always only support two players
-        //private void CreatePlayers()
-        //{
-        //    player1 = new Player(Element.Natural, "Player1-N-init");
-        //    player2 = new Player(Element.Mechanical, "Player2-M-init");
-        //    DecideTurnOrder();
-        //}
-
         public void SetPlayers(Player p1, Player p2)
         {
             player1 = p1;
             player2 = p2;
-            DecideTurnOrder();
-            // ConfigureGameBoard();
         }
 
         private void DecideTurnOrder()
         {
-            // TODO roll dice, check for Hasty Tomes, etc
-            CurrentPlayer = player1;
-            InactivePlayer = player2;
+            // TODO polish
+            if (player1.Haste > player2.Haste)
+            {
+                CurrentPlayer = player1;
+                InactivePlayer = player2;
+            }
+            else if (player1.Haste < player2.Haste)
+            {
+                CurrentPlayer = player2;
+                InactivePlayer = player1;
+            }
+            else
+            {
+                Random rand = new Random();
+                int num = rand.Next(2);
+                if (num == 0)
+                {
+                    CurrentPlayer = player1;
+                    InactivePlayer = player2;
+                }
+                else
+                {
+                    CurrentPlayer = player2;
+                    InactivePlayer = player1;
+                }
+            }
         }
 
         private void ConfigureGameBoard()
         {
-            GameBoard = new GameBoardGui();
-            GameBoard.AssignPlayersToLabels(player1, player2);
-            GameBoard.UpdateCurrentPlayer(CurrentPlayer);
-            GameBoard.Show();
+            GameBoard.Invoke((MethodInvoker)delegate
+            {
+                GameBoard.AssignPlayersToLabels(player1, player2);
+                GameBoard.UpdateCurrentPlayer(CurrentPlayer);
+            });
         }
 
         public void StartGame()
         {
             if (player1 is null || player2 is null)
                 throw new Exception("Players must be added to GamePhaseManager before starting game.");
+
+            CurrentTurn = 0;
+            winner = null;
+            currentPhaseExecutor = gamePhaseExecutorFactory.CreateInitialPhaseExecutor();
+
+            passiveHandler.HandlePassives(player1, player2);
+            DecideTurnOrder();
             ConfigureGameBoard();
 
-            bool isGameOver = false;
-            while(!isGameOver)
+            while(!IsGameOver())
             {
                 ExecuteCurrentPhase();
                 UpdateGameBoard();
                 TransitionToNextPhase();
-                isGameOver = IsGameOver();
             }
             DeclareWinner();
             // TODO persist GameBoard GUI
@@ -106,12 +125,29 @@ namespace CosmageV2.GamePhase
 
         private bool IsGameOver()
         {
-            //TODO: check if player health is zero
-            return CurrentTurn > 60;
+            //TODO: check if player health is zero and set this.winner
+            if (InactivePlayer.Health <= 0)
+            {
+                winner = CurrentPlayer;
+                return true;
+            }
+
+            // this block might be unnecessary, I dont think CurrentPlayer can take damage on their turn
+            if (CurrentPlayer.Health <= 0)
+            {
+                winner = InactivePlayer;
+                return true;
+            }
+
+            return false;
         }
 
         private void DeclareWinner()
         {
+            GameBoard.Invoke((MethodInvoker)delegate
+            {
+                GameBoard.ShowWinner(winner);
+            });
             //TODO determine winning player
             //Console.WriteLine($"Player {CurrentPlayer.Name} wins!");
         }
@@ -121,10 +157,13 @@ namespace CosmageV2.GamePhase
             currentPhaseExecutor.ExecuteGamePhase(this);
         }
 
-        private void UpdateGameBoard()
+        public void UpdateGameBoard()
         {
-            GameBoard.UpdatePlayerLabels(player1);
-            GameBoard.UpdatePlayerLabels(player2);
+            GameBoard.Invoke((MethodInvoker)delegate
+            {
+                GameBoard.UpdatePlayerLabels(player1);
+                GameBoard.UpdatePlayerLabels(player2);
+            });
         }
 
         private void TransitionToNextPhase()
@@ -136,12 +175,15 @@ namespace CosmageV2.GamePhase
         {
             //Console.WriteLine("----switching active player----");
             CurrentTurn++;
-            InactivePlayer = CurrentPlayer;
-            if (CurrentPlayer == player1) CurrentPlayer = player2;
-            else CurrentPlayer = player1;
+            Player tempCurrent = CurrentPlayer;
+            CurrentPlayer = InactivePlayer;
+            InactivePlayer = tempCurrent;
 
-            GameBoard.UpdateCurrentPlayer(CurrentPlayer);
-            // TODO update current round on GameBoard
+            GameBoard.Invoke((MethodInvoker)delegate
+            {
+                GameBoard.UpdateCurrentPlayer(CurrentPlayer);
+                // TODO update current round on GameBoard
+            });
         }
 
         public void ExecuteSpell(Spell spell)

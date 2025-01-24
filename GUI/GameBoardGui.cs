@@ -24,6 +24,19 @@ namespace CosmageV2.GUI
         public GameBoardGui()
         {
             InitializeComponent();
+            CreateLabelDicts();
+
+            this.FormClosing += (s, e) =>
+            {
+                if (e.CloseReason == CloseReason.UserClosing)
+                {
+                    this.DialogResult = DialogResult.Cancel;
+                }
+            };
+        }
+
+        private void CreateLabelDicts()
+        {
             cauldronByPlayer = new Dictionary<Player, Label>();
             catalystByPlayer = new Dictionary<Player, Label>();
             runeNamesByPlayer = new Dictionary<Player, Label>();
@@ -69,8 +82,8 @@ namespace CosmageV2.GUI
             healthByPlayer.Add(player2, Player2Health);
 
             // Player Names
-            Player1CauldronLabel.Text = player1.Name + ":";
-            Player2CauldronLabel.Text = player2.Name + ":";
+            Player1CauldronLabel.Text = $"{player1.Name}-{player1.Element}:";
+            Player2CauldronLabel.Text = $"{player2.Name}-{player2.Element}:";
 
             UpdatePlayerLabels(player1);
             UpdatePlayerLabels(player2);
@@ -98,6 +111,11 @@ namespace CosmageV2.GUI
         public void UpdateCurrentPlayer(Player player)
         {
             CurrentPlayerLabel.Text = "Current Player: " + player.Name;
+        }
+
+        public void ShowWinner(Player player)
+        {
+            CurrentPlayerLabel.Text = $"{player.Name} wins!";
         }
     }
 }
