@@ -29,9 +29,9 @@ namespace CosmageV2.GUI
         private List<Consumable> consumableOptions;
         private List<PassiveItem> passiveOptions;
 
-        readonly int buttonWidth = 120;
-        readonly int buttonHeight = 35;
-        readonly int padding = 5;
+        readonly int buttonWidth = 140;
+        readonly int buttonHeight = 40;
+        readonly int padding = 1;
 
         public PlayerCreatorGui(Player player)
         {

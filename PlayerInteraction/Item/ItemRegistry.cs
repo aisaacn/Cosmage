@@ -40,13 +40,13 @@ namespace CosmageV2.PlayerInteraction.Itemization
         public static class Consumables
         {
             public static readonly Consumable Fractal = new Fractal();
-            public static readonly Consumable Tesseract = new Tesseract();
             public static readonly Consumable Augment = new Augment();
+            public static readonly Consumable Tesseract = new Tesseract();
             public static readonly Consumable Wormhole = new Wormhole();
 
             public static readonly List<Consumable> Options = new List<Consumable>()
             {
-                Fractal, Tesseract, Augment, Wormhole
+                Fractal, Augment, Tesseract, Wormhole
             };
         }
 
