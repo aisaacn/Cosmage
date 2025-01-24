@@ -46,10 +46,10 @@ namespace CosmageV2.GUI
                     GamePhaseManager.Instance.StartGame();
                 });
 
-                //if (gameBoard.ShowDialog() == DialogResult.Cancel)
-                //{
+                if (gameBoard.ShowDialog() == DialogResult.Cancel)
+                {
                     //this.Show(); //leave this if you want the StartScreenGui to show again after closing GameBoard
-                //}
+                }
             } 
         }
 
