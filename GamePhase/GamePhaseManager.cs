@@ -195,5 +195,13 @@ namespace CosmageV2.GamePhase
         {
             attackHandler.HandleAttack(attack, InactivePlayer);
         }
+
+        public void LogEvent(string log)
+        {
+            GameBoard.Invoke((MethodInvoker) delegate
+            {
+                GameBoard.LogEvent(log);
+            });
+        }
     }
 }

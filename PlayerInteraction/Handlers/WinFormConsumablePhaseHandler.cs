@@ -49,6 +49,7 @@ namespace CosmageV2.PlayerInteraction
             // TODO consider player.UseConsumableAndRemove(consumable);
             consumable.UseConsumable(usingWormhole);
             usingWormhole = false;
+            GamePhaseManager.Instance.LogEvent($"{player.Name} used {consumable.Name}"); // TODO potentially move to Player
             GamePhaseManager.Instance.UpdateGameBoard();
         }
     }

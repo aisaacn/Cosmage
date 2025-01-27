@@ -115,7 +115,19 @@ namespace CosmageV2.GUI
 
         public void ShowWinner(Player player)
         {
-            CurrentPlayerLabel.Text = $"{player.Name} wins!";
+            //CurrentPlayerLabel.Text = $"{player.Name} wins!";
+            LogEvent($"{player.Name} wins!");
+        }
+
+        public void LogEvent(String log)
+        {
+            Label label = new Label()
+            {
+                Text = log,
+                AutoSize = true
+            };
+            EventLogPanel.Controls.Add(label);
+            EventLogPanel.ScrollControlIntoView(label);
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using CosmageV2.PlayerInteraction.Itemization;
+﻿using CosmageV2.GamePhase;
+using CosmageV2.PlayerInteraction.Itemization;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -134,6 +135,7 @@ namespace CosmageV2.PlayerInteraction
             Cauldron = new ElementalStrength();
             Catalyst = CatalystType.None;
 
+            GamePhaseManager.Instance.LogEvent($"{Name} has cast a spell: {spell.Type} {spell.Strength.ToString()}");
             return spell;
         }
 
@@ -142,6 +144,7 @@ namespace CosmageV2.PlayerInteraction
             LastEssence = essence;
             Cauldron.AddStrength(essence.Element, essence.Magnitude);
             Satchel.RemoveItem(essence);
+            GamePhaseManager.Instance.LogEvent($"{Name} added {essence.Name}");
         }
 
         public bool AddCatalystAndRemoveFromSatchel(Catalyst catalyst)
@@ -158,6 +161,7 @@ namespace CosmageV2.PlayerInteraction
             {
                 Satchel.RemoveItem(catalyst);
             }
+            GamePhaseManager.Instance.LogEvent($"{Name} added {catalyst.Name}");
             return true;
         }
 
@@ -168,6 +172,7 @@ namespace CosmageV2.PlayerInteraction
 
         public bool ChargeRune(int runeIndex)
         {
+            GamePhaseManager.Instance.LogEvent($"{Name} has charged their {Runes[runeIndex].Name}");
             return Runes[runeIndex].ChargeRune();
         }
 
@@ -178,6 +183,7 @@ namespace CosmageV2.PlayerInteraction
 
         public bool ActivateRune(int runeIndex)
         {
+            GamePhaseManager.Instance.LogEvent($"{Name} has activated their {Runes[runeIndex].Name}");
             LastActivatedRune = Runes[runeIndex];
             return Runes[runeIndex].ActivateRune();
         }
@@ -239,6 +245,7 @@ namespace CosmageV2.PlayerInteraction
             WardAndDamageWrapper damageResult = wardHandler.GetAdjustedWardAndFinalDamageAmount(Ward, damageElement, damage);
             Ward = damageResult.Ward;
             Health -= damageResult.Damage;
+            GamePhaseManager.Instance.LogEvent($"{Name} has taken {damageResult.Damage} damage");
         }
 
         private void CreateRunes()

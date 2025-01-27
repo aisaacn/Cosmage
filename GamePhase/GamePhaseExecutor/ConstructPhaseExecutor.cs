@@ -20,13 +20,15 @@ namespace CosmageV2.GamePhase
 
         public void ExecuteGamePhase(GamePhaseManager manager)
         {
-            List<Construct> currentPlayerConstructs = manager.CurrentPlayer.Constructs;
+            Player currentPlayer = manager.CurrentPlayer;
+            List<Construct> currentPlayerConstructs = currentPlayer.Constructs;
             if (currentPlayerConstructs.Count > 0)
             {
                 foreach (Construct c in currentPlayerConstructs)
                 {
                     if (!c.HasSummoningSickness)
                     {
+                        manager.LogEvent($"{currentPlayer.Name}'s Construct is attacking {c.Strength.ToString()}");
                         manager.HandleAttack(c.Strength);
                     }
                 }

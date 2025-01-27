@@ -45,6 +45,7 @@
             Player1Constructs = new System.Windows.Forms.Label();
             Player2Health = new System.Windows.Forms.Label();
             Player1Health = new System.Windows.Forms.Label();
+            EventLogPanel = new System.Windows.Forms.FlowLayoutPanel();
             SuspendLayout();
             // 
             // Player2CauldronLabel
@@ -203,11 +204,22 @@
             Player1Health.TabIndex = 23;
             Player1Health.Text = "Player1Health";
             // 
+            // EventLogPanel
+            // 
+            EventLogPanel.AutoScroll = true;
+            EventLogPanel.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            EventLogPanel.Location = new System.Drawing.Point(837, 12);
+            EventLogPanel.Name = "EventLogPanel";
+            EventLogPanel.Size = new System.Drawing.Size(820, 538);
+            EventLogPanel.TabIndex = 24;
+            EventLogPanel.WrapContents = false;
+            // 
             // GameBoardGui
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            ClientSize = new System.Drawing.Size(889, 562);
+            ClientSize = new System.Drawing.Size(1669, 562);
+            Controls.Add(EventLogPanel);
             Controls.Add(Player1Health);
             Controls.Add(Player2Health);
             Controls.Add(Player1Constructs);
@@ -253,5 +265,6 @@
         private System.Windows.Forms.Label Player1Constructs;
         private System.Windows.Forms.Label Player2Health;
         private System.Windows.Forms.Label Player1Health;
+        private System.Windows.Forms.FlowLayoutPanel EventLogPanel;
     }
 }
