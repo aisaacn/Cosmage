@@ -4,25 +4,25 @@
     <ProjectView>ShowAllFiles</ProjectView>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Update="GUI\ChooseAttackTargetGui.cs">
+    <Compile Update="GUI\WinForm\ChooseAttackTargetGui.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="GUI\ConsumablePhaseGui.cs">
+    <Compile Update="GUI\WinForm\ConsumablePhaseGui.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="GUI\GameBoardGui.cs">
+    <Compile Update="GUI\WinForm\GameBoardGui.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="GUI\IngredientPhaseGuiCustomSatchel.cs">
+    <Compile Update="GUI\WinForm\IngredientPhaseGuiCustomSatchel.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="GUI\PlayerCreatorGui.cs">
+    <Compile Update="GUI\WinForm\PlayerCreatorGui.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="GUI\RunePhaseGui.cs">
+    <Compile Update="GUI\WinForm\RunePhaseGui.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="GUI\StartScreenGui.cs">
+    <Compile Update="GUI\WinForm\StartScreenGui.cs">
       <SubType>Form</SubType>
     </Compile>
   </ItemGroup>

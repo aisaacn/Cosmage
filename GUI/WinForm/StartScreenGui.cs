@@ -38,7 +38,7 @@ namespace CosmageV2.GUI
             {
                 GamePhaseManager.Instance.SetPlayers(player1, player2);
                 GameBoardGui gameBoard = new GameBoardGui();
-                GamePhaseManager.Instance.GameBoard = gameBoard;
+                GamePhaseManager.Instance.SetGameBoard(gameBoard);
                 this.Hide();
 
                 Task.Run(() =>

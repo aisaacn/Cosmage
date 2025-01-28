@@ -22,6 +22,7 @@ namespace CosmageV2.GamePhase
         private ISpellExecutor spellExecutor;
         private IAttackHandler attackHandler;
         private IPassiveHandler passiveHandler;
+        //private IGameBoardCommunicator gameBoardCommunicator;
 
         Player player1;
         Player player2;
@@ -29,7 +30,7 @@ namespace CosmageV2.GamePhase
         public Player CurrentPlayer { get; private set; }
         public Player InactivePlayer { get; private set; }
         public int CurrentTurn { get; private set; }
-        public GameBoardGui GameBoard { get; set; }
+        public GameBoardGui GameBoard { get; protected set; } // TODO abstract this to for different GUI types
 
         public void ConfigureRuleset(IRulesetManager ruleset)
         {
@@ -49,6 +50,11 @@ namespace CosmageV2.GamePhase
         {
             player1 = p1;
             player2 = p2;
+        }
+
+        public void SetGameBoard(GameBoardGui gameBoard)
+        {
+            GameBoard = gameBoard;
         }
 
         private void DecideTurnOrder()
