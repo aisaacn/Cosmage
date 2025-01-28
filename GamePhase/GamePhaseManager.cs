@@ -191,9 +191,15 @@ namespace CosmageV2.GamePhase
             spellExecutor.ExecuteSpell(spell);
         }
 
-        public void HandleAttack(ElementalStrength attack)
+        public void HandleAttack(ElementalStrength attack, Targetable target)
         {
-            attackHandler.HandleAttack(attack, InactivePlayer);
+            attackHandler.HandleAttack(attack, target);
+            InactivePlayer.RemoveDetroyedConstructs();
+        }
+
+        public void HandlePlayerAttack(ElementalStrength attack)
+        {
+            HandleAttack(attack, CurrentPlayer.HandleChooseAttackTarget());
         }
 
         public void LogEvent(string log)

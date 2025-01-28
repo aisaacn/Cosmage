@@ -4,6 +4,9 @@
     <ProjectView>ShowAllFiles</ProjectView>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Update="GUI\ChooseAttackTargetGui.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="GUI\ConsumablePhaseGui.cs">
       <SubType>Form</SubType>
     </Compile>

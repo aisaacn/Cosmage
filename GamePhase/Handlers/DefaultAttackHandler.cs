@@ -20,7 +20,7 @@ namespace CosmageV2.GamePhase
             elementalRelationshipManager = new DefaultElementalRelationshipManager();
         }
 
-        public void HandleAttack(ElementalStrength strength, Player target)
+        public void HandleAttack(ElementalStrength strength, Targetable target)
         {
             //Console.WriteLine($"{target.Name} has been attacked! {strength.ToString()}");
             foreach (Element element in elementalRelationshipManager.GetElementalDamageOrder(target.Element))

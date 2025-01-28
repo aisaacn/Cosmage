@@ -15,9 +15,9 @@ namespace CosmageV2.PlayerInteraction
      * Facilitates casting spells, creating Construct, charging Runes, and calculating damage based on Ward and Element.
      * Created 1/1/25
      */
-    public class Player
+    public class Player : Targetable
     {
-        public Element Element { get; }
+        public override Element Element { get; protected set; }
         public string Name { get; }
         public int Health { get; set; }
         public ElementalStrength Ward { get; private set; }
@@ -36,6 +36,7 @@ namespace CosmageV2.PlayerInteraction
         IAddIngredientHandler addIngredientHandler;
         IRunePhaseHandler runePhaseHandler;
         IConsumablePhaseHandler consumablePhaseHandler;
+        IChooseAttackTargetHandler chooseAttackTargetHandler;
 
         IDamageHandler damageHandler;
         IWardHandler wardHandler;
@@ -61,6 +62,7 @@ namespace CosmageV2.PlayerInteraction
             addIngredientHandler = new WinFormCustomSatchelAddIngredientHandler();
             runePhaseHandler = new WinFormRunePhaseHandler();
             consumablePhaseHandler = new WinFormConsumablePhaseHandler();
+            chooseAttackTargetHandler = new WinFormChooseAttackTargetHandler();
 
             damageHandler = new DefaultDamageHandler(relationshipManager);
             wardHandler = new DefaultWardHandler(relationshipManager);
@@ -99,13 +101,21 @@ namespace CosmageV2.PlayerInteraction
 
         public void DecrementAllConstructs()
         {
-            List<Construct> toDestroy = new List<Construct>();
             foreach (Construct c in Constructs)
             {
                 c.DecrementAllStrengths();
+            }
+            RemoveDetroyedConstructs();
+        }
+
+        public void RemoveDetroyedConstructs()
+        {
+            List<Construct> toDestroy = new List<Construct>();
+            foreach (Construct c in Constructs)
+            {
                 if (c.IsDestroyed()) toDestroy.Add(c);
             }
-            
+
             foreach (Construct c in toDestroy)
             {
                 Constructs.Remove(c);
@@ -220,7 +230,7 @@ namespace CosmageV2.PlayerInteraction
 
         public void AddConstruct(ElementalStrength strength)
         {
-            Constructs.Add(new Construct(strength));
+            Constructs.Add(new Construct(strength, Element, wardHandler));
         }
 
         public string ConstructsToString()
@@ -234,7 +244,12 @@ namespace CosmageV2.PlayerInteraction
             return sb.ToString();
         }
 
-        public void ReceiveDamage(Element damageElement, int damageAmount)
+        public Targetable HandleChooseAttackTarget()
+        {
+            return chooseAttackTargetHandler.HandleChooseAttackTarget();
+        }
+
+        public override void ReceiveDamage(Element damageElement, int damageAmount)
         {
             int adjDamage = damageHandler.CalculateAdjustedDamage(Element, damageAmount, damageElement);
             LoseHealthAfterFactoringWard(damageElement, adjDamage);

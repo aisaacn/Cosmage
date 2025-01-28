@@ -21,7 +21,7 @@ namespace CosmageV2.GamePhase
             switch (spell.Type)
             {
                 case CatalystType.Attack:
-                    manager.HandleAttack(spell.Strength);
+                    manager.HandlePlayerAttack(spell.Strength);
                     break;
 
                 case CatalystType.Ward:

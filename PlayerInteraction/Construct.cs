@@ -10,15 +10,26 @@ namespace CosmageV2.PlayerInteraction
      * Tracks properties and handles decay of Player Constructs.
      * Created 1/5/25
      */
-    public class Construct
+    public class Construct : Targetable
     {
+        public override Element Element { get; protected set; }
         public ElementalStrength Strength { get; private set; }
         public bool HasSummoningSickness { get; private set; }
 
-        public Construct(ElementalStrength strength)
+        private IWardHandler wardHandler;
+
+        public Construct(ElementalStrength strength, Element playerElement, IWardHandler playerWardHandler)
         {
             Strength = strength;
             HasSummoningSickness = true;
+            Element = Strength.GetPrimaryElementWithTiebreakerPreference(playerElement);
+            wardHandler = playerWardHandler;
+        }
+
+        public override void ReceiveDamage(Element element, int damageAmount)
+        {
+            WardAndDamageWrapper result = wardHandler.GetAdjustedWardAndFinalDamageAmount(Strength, element, damageAmount);
+            Strength = result.Ward;
         }
 
         public void DecrementAllStrengths()

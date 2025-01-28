@@ -29,7 +29,7 @@ namespace CosmageV2.GamePhase
                     if (!c.HasSummoningSickness)
                     {
                         manager.LogEvent($"{currentPlayer.Name}'s Construct is attacking {c.Strength.ToString()}");
-                        manager.HandleAttack(c.Strength);
+                        manager.HandleAttack(c.Strength, manager.InactivePlayer);
                     }
                 }
                 manager.CurrentPlayer.DecrementAllConstructs();
