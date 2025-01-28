@@ -20,7 +20,8 @@ namespace CosmageV2.GUI
     public partial class PlayerCreatorGui : Form
     {
         public Player Player { get; private set; }
-        private Satchel satchel;
+        //private Satchel satchel;
+        private List<Item> satchel;
         private string name;
         private Element element;
 
@@ -29,14 +30,11 @@ namespace CosmageV2.GUI
         private List<Consumable> consumableOptions;
         private List<PassiveItem> passiveOptions;
 
-        readonly int buttonWidth = 140;
-        readonly int buttonHeight = 40;
-        readonly int padding = 1;
-
         public PlayerCreatorGui(Player player)
         {
             InitializeComponent();
-            satchel = new Satchel();
+            //satchel = new Satchel();
+            satchel = new List<Item>();
 
             if (player != null)
             {
@@ -51,7 +49,7 @@ namespace CosmageV2.GUI
         private void UpdateExistingPlayerInfo(Player existingPlayer)
         {
             PlayerName.Text = existingPlayer.Name;
-            satchel = existingPlayer.Satchel.Clone();
+            satchel = existingPlayer.Satchel.Clone().AllItems;
 
             switch (existingPlayer.Element)
             {
@@ -75,7 +73,7 @@ namespace CosmageV2.GUI
             Button clickedButton = sender as Button;
             int index = (int) clickedButton.Tag;
 
-            satchel.AddItem(essenceOptions[index]);
+            satchel.Add(essenceOptions[index]);
             UpdateSatchelContents();
         }
 
@@ -87,24 +85,24 @@ namespace CosmageV2.GUI
 
             if (catalyst.IsReusable)
             {
-                if (satchel.Catalysts.Contains(catalyst))
+                if (satchel.Contains(catalyst))
                 {
                     //Console.WriteLine($"No need for multiple {catalyst.Name}s");
                     return;
                 }
             }
 
-            satchel.AddItem(catalyst);
+            satchel.Add(catalyst);
             UpdateSatchelContents();
         }
 
         private void AddConsumable_Click(object sender, EventArgs e)
         {
-            // TODO simplify these three click handlers to one method
+            // TODO simplify these click handlers to one method
             Button clickedButton = sender as Button;
             int index = (int) clickedButton.Tag;
 
-            satchel.AddItem(consumableOptions[index]);
+            satchel.Add(consumableOptions[index]);
             UpdateSatchelContents();
         }
 
@@ -113,37 +111,24 @@ namespace CosmageV2.GUI
             Button clickedButton = sender as Button;
             int index = (int) clickedButton.Tag;
 
-            satchel.AddItem(passiveOptions[index]);
+            satchel.Add(passiveOptions[index]);
             UpdateSatchelContents();
         }
 
         private void RemoveItem_Click(object sender, EventArgs e)
         {
             Button clickedButton = sender as Button;
-            Item item = (Item) clickedButton.Tag;
+            int index = (int) clickedButton.Tag;
 
-            satchel.RemoveItem(item);
+            satchel.RemoveAt(index);
             UpdateSatchelContents();
         }
 
         private void UpdateSatchelContents()
         {
             CurrentSatchelPanel.Controls.Clear();
-
-            for (int i = 0; i < satchel.AllItems.Count; i++)
-            {
-                Button button = new Button()
-                {
-                    Text = $"{satchel.AllItems[i].Name} ({satchel.AllItems[i].SatchelWeight})",
-                    Size = new Size(buttonWidth, buttonHeight),
-                    Margin = new Padding(padding),
-                    Tag = satchel.AllItems[i]
-                };
-                button.Click += RemoveItem_Click;
-                CurrentSatchelPanel.Controls.Add(button);
-            }
-
-            SatchelWeightLabel.Text = satchel.TotalWeight.ToString();
+            WinFormUtil.PopulateControlWithButtonsFromList(CurrentSatchelPanel, satchel, RemoveItem_Click);
+            SatchelWeightLabel.Text = satchel.Sum(item => item.SatchelWeight).ToString();
         }
 
         private void CreateItemOptions()
@@ -182,7 +167,7 @@ namespace CosmageV2.GUI
             if (GetName() && GetElement())
             {
                 Player samplePlayer = new Player(element, name);
-                samplePlayer.SetSatchel(satchel);
+                samplePlayer.SetSatchel(new Satchel(satchel));
                 SamplePlayers.AddCustomSamplePlayer(samplePlayer);
 
                 SamplePlayerList.SelectedText = samplePlayer.Name;
@@ -193,78 +178,10 @@ namespace CosmageV2.GUI
 
         private void GenerateButtons()
         {
-            GenerateIngredientButtons();
-            GenerateCatalystButtons();
-            GenerateConsumableButtons();
-            GeneratePassiveButtons();
-        }
-
-        private void GenerateIngredientButtons()
-        {
-            for (int i = 0; i < essenceOptions.Count; i++)
-            {
-                Button button = new Button
-                {
-                    Text = $"{essenceOptions[i].Name} ({essenceOptions[i].SatchelWeight})",
-                    Size = new Size(buttonWidth, buttonHeight),
-                    Margin = new Padding(padding),
-                    Tag = i
-                };
-                button.Click += AddEssence_Click;
-                button.MouseHover += (s, e) => (new ToolTip()).SetToolTip((Button) s, essenceOptions[(int) ((Button) s).Tag].Tooltip);
-                EssencePanel.Controls.Add(button);
-            }
-        }
-
-        private void GenerateCatalystButtons()
-        {
-            for (int i = 0; i < catalystOptions.Count; i++)
-            {
-                Button button = new Button
-                {
-                    Text = $"{catalystOptions[i].Name} ({catalystOptions[i].SatchelWeight})",
-                    Size = new Size(buttonWidth, buttonHeight),
-                    Margin = new Padding(padding),
-                    Tag = i
-                };
-                button.Click += AddCatalyst_Click;
-                button.MouseHover += (s, e) => (new ToolTip()).SetToolTip((Button)s, catalystOptions[(int)((Button)s).Tag].Tooltip);
-                CatalystPanel.Controls.Add(button);
-            }
-        }
-
-        private void GenerateConsumableButtons()
-        {
-            for (int i = 0; i < consumableOptions.Count; i++)
-            {
-                Button button = new Button
-                {
-                    Text = $"{consumableOptions[i].Name} ({consumableOptions[i].SatchelWeight})",
-                    Size = new Size(buttonWidth, buttonHeight),
-                    Margin = new Padding(padding),
-                    Tag = i
-                };
-                button.Click += AddConsumable_Click;
-                button.MouseHover += (s, e) => (new ToolTip()).SetToolTip((Button)s, consumableOptions[(int)((Button)s).Tag].Tooltip);
-                ConsumablePanel.Controls.Add(button);
-            }
-        }
-
-        private void GeneratePassiveButtons()
-        {
-            for (int i = 0; i < passiveOptions.Count; i++)
-            {
-                Button button = new Button()
-                {
-                    Text = $"{passiveOptions[i].Name} ({passiveOptions[i].SatchelWeight})",
-                    Size = new Size(buttonWidth, buttonHeight),
-                    Margin = new Padding(padding),
-                    Tag = i
-                };
-                button.Click += AddPassive_Click;
-                button.MouseHover += (s, e) => (new ToolTip()).SetToolTip((Button)s, passiveOptions[(int)((Button)s).Tag].Tooltip);
-                PassivePanel.Controls.Add(button);
-            }
+            WinFormUtil.PopulateControlWithButtonsFromList(EssencePanel, essenceOptions.Cast<Item>().ToList(), AddEssence_Click);
+            WinFormUtil.PopulateControlWithButtonsFromList(CatalystPanel, catalystOptions.Cast<Item>().ToList(), AddCatalyst_Click);
+            WinFormUtil.PopulateControlWithButtonsFromList(ConsumablePanel, consumableOptions.Cast<Item>().ToList(), AddConsumable_Click);
+            WinFormUtil.PopulateControlWithButtonsFromList(PassivePanel, passiveOptions.Cast<Item>().ToList(), AddPassive_Click);
         }
 
         private void ConfirmButton_Click(object sender, EventArgs e)
@@ -272,7 +189,7 @@ namespace CosmageV2.GUI
             if (GetName() && GetElement())
             {
                 Player = new Player(element, name);
-                Player.SetSatchel(satchel);
+                Player.SetSatchel(new Satchel(satchel));
                 Close();
             }
         }

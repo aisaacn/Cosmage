@@ -22,10 +22,6 @@ namespace CosmageV2.GUI
         private List<Essence> essences;
         private List<Catalyst> catalysts;
 
-        readonly int buttonWidth = 121;
-        readonly int buttonHeight = 42;
-        readonly int padding = 5;
-
         public IngredientPhaseGuiCustomSatchel(Satchel satchel)
         {
             InitializeComponent();
@@ -38,41 +34,8 @@ namespace CosmageV2.GUI
 
         private void GenerateButtons()
         {
-            GenerateEssenceButtons();
-            GenerateCatalystButtons();
-        }
-
-        private void GenerateEssenceButtons()
-        {
-            for (int i = 0; i < essences.Count; i++)
-            {
-                Button button = new Button
-                {
-                    Text = essences[i].Name,
-                    Size = new Size(buttonWidth, buttonHeight),
-                    Margin = new Padding(padding),
-                    Tag = i
-                };
-                button.Click += EssenceButton_Click;
-                EssencePanel.Controls.Add(button);
-            }
-        }
-
-        private void GenerateCatalystButtons()
-        {
-            // TODO simplify duplicate code
-            for (int i = 0; i < catalysts.Count; i++)
-            {
-                Button button = new Button
-                {
-                    Text = catalysts[i].Name,
-                    Size = new Size(buttonWidth, buttonHeight),
-                    Margin = new Padding(padding),
-                    Tag = i
-                };
-                button.Click += CatalystButton_Click;
-                CatalystPanel.Controls.Add(button);
-            }
+            WinFormUtil.PopulateControlWithButtonsFromList(EssencePanel, essences.Cast<Item>().ToList(), EssenceButton_Click);
+            WinFormUtil.PopulateControlWithButtonsFromList(CatalystPanel, catalysts.Cast<Item>().ToList(), CatalystButton_Click);
         }
 
         private void EssenceButton_Click(object sender, EventArgs e)

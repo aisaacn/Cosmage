@@ -18,32 +18,12 @@ namespace CosmageV2.GUI
 
         private List<Consumable> consumables;
 
-        readonly int buttonWidth = 121;
-        readonly int buttonHeight = 42;
-        readonly int padding = 5;
-
         public ConsumablePhaseGui(List<Consumable> items)
         {
             InitializeComponent();
             consumables = items;
             isFinished = false;
-            GenerateConsumableButtons();
-        }
-
-        private void GenerateConsumableButtons()
-        {
-            for (int i = 0; i < consumables.Count; i++)
-            {
-                Button button = new Button()
-                {
-                    Text = consumables[i].Name,
-                    Size = new Size(buttonWidth, buttonHeight),
-                    Margin = new Padding(padding),
-                    Tag = i
-                };
-                button.Click += ConsumableButton_Click;
-                ConsumablePanel.Controls.Add(button);
-            }
+            WinFormUtil.PopulateControlWithButtonsFromList(ConsumablePanel, consumables.Cast<Item>().ToList(), ConsumableButton_Click);
         }
 
         private void ConsumableButton_Click(object sender, EventArgs e)
