@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
+using System.Web;
 
 namespace CosmageV2.PlayerInteraction.Itemization
 {
@@ -16,5 +17,6 @@ namespace CosmageV2.PlayerInteraction.Itemization
     {
         public abstract string Name { get; protected set; }
         public abstract int SatchelWeight { get; protected set; }
+        public abstract string Tooltip { get; protected set; }
     }
 }

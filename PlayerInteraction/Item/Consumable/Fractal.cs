@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace CosmageV2.PlayerInteraction.Itemization
 {
     /*
-     * Consumable item that duplicates the last Essence added to the Player's Cauldron. Cannot reduce Delay below 1.
+     * Consumable item that duplicates the last Essence added to the Player's Cauldron.
      * Wormhole: Removes last Essence from opposing Player's Cauldron.
      * Created 1/20/25
      */
@@ -16,11 +16,13 @@ namespace CosmageV2.PlayerInteraction.Itemization
     {
         public override string Name { get; protected set; }
         public override int SatchelWeight { get; protected set; }
+        public override string Tooltip { get; protected set; }
 
         public Fractal()
         {
             Name = "Fractal";
             SatchelWeight = 20;
+            Tooltip = "Consumable item that duplicates the last Essence added to the Player's Cauldron.\r\n\r\nWormhole: Removes last Essence from opposing Player's Cauldron.";
         }
 
         public override void UseConsumable()

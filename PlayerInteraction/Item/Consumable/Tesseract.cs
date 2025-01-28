@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace CosmageV2.PlayerInteraction.Itemization
 {
     /*
-     * Consumable item that removes 1 Delay from last activated Rune.
+     * Consumable item that removes 1 Delay from last activated Rune. Cannot reduce Delay below 1.
      * Wormhole: Adds 1 Delay to opponent's last activated Rune.
      * Created 1/20/25
      */
@@ -16,11 +16,13 @@ namespace CosmageV2.PlayerInteraction.Itemization
     {
         public override string Name { get; protected set; }
         public override int SatchelWeight { get; protected set; }
+        public override string Tooltip { get; protected set; }
 
         public Tesseract()
         {
             Name = "Tesseract";
             SatchelWeight = 35;
+            Tooltip = "Consumable item that removes 1 Delay from last activated Rune. Cannot reduce Delay below 1.\r\n\r\nWormhole: Adds 1 Delay to opponent's last activated Rune.";
         }
 
         public override void UseConsumable()

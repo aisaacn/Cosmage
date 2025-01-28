@@ -211,6 +211,7 @@ namespace CosmageV2.GUI
                     Tag = i
                 };
                 button.Click += AddEssence_Click;
+                button.MouseHover += (s, e) => (new ToolTip()).SetToolTip((Button) s, essenceOptions[(int) ((Button) s).Tag].Tooltip);
                 EssencePanel.Controls.Add(button);
             }
         }
@@ -227,6 +228,7 @@ namespace CosmageV2.GUI
                     Tag = i
                 };
                 button.Click += AddCatalyst_Click;
+                button.MouseHover += (s, e) => (new ToolTip()).SetToolTip((Button)s, catalystOptions[(int)((Button)s).Tag].Tooltip);
                 CatalystPanel.Controls.Add(button);
             }
         }
@@ -243,6 +245,7 @@ namespace CosmageV2.GUI
                     Tag = i
                 };
                 button.Click += AddConsumable_Click;
+                button.MouseHover += (s, e) => (new ToolTip()).SetToolTip((Button)s, consumableOptions[(int)((Button)s).Tag].Tooltip);
                 ConsumablePanel.Controls.Add(button);
             }
         }
@@ -259,6 +262,7 @@ namespace CosmageV2.GUI
                     Tag = i
                 };
                 button.Click += AddPassive_Click;
+                button.MouseHover += (s, e) => (new ToolTip()).SetToolTip((Button)s, passiveOptions[(int)((Button)s).Tag].Tooltip);
                 PassivePanel.Controls.Add(button);
             }
         }

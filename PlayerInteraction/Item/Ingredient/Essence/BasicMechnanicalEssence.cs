@@ -16,6 +16,7 @@ namespace CosmageV2.PlayerInteraction.Itemization
         public override int SatchelWeight { get; protected set; }
         public override Element Element { get; protected set; }
         public override int Magnitude { get; protected set; }
+        public override string Tooltip { get; protected set; }
 
         public BasicMechanicalEssence()
         {
@@ -23,6 +24,7 @@ namespace CosmageV2.PlayerInteraction.Itemization
             SatchelWeight = 5;
             Element = Element.Mechanical;
             Magnitude = 1;
+            Tooltip = "Adds 1 Mechanical strength to Cauldron.";
         }
     }
 }

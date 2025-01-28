@@ -15,12 +15,14 @@ namespace CosmageV2.PlayerInteraction.Itemization
         public override string Name { get; protected set; }
         public override int SatchelWeight { get; protected set; }
         public override bool TargetsOtherPlayer { get; protected set; }
+        public override string Tooltip { get; protected set; }
 
         public PreparatoryTome()
         {
             Name = "Preparatory Tome";
             SatchelWeight = 20;
             TargetsOtherPlayer = false;
+            Tooltip = "Passive Item that allows the Player to have a full turn when going first (instead of skipping their first Rune Phase).";
         }
 
         public override void HandlePassiveEffect(Player player)

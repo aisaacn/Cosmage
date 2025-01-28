@@ -8,18 +8,20 @@ using System.Threading.Tasks;
 namespace CosmageV2.PlayerInteraction.Itemization
 {
     /*
-     * Consumable item that modifies other Consumables to instead affect opposing Player
+     * Consumable item that modifies other Consumables to instead affect opposing Player.
      * Created 1/20/25
      */
     public class Wormhole : Consumable
     {
         public override string Name { get; protected set; }
         public override int SatchelWeight { get; protected set; }
+        public override string Tooltip { get; protected set; }
 
         public Wormhole()
         {
             Name = "Wormhole";
             SatchelWeight = 10; // TODO probably way too cheap
+            Tooltip = "Consumable item that modifies other Consumables to instead affect opposing Player.";
         }
 
         public override void UseConsumable()

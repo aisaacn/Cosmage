@@ -15,12 +15,14 @@ namespace CosmageV2.PlayerInteraction.Itemization
         public override string Name { get; protected set; }
         public override int SatchelWeight { get; protected set; }
         public override bool TargetsOtherPlayer { get; protected set; }
+        public override string Tooltip { get; protected set; }
 
         public SturdyTome()
         {
             Name = "Sturdy Tome";
             SatchelWeight = 15;
             TargetsOtherPlayer = false;
+            Tooltip = "Passive Item that increases the Player's Health by 5.";
         }
 
         public override void HandlePassiveEffect(Player player)

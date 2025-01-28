@@ -16,6 +16,7 @@ namespace CosmageV2.PlayerInteraction.Itemization
         public override int SatchelWeight { get; protected set; }
         public override CatalystType Type { get; protected set; }
         public override bool IsReusable { get; protected set; }
+        public override string Tooltip { get; protected set; }
 
         public WardCrystal()
         {
@@ -23,6 +24,7 @@ namespace CosmageV2.PlayerInteraction.Itemization
             SatchelWeight = 30;
             Type = CatalystType.Ward;
             IsReusable = true;
+            Tooltip = "Spell will result in a Ward when this is added to the Cauldron.";
         }
     }
 }

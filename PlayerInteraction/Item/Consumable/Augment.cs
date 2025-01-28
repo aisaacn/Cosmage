@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace CosmageV2.PlayerInteraction.Itemization
 {
     /*
-     * Consumable that doubles current Player's Cauldron strength.
+     * Consumable item that doubles current Player's Cauldron strength.
      * Wormhole: Halves opposing Player's Cauldron strength, rounded up.
      * Created 1/20/25
      */
@@ -16,11 +16,13 @@ namespace CosmageV2.PlayerInteraction.Itemization
     {
         public override string Name { get; protected set; }
         public override int SatchelWeight { get; protected set; }
+        public override string Tooltip { get; protected set; }
 
         public Augment()
         {
             Name = "Augment";
             SatchelWeight = 20;
+            Tooltip = "Consumable item that doubles current Player's Cauldron strength.\r\n\r\nWormhole: Halves opposing Player's Cauldron strength, rounded up.";
         }
 
         public override void UseConsumable()

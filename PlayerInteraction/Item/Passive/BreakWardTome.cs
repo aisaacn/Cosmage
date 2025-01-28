@@ -16,12 +16,14 @@ namespace CosmageV2.PlayerInteraction.Itemization
         public override string Name { get; protected set; }
         public override int SatchelWeight { get; protected set; }
         public override bool TargetsOtherPlayer { get; protected set; }
+        public override string Tooltip { get; protected set; }
 
         public BreakWardTome()
         {
             Name = "Break Ward Tome";
             SatchelWeight = 25;
             TargetsOtherPlayer = true;
+            Tooltip = "Passive Item that prevents opposing Player from gaining Ward from Passive Items.";
         }
 
         public override void HandlePassiveEffect(Player player)

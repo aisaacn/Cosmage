@@ -15,12 +15,14 @@ namespace CosmageV2.PlayerInteraction.Itemization
         public override string Name { get; protected set; }
         public override int SatchelWeight { get; protected set; }
         public override bool TargetsOtherPlayer { get; protected set; }
+        public override string Tooltip { get; protected set; }
 
         public HastyTome()
         {
             Name = "Hasty Tome";
             SatchelWeight = 15;
             TargetsOtherPlayer = false;
+            Tooltip = "Passive Item that increases the Player's Haste by 1. Players with more Haste go first.";
         }
 
         public override void HandlePassiveEffect(Player player)

@@ -15,12 +15,14 @@ namespace CosmageV2.PlayerInteraction.Itemization
         public override string Name { get; protected set; }
         public override int SatchelWeight { get; protected set; }
         public override bool TargetsOtherPlayer { get; protected set; }
+        public override string Tooltip { get; protected set; }
 
         public UnnaturalWardTome()
         {
             Name = "Unnatural Ward Tome";
             SatchelWeight = 20;
             TargetsOtherPlayer = false;
+            Tooltip = "Passive Item that gives the Player +1 Unnatural Ward at the start of the game.";
         }
 
         public override void HandlePassiveEffect(Player player)
