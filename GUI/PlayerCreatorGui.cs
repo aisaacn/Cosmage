@@ -2,14 +2,9 @@
 using CosmageV2.PlayerInteraction.Itemization;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Windows.Media.Imaging;
 
 namespace CosmageV2.GUI
 {
@@ -20,7 +15,6 @@ namespace CosmageV2.GUI
     public partial class PlayerCreatorGui : Form
     {
         public Player Player { get; private set; }
-        //private Satchel satchel;
         private List<Item> satchel;
         private string name;
         private Element element;
@@ -33,7 +27,6 @@ namespace CosmageV2.GUI
         public PlayerCreatorGui(Player player)
         {
             InitializeComponent();
-            //satchel = new Satchel();
             satchel = new List<Item>();
 
             if (player != null)
@@ -127,7 +120,7 @@ namespace CosmageV2.GUI
         private void UpdateSatchelContents()
         {
             CurrentSatchelPanel.Controls.Clear();
-            WinFormUtil.PopulateControlWithButtonsFromList(CurrentSatchelPanel, satchel, RemoveItem_Click);
+            WinFormUtil.PopulateControlWithButtonsFromList(CurrentSatchelPanel, satchel, true, RemoveItem_Click);
             SatchelWeightLabel.Text = satchel.Sum(item => item.SatchelWeight).ToString();
         }
 
@@ -178,10 +171,10 @@ namespace CosmageV2.GUI
 
         private void GenerateButtons()
         {
-            WinFormUtil.PopulateControlWithButtonsFromList(EssencePanel, essenceOptions.Cast<Item>().ToList(), AddEssence_Click);
-            WinFormUtil.PopulateControlWithButtonsFromList(CatalystPanel, catalystOptions.Cast<Item>().ToList(), AddCatalyst_Click);
-            WinFormUtil.PopulateControlWithButtonsFromList(ConsumablePanel, consumableOptions.Cast<Item>().ToList(), AddConsumable_Click);
-            WinFormUtil.PopulateControlWithButtonsFromList(PassivePanel, passiveOptions.Cast<Item>().ToList(), AddPassive_Click);
+            WinFormUtil.PopulateControlWithButtonsFromList(EssencePanel, essenceOptions.Cast<Item>().ToList(), true, AddEssence_Click);
+            WinFormUtil.PopulateControlWithButtonsFromList(CatalystPanel, catalystOptions.Cast<Item>().ToList(), true, AddCatalyst_Click);
+            WinFormUtil.PopulateControlWithButtonsFromList(ConsumablePanel, consumableOptions.Cast<Item>().ToList(), true, AddConsumable_Click);
+            WinFormUtil.PopulateControlWithButtonsFromList(PassivePanel, passiveOptions.Cast<Item>().ToList(), true, AddPassive_Click);
         }
 
         private void ConfirmButton_Click(object sender, EventArgs e)

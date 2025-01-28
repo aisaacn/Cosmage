@@ -22,7 +22,7 @@ namespace CosmageV2.PlayerInteraction.Itemization
         {
             Name = "Tesseract";
             SatchelWeight = 35;
-            Tooltip = "Consumable item that removes 1 Delay from last activated Rune. Cannot reduce Delay below 1.\r\n\r\nWormhole: Adds 1 Delay to opponent's last activated Rune.";
+            Tooltip = "Consumable item that removes 1 Delay from last activated Rune. Cannot reduce Delay below 1\r\n\r\nWormhole: Adds 1 Delay to opponent's last activated Rune";
         }
 
         public override void UseConsumable()

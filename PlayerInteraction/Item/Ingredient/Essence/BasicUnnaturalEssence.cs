@@ -24,7 +24,7 @@ namespace CosmageV2.PlayerInteraction.Itemization
             SatchelWeight = 5;
             Element = Element.Unnatural;
             Magnitude = 1;
-            Tooltip = "Adds 1 Unnatural strength to Cauldron.";
+            Tooltip = "Adds 1 Unnatural strength to Cauldron";
         }
     }
 }

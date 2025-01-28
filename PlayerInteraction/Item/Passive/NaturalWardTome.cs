@@ -22,7 +22,7 @@ namespace CosmageV2.PlayerInteraction.Itemization
             Name = "Natural Ward Tome";
             SatchelWeight = 20;
             TargetsOtherPlayer = false;
-            Tooltip = "Passive Item that gives the Player +1 Natural Ward at the start of the game.";
+            Tooltip = "Passive Item that gives the Player +1 Natural Ward at the start of the game";
         }
 
         public override void HandlePassiveEffect(Player player)

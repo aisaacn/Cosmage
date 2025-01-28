@@ -22,7 +22,7 @@ namespace CosmageV2.PlayerInteraction.Itemization
         {
             Name = "Fractal";
             SatchelWeight = 20;
-            Tooltip = "Consumable item that duplicates the last Essence added to the Player's Cauldron.\r\n\r\nWormhole: Removes last Essence from opposing Player's Cauldron.";
+            Tooltip = "Consumable item that duplicates the last Essence added to the Player's Cauldron\r\n\r\nWormhole: Removes last Essence from opposing Player's Cauldron";
         }
 
         public override void UseConsumable()

@@ -22,7 +22,7 @@ namespace CosmageV2.PlayerInteraction.Itemization
             Name = "Hasty Tome";
             SatchelWeight = 15;
             TargetsOtherPlayer = false;
-            Tooltip = "Passive Item that increases the Player's Haste by 1. Players with more Haste go first.";
+            Tooltip = "Passive Item that increases the Player's Haste by 1. Players with more Haste go first";
         }
 
         public override void HandlePassiveEffect(Player player)

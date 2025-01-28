@@ -22,7 +22,7 @@ namespace CosmageV2.PlayerInteraction.Itemization
             Name = "Sturdy Tome";
             SatchelWeight = 15;
             TargetsOtherPlayer = false;
-            Tooltip = "Passive Item that increases the Player's Health by 5.";
+            Tooltip = "Passive Item that increases the Player's Health by 5";
         }
 
         public override void HandlePassiveEffect(Player player)

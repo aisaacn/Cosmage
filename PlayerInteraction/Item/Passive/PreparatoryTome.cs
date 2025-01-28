@@ -22,7 +22,7 @@ namespace CosmageV2.PlayerInteraction.Itemization
             Name = "Preparatory Tome";
             SatchelWeight = 20;
             TargetsOtherPlayer = false;
-            Tooltip = "Passive Item that allows the Player to have a full turn when going first (instead of skipping their first Rune Phase).";
+            Tooltip = "Passive Item that allows the Player to have a full turn when going first (instead of skipping their first Rune Phase)";
         }
 
         public override void HandlePassiveEffect(Player player)

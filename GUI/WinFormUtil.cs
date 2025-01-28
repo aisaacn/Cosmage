@@ -15,13 +15,13 @@ namespace CosmageV2.GUI
         readonly static int buttonHeight = 40;
         readonly static int padding = 1;
 
-        public static void PopulateControlWithButtonsFromList(Control control, List<Item> items, EventHandler clickHandler)
+        public static void PopulateControlWithButtonsFromList(Control control, List<Item> items, bool showWeight, EventHandler clickHandler)
         {
             for (int i = 0; i < items.Count; i++)
             {
                 Button button = new Button()
                 {
-                    Text = $"{items[i].Name} ({items[i].SatchelWeight})",
+                    Text = GetButtonText(items[i], showWeight),
                     Size = new Size(buttonWidth, buttonHeight),
                     Margin = new Padding(padding),
                     Tag = i
@@ -29,6 +29,18 @@ namespace CosmageV2.GUI
                 button.Click += clickHandler;
                 button.MouseHover += (s, e) => (new ToolTip()).SetToolTip((Button)s, items[(int)((Button)s).Tag].Tooltip);
                 control.Controls.Add(button);
+            }
+        }
+
+        private static string GetButtonText(Item item, bool showWeight)
+        {
+            if (showWeight)
+            {
+                return $"{item.Name} ({item.SatchelWeight})";
+            }
+            else
+            {
+                return $"{item.Name}";
             }
         }
     }

@@ -24,7 +24,7 @@ namespace CosmageV2.PlayerInteraction.Itemization
             SatchelWeight = 5;
             Element = Element.Mechanical;
             Magnitude = 1;
-            Tooltip = "Adds 1 Mechanical strength to Cauldron.";
+            Tooltip = "Adds 1 Mechanical strength to Cauldron";
         }
     }
 }

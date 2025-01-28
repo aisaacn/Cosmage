@@ -24,7 +24,7 @@ namespace CosmageV2.PlayerInteraction.Itemization
             SatchelWeight = 25;
             Type = CatalystType.Construct;
             IsReusable = false;
-            Tooltip = "Spell will result in a Construct when this is added to the Cauldron.";
+            Tooltip = "Spell will result in a Construct when this is added to the Cauldron";
         }
     }
 }

@@ -21,7 +21,7 @@ namespace CosmageV2.PlayerInteraction.Itemization
         {
             Name = "Wormhole";
             SatchelWeight = 10; // TODO probably way too cheap
-            Tooltip = "Consumable item that modifies other Consumables to instead affect opposing Player.";
+            Tooltip = "Consumable item that modifies other Consumables to instead affect opposing Player";
         }
 
         public override void UseConsumable()

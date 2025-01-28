@@ -22,7 +22,7 @@ namespace CosmageV2.PlayerInteraction.Itemization
         {
             Name = "Augment";
             SatchelWeight = 20;
-            Tooltip = "Consumable item that doubles current Player's Cauldron strength.\r\n\r\nWormhole: Halves opposing Player's Cauldron strength, rounded up.";
+            Tooltip = "Consumable item that doubles current Player's Cauldron strength\r\n\r\nWormhole: Halves opposing Player's Cauldron strength, rounded up";
         }
 
         public override void UseConsumable()

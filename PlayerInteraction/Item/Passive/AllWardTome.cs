@@ -22,7 +22,7 @@ namespace CosmageV2.PlayerInteraction.Itemization
             Name = "All Ward Tome";
             SatchelWeight = 20;
             TargetsOtherPlayer = false;
-            Tooltip = "Passive Item that gives the Player +1 Ward of each Element at the start of the game.";
+            Tooltip = "Passive Item that gives the Player +1 Ward of each Element at the start of the game";
         }
 
         public override void HandlePassiveEffect(Player player)

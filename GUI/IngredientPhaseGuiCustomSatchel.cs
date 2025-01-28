@@ -34,8 +34,8 @@ namespace CosmageV2.GUI
 
         private void GenerateButtons()
         {
-            WinFormUtil.PopulateControlWithButtonsFromList(EssencePanel, essences.Cast<Item>().ToList(), EssenceButton_Click);
-            WinFormUtil.PopulateControlWithButtonsFromList(CatalystPanel, catalysts.Cast<Item>().ToList(), CatalystButton_Click);
+            WinFormUtil.PopulateControlWithButtonsFromList(EssencePanel, essences.Cast<Item>().ToList(), false,EssenceButton_Click);
+            WinFormUtil.PopulateControlWithButtonsFromList(CatalystPanel, catalysts.Cast<Item>().ToList(), false, CatalystButton_Click);
         }
 
         private void EssenceButton_Click(object sender, EventArgs e)

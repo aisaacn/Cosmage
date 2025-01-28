@@ -24,7 +24,7 @@ namespace CosmageV2.PlayerInteraction.Itemization
             SatchelWeight = 30;
             Type = CatalystType.Ward;
             IsReusable = true;
-            Tooltip = "Spell will result in a Ward when this is added to the Cauldron.";
+            Tooltip = "Spell will result in a Ward when this is added to the Cauldron";
         }
     }
 }

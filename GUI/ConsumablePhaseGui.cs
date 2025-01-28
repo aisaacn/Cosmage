@@ -23,7 +23,7 @@ namespace CosmageV2.GUI
             InitializeComponent();
             consumables = items;
             isFinished = false;
-            WinFormUtil.PopulateControlWithButtonsFromList(ConsumablePanel, consumables.Cast<Item>().ToList(), ConsumableButton_Click);
+            WinFormUtil.PopulateControlWithButtonsFromList(ConsumablePanel, consumables.Cast<Item>().ToList(), false, ConsumableButton_Click);
         }
 
         private void ConsumableButton_Click(object sender, EventArgs e)
