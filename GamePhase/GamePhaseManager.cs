@@ -1,10 +1,6 @@
 ﻿using CosmageV2.PlayerInteraction;
 using CosmageV2.GUI;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CosmageV2.GamePhase
@@ -20,6 +16,7 @@ namespace CosmageV2.GamePhase
             new Lazy<GamePhaseManager>(() => new GamePhaseManager());
         public static GamePhaseManager Instance { get { return lazy.Value; } }
 
+        public IRulesetManager RulesetManager { get; protected set; }
         private IGamePhaseExecutor currentPhaseExecutor;
         private IGamePhaseExecutorFactory gamePhaseExecutorFactory;
         private ISpellExecutor spellExecutor;
@@ -34,20 +31,13 @@ namespace CosmageV2.GamePhase
         public int CurrentTurn { get; private set; }
         public GameBoardGui GameBoard { get; set; }
 
-        private GamePhaseManager()
+        public void ConfigureRuleset(IRulesetManager ruleset)
         {
-            SetupGamePhaseManager();
-        }
-
-        private void SetupGamePhaseManager()
-        {
-            //CreatePlayers();
-            //ConfigureGameBoard();
-
-            gamePhaseExecutorFactory = new DefaultGamePhaseExecutorFactory();
-            spellExecutor = new DefaultSpellExecutor();
-            attackHandler = new DefaultAttackHandler();
-            passiveHandler = new DefaultPassiveHandler();
+            RulesetManager = ruleset;
+            gamePhaseExecutorFactory = RulesetManager.GamePhaseExecutorFactory;
+            spellExecutor = RulesetManager.SpellExecutor;
+            attackHandler = RulesetManager.AttackHandler;
+            passiveHandler = RulesetManager.PassiveHandler; 
         }
 
         public GamePhase GetCurrentPhase()
@@ -105,6 +95,9 @@ namespace CosmageV2.GamePhase
             if (player1 is null || player2 is null)
                 throw new Exception("Players must be added to GamePhaseManager before starting game.");
 
+            if (RulesetManager is null)
+                throw new Exception("Ruleset must be configured before starting game.");
+
             CurrentTurn = 0;
             winner = null;
             currentPhaseExecutor = gamePhaseExecutorFactory.CreateInitialPhaseExecutor();
@@ -125,14 +118,13 @@ namespace CosmageV2.GamePhase
 
         private bool IsGameOver()
         {
-            //TODO: check if player health is zero and set this.winner
             if (InactivePlayer.Health <= 0)
             {
                 winner = CurrentPlayer;
                 return true;
             }
 
-            // this block might be unnecessary, I dont think CurrentPlayer can take damage on their turn
+            // TODO this block might be unnecessary, I dont think CurrentPlayer can take damage on their turn
             if (CurrentPlayer.Health <= 0)
             {
                 winner = InactivePlayer;

@@ -2,11 +2,7 @@
 using CosmageV2.PlayerInteraction.Itemization;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using System.Windows.Forms.VisualStyles;
 
 namespace CosmageV2.PlayerInteraction
 {
@@ -33,6 +29,7 @@ namespace CosmageV2.PlayerInteraction
         public bool Prepared { get; set; }
         public bool WardPrevented { get; set; }
 
+        IRulesetManager rulesetManager;
         IAddIngredientHandler addIngredientHandler;
         IRunePhaseHandler runePhaseHandler;
         IConsumablePhaseHandler consumablePhaseHandler;
@@ -45,7 +42,6 @@ namespace CosmageV2.PlayerInteraction
         {
             Element = element;
             Name = name;
-            Health = 20; //TODO: abstract health for different rulesets
 
             Haste = 0;
             Prepared = false;
@@ -57,15 +53,19 @@ namespace CosmageV2.PlayerInteraction
             Catalyst = CatalystType.None;
             CreateRunes();
 
-            // TODO add ruleset manager to create all appropriate handlers
-            IElementalRelationshipManager relationshipManager = new DefaultElementalRelationshipManager();
-            addIngredientHandler = new WinFormCustomSatchelAddIngredientHandler();
-            runePhaseHandler = new WinFormRunePhaseHandler();
-            consumablePhaseHandler = new WinFormConsumablePhaseHandler();
-            chooseAttackTargetHandler = new WinFormChooseAttackTargetHandler();
+            ConfigureRuleset();
+        }
 
-            damageHandler = new DefaultDamageHandler(relationshipManager);
-            wardHandler = new DefaultWardHandler(relationshipManager);
+        private void ConfigureRuleset()
+        {
+            rulesetManager = GamePhaseManager.Instance.RulesetManager;
+            Health = rulesetManager.PlayerMaxHealth;
+            addIngredientHandler = rulesetManager.AddIngredientHandler;
+            runePhaseHandler = rulesetManager.RunePhaseHandler;
+            consumablePhaseHandler = rulesetManager.ConsumablePhaseHandler;
+            chooseAttackTargetHandler = rulesetManager.ChooseAttackTargetHandler;
+            damageHandler = rulesetManager.DamageHandler;
+            wardHandler = rulesetManager.WardHandler;
         }
 
         public void SetSatchel(Satchel newSatchel)

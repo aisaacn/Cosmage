@@ -1,12 +1,5 @@
 ﻿using CosmageV2.GamePhase;
 using CosmageV2.GUI;
-using CosmageV2.PlayerInteraction;
-using CosmageV2.PlayerInteraction.Itemization;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CosmageV2
@@ -15,8 +8,10 @@ namespace CosmageV2
     {
         static void Main()
         {
-            //Form gui = new StartScreenGui();
-            //gui.ShowDialog();
+            // For different GUI, create new RulesetManager with appropriate UI handlers
+            // TODO add StartScreenGui and GameBoard to IRulesetManager? Or create separate IGuiManager
+            IRulesetManager rulesetManager = new DefaultRulesetManager();
+            GamePhaseManager.Instance.ConfigureRuleset(rulesetManager); 
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);

@@ -10,7 +10,7 @@ namespace CosmageV2.GamePhase
      * Creates appropriate executor for each game phase. Defines game phase order.
      * Created 1/2/25
      */
-    internal interface IGamePhaseExecutorFactory
+    public interface IGamePhaseExecutorFactory
     {
         IGamePhaseExecutor CreateInitialPhaseExecutor();
         IGamePhaseExecutor GetNextPhaseExecutor(GamePhase currentPhase);

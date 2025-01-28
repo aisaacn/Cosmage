@@ -10,7 +10,7 @@ namespace CosmageV2.GamePhase
      * Handles logic for executing each game phase.
      * Created 1/2/25
      */
-    internal interface IGamePhaseExecutor
+    public interface IGamePhaseExecutor
     {
         GamePhase Phase { get; }
         void ExecuteGamePhase(GamePhaseManager manager);
