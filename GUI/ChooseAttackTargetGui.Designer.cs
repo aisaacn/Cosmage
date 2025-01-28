@@ -58,8 +58,9 @@
             ClientSize = new System.Drawing.Size(800, 450);
             Controls.Add(AttackOtherPlayerButton);
             Controls.Add(ConstructsPanel);
+            Location = new System.Drawing.Point(0, 369);
             Name = "ChooseAttackTargetGui";
-            StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             Text = "ChooseAttackTargetGui";
             ResumeLayout(false);
             PerformLayout();

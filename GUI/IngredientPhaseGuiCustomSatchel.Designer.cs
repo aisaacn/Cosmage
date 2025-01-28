@@ -28,48 +28,52 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.EssencePanel = new System.Windows.Forms.FlowLayoutPanel();
-            this.CatalystPanel = new System.Windows.Forms.FlowLayoutPanel();
-            this.NoneButton = new System.Windows.Forms.Button();
-            this.SuspendLayout();
+            EssencePanel = new System.Windows.Forms.FlowLayoutPanel();
+            CatalystPanel = new System.Windows.Forms.FlowLayoutPanel();
+            NoneButton = new System.Windows.Forms.Button();
+            SuspendLayout();
             // 
             // EssencePanel
             // 
-            this.EssencePanel.Location = new System.Drawing.Point(12, 12);
-            this.EssencePanel.Name = "EssencePanel";
-            this.EssencePanel.Size = new System.Drawing.Size(1034, 188);
-            this.EssencePanel.TabIndex = 0;
+            EssencePanel.Location = new System.Drawing.Point(13, 15);
+            EssencePanel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            EssencePanel.Name = "EssencePanel";
+            EssencePanel.Size = new System.Drawing.Size(1149, 235);
+            EssencePanel.TabIndex = 0;
             // 
             // CatalystPanel
             // 
-            this.CatalystPanel.Location = new System.Drawing.Point(13, 207);
-            this.CatalystPanel.Name = "CatalystPanel";
-            this.CatalystPanel.Size = new System.Drawing.Size(1033, 107);
-            this.CatalystPanel.TabIndex = 1;
+            CatalystPanel.Location = new System.Drawing.Point(14, 259);
+            CatalystPanel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            CatalystPanel.Name = "CatalystPanel";
+            CatalystPanel.Size = new System.Drawing.Size(1148, 134);
+            CatalystPanel.TabIndex = 1;
             // 
             // NoneButton
             // 
-            this.NoneButton.Location = new System.Drawing.Point(448, 388);
-            this.NoneButton.Name = "NoneButton";
-            this.NoneButton.Size = new System.Drawing.Size(165, 54);
-            this.NoneButton.TabIndex = 2;
-            this.NoneButton.Text = "Add Nothing";
-            this.NoneButton.UseVisualStyleBackColor = true;
-            this.NoneButton.Click += new System.EventHandler(this.None_Click);
+            NoneButton.Location = new System.Drawing.Point(498, 485);
+            NoneButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            NoneButton.Name = "NoneButton";
+            NoneButton.Size = new System.Drawing.Size(183, 68);
+            NoneButton.TabIndex = 2;
+            NoneButton.Text = "Add Nothing";
+            NoneButton.UseVisualStyleBackColor = true;
+            NoneButton.Click += None_Click;
             // 
             // IngredientPhaseGuiCustomSatchel
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1058, 484);
-            this.Controls.Add(this.NoneButton);
-            this.Controls.Add(this.CatalystPanel);
-            this.Controls.Add(this.EssencePanel);
-            this.Name = "IngredientPhaseGuiCustomSatchel";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "IngredientPhaseGuiCustomSatchel";
-            this.ResumeLayout(false);
-
+            AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            ClientSize = new System.Drawing.Size(1176, 605);
+            Controls.Add(NoneButton);
+            Controls.Add(CatalystPanel);
+            Controls.Add(EssencePanel);
+            Location = new System.Drawing.Point(0, 369);
+            Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            Name = "IngredientPhaseGuiCustomSatchel";
+            StartPosition = System.Windows.Forms.FormStartPosition.Manual;
+            Text = "IngredientPhaseGuiCustomSatchel";
+            ResumeLayout(false);
         }
 
         private void NoneButton_Click(object sender, System.EventArgs e)

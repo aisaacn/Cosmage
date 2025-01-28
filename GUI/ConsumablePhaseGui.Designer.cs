@@ -28,40 +28,43 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.ConsumablePanel = new System.Windows.Forms.FlowLayoutPanel();
-            this.FinishButton = new System.Windows.Forms.Button();
-            this.SuspendLayout();
+            ConsumablePanel = new System.Windows.Forms.FlowLayoutPanel();
+            FinishButton = new System.Windows.Forms.Button();
+            SuspendLayout();
             // 
             // ConsumablePanel
             // 
-            this.ConsumablePanel.AutoScroll = true;
-            this.ConsumablePanel.Location = new System.Drawing.Point(12, 12);
-            this.ConsumablePanel.Name = "ConsumablePanel";
-            this.ConsumablePanel.Size = new System.Drawing.Size(776, 318);
-            this.ConsumablePanel.TabIndex = 0;
+            ConsumablePanel.AutoScroll = true;
+            ConsumablePanel.Location = new System.Drawing.Point(13, 15);
+            ConsumablePanel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            ConsumablePanel.Name = "ConsumablePanel";
+            ConsumablePanel.Size = new System.Drawing.Size(862, 398);
+            ConsumablePanel.TabIndex = 0;
             // 
             // FinishButton
             // 
-            this.FinishButton.Location = new System.Drawing.Point(339, 336);
-            this.FinishButton.Name = "FinishButton";
-            this.FinishButton.Size = new System.Drawing.Size(106, 43);
-            this.FinishButton.TabIndex = 1;
-            this.FinishButton.Text = "Finish";
-            this.FinishButton.UseVisualStyleBackColor = true;
-            this.FinishButton.Click += new System.EventHandler(this.FinishButton_Click);
+            FinishButton.Location = new System.Drawing.Point(377, 420);
+            FinishButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            FinishButton.Name = "FinishButton";
+            FinishButton.Size = new System.Drawing.Size(118, 54);
+            FinishButton.TabIndex = 1;
+            FinishButton.Text = "Finish";
+            FinishButton.UseVisualStyleBackColor = true;
+            FinishButton.Click += FinishButton_Click;
             // 
             // ConsumablePhaseGui
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.FinishButton);
-            this.Controls.Add(this.ConsumablePanel);
-            this.Name = "ConsumablePhaseGui";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "ConsumablePhaseGui";
-            this.ResumeLayout(false);
-
+            AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            ClientSize = new System.Drawing.Size(889, 562);
+            Controls.Add(FinishButton);
+            Controls.Add(ConsumablePanel);
+            Location = new System.Drawing.Point(0, 369);
+            Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            Name = "ConsumablePhaseGui";
+            StartPosition = System.Windows.Forms.FormStartPosition.Manual;
+            Text = "ConsumablePhaseGui";
+            ResumeLayout(false);
         }
 
         #endregion

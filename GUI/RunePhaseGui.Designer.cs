@@ -28,150 +28,163 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.ConfirmButton = new System.Windows.Forms.Button();
-            this.NoneActivationOption = new System.Windows.Forms.RadioButton();
-            this.Rune3ActivateOption = new System.Windows.Forms.RadioButton();
-            this.Rune2ActivateOption = new System.Windows.Forms.RadioButton();
-            this.Rune1ActivateOption = new System.Windows.Forms.RadioButton();
-            this.Rune3ChargeOption = new System.Windows.Forms.RadioButton();
-            this.Rune2ChargeOption = new System.Windows.Forms.RadioButton();
-            this.Rune1ChargeOption = new System.Windows.Forms.RadioButton();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.groupBox1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
-            this.SuspendLayout();
+            ConfirmButton = new System.Windows.Forms.Button();
+            NoneActivationOption = new System.Windows.Forms.RadioButton();
+            Rune3ActivateOption = new System.Windows.Forms.RadioButton();
+            Rune2ActivateOption = new System.Windows.Forms.RadioButton();
+            Rune1ActivateOption = new System.Windows.Forms.RadioButton();
+            Rune3ChargeOption = new System.Windows.Forms.RadioButton();
+            Rune2ChargeOption = new System.Windows.Forms.RadioButton();
+            Rune1ChargeOption = new System.Windows.Forms.RadioButton();
+            groupBox1 = new System.Windows.Forms.GroupBox();
+            groupBox2 = new System.Windows.Forms.GroupBox();
+            groupBox1.SuspendLayout();
+            groupBox2.SuspendLayout();
+            SuspendLayout();
             // 
             // ConfirmButton
             // 
-            this.ConfirmButton.Location = new System.Drawing.Point(306, 308);
-            this.ConfirmButton.Name = "ConfirmButton";
-            this.ConfirmButton.Size = new System.Drawing.Size(168, 62);
-            this.ConfirmButton.TabIndex = 19;
-            this.ConfirmButton.Text = "Confirm";
-            this.ConfirmButton.UseVisualStyleBackColor = true;
-            this.ConfirmButton.Click += new System.EventHandler(this.ConfirmButton_Click);
+            ConfirmButton.Location = new System.Drawing.Point(340, 385);
+            ConfirmButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            ConfirmButton.Name = "ConfirmButton";
+            ConfirmButton.Size = new System.Drawing.Size(187, 78);
+            ConfirmButton.TabIndex = 19;
+            ConfirmButton.Text = "Confirm";
+            ConfirmButton.UseVisualStyleBackColor = true;
+            ConfirmButton.Click += ConfirmButton_Click;
             // 
             // NoneActivationOption
             // 
-            this.NoneActivationOption.AutoSize = true;
-            this.NoneActivationOption.Location = new System.Drawing.Point(0, 144);
-            this.NoneActivationOption.Name = "NoneActivationOption";
-            this.NoneActivationOption.Size = new System.Drawing.Size(72, 24);
-            this.NoneActivationOption.TabIndex = 18;
-            this.NoneActivationOption.TabStop = true;
-            this.NoneActivationOption.Text = "None";
-            this.NoneActivationOption.UseVisualStyleBackColor = true;
+            NoneActivationOption.AutoSize = true;
+            NoneActivationOption.Location = new System.Drawing.Point(0, 180);
+            NoneActivationOption.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            NoneActivationOption.Name = "NoneActivationOption";
+            NoneActivationOption.Size = new System.Drawing.Size(80, 29);
+            NoneActivationOption.TabIndex = 18;
+            NoneActivationOption.TabStop = true;
+            NoneActivationOption.Text = "None";
+            NoneActivationOption.UseVisualStyleBackColor = true;
             // 
             // Rune3ActivateOption
             // 
-            this.Rune3ActivateOption.AutoSize = true;
-            this.Rune3ActivateOption.Location = new System.Drawing.Point(0, 114);
-            this.Rune3ActivateOption.Name = "Rune3ActivateOption";
-            this.Rune3ActivateOption.Size = new System.Drawing.Size(82, 24);
-            this.Rune3ActivateOption.TabIndex = 17;
-            this.Rune3ActivateOption.TabStop = true;
-            this.Rune3ActivateOption.Text = "Rune3";
-            this.Rune3ActivateOption.UseVisualStyleBackColor = true;
+            Rune3ActivateOption.AutoSize = true;
+            Rune3ActivateOption.Location = new System.Drawing.Point(0, 142);
+            Rune3ActivateOption.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            Rune3ActivateOption.Name = "Rune3ActivateOption";
+            Rune3ActivateOption.Size = new System.Drawing.Size(87, 29);
+            Rune3ActivateOption.TabIndex = 17;
+            Rune3ActivateOption.TabStop = true;
+            Rune3ActivateOption.Text = "Rune3";
+            Rune3ActivateOption.UseVisualStyleBackColor = true;
             // 
             // Rune2ActivateOption
             // 
-            this.Rune2ActivateOption.AutoSize = true;
-            this.Rune2ActivateOption.Location = new System.Drawing.Point(0, 84);
-            this.Rune2ActivateOption.Name = "Rune2ActivateOption";
-            this.Rune2ActivateOption.Size = new System.Drawing.Size(82, 24);
-            this.Rune2ActivateOption.TabIndex = 16;
-            this.Rune2ActivateOption.TabStop = true;
-            this.Rune2ActivateOption.Text = "Rune2";
-            this.Rune2ActivateOption.UseVisualStyleBackColor = true;
+            Rune2ActivateOption.AutoSize = true;
+            Rune2ActivateOption.Location = new System.Drawing.Point(0, 105);
+            Rune2ActivateOption.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            Rune2ActivateOption.Name = "Rune2ActivateOption";
+            Rune2ActivateOption.Size = new System.Drawing.Size(87, 29);
+            Rune2ActivateOption.TabIndex = 16;
+            Rune2ActivateOption.TabStop = true;
+            Rune2ActivateOption.Text = "Rune2";
+            Rune2ActivateOption.UseVisualStyleBackColor = true;
             // 
             // Rune1ActivateOption
             // 
-            this.Rune1ActivateOption.AutoSize = true;
-            this.Rune1ActivateOption.Location = new System.Drawing.Point(0, 54);
-            this.Rune1ActivateOption.Name = "Rune1ActivateOption";
-            this.Rune1ActivateOption.Size = new System.Drawing.Size(82, 24);
-            this.Rune1ActivateOption.TabIndex = 15;
-            this.Rune1ActivateOption.TabStop = true;
-            this.Rune1ActivateOption.Text = "Rune1";
-            this.Rune1ActivateOption.UseVisualStyleBackColor = true;
+            Rune1ActivateOption.AutoSize = true;
+            Rune1ActivateOption.Location = new System.Drawing.Point(0, 68);
+            Rune1ActivateOption.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            Rune1ActivateOption.Name = "Rune1ActivateOption";
+            Rune1ActivateOption.Size = new System.Drawing.Size(87, 29);
+            Rune1ActivateOption.TabIndex = 15;
+            Rune1ActivateOption.TabStop = true;
+            Rune1ActivateOption.Text = "Rune1";
+            Rune1ActivateOption.UseVisualStyleBackColor = true;
             // 
             // Rune3ChargeOption
             // 
-            this.Rune3ChargeOption.AutoSize = true;
-            this.Rune3ChargeOption.Location = new System.Drawing.Point(0, 114);
-            this.Rune3ChargeOption.Name = "Rune3ChargeOption";
-            this.Rune3ChargeOption.Size = new System.Drawing.Size(82, 24);
-            this.Rune3ChargeOption.TabIndex = 13;
-            this.Rune3ChargeOption.TabStop = true;
-            this.Rune3ChargeOption.Text = "Rune3";
-            this.Rune3ChargeOption.UseVisualStyleBackColor = true;
+            Rune3ChargeOption.AutoSize = true;
+            Rune3ChargeOption.Location = new System.Drawing.Point(0, 142);
+            Rune3ChargeOption.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            Rune3ChargeOption.Name = "Rune3ChargeOption";
+            Rune3ChargeOption.Size = new System.Drawing.Size(87, 29);
+            Rune3ChargeOption.TabIndex = 13;
+            Rune3ChargeOption.TabStop = true;
+            Rune3ChargeOption.Text = "Rune3";
+            Rune3ChargeOption.UseVisualStyleBackColor = true;
             // 
             // Rune2ChargeOption
             // 
-            this.Rune2ChargeOption.AutoSize = true;
-            this.Rune2ChargeOption.Location = new System.Drawing.Point(0, 84);
-            this.Rune2ChargeOption.Name = "Rune2ChargeOption";
-            this.Rune2ChargeOption.Size = new System.Drawing.Size(82, 24);
-            this.Rune2ChargeOption.TabIndex = 12;
-            this.Rune2ChargeOption.TabStop = true;
-            this.Rune2ChargeOption.Text = "Rune2";
-            this.Rune2ChargeOption.UseVisualStyleBackColor = true;
+            Rune2ChargeOption.AutoSize = true;
+            Rune2ChargeOption.Location = new System.Drawing.Point(0, 105);
+            Rune2ChargeOption.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            Rune2ChargeOption.Name = "Rune2ChargeOption";
+            Rune2ChargeOption.Size = new System.Drawing.Size(87, 29);
+            Rune2ChargeOption.TabIndex = 12;
+            Rune2ChargeOption.TabStop = true;
+            Rune2ChargeOption.Text = "Rune2";
+            Rune2ChargeOption.UseVisualStyleBackColor = true;
             // 
             // Rune1ChargeOption
             // 
-            this.Rune1ChargeOption.AutoSize = true;
-            this.Rune1ChargeOption.Location = new System.Drawing.Point(0, 54);
-            this.Rune1ChargeOption.Name = "Rune1ChargeOption";
-            this.Rune1ChargeOption.Size = new System.Drawing.Size(82, 24);
-            this.Rune1ChargeOption.TabIndex = 11;
-            this.Rune1ChargeOption.TabStop = true;
-            this.Rune1ChargeOption.Text = "Rune1";
-            this.Rune1ChargeOption.UseVisualStyleBackColor = true;
+            Rune1ChargeOption.AutoSize = true;
+            Rune1ChargeOption.Location = new System.Drawing.Point(0, 68);
+            Rune1ChargeOption.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            Rune1ChargeOption.Name = "Rune1ChargeOption";
+            Rune1ChargeOption.Size = new System.Drawing.Size(87, 29);
+            Rune1ChargeOption.TabIndex = 11;
+            Rune1ChargeOption.TabStop = true;
+            Rune1ChargeOption.Text = "Rune1";
+            Rune1ChargeOption.UseVisualStyleBackColor = true;
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.Rune3ChargeOption);
-            this.groupBox1.Controls.Add(this.Rune2ChargeOption);
-            this.groupBox1.Controls.Add(this.Rune1ChargeOption);
-            this.groupBox1.Location = new System.Drawing.Point(102, 61);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(204, 138);
-            this.groupBox1.TabIndex = 20;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Select Rune to Charge";
+            groupBox1.Controls.Add(Rune3ChargeOption);
+            groupBox1.Controls.Add(Rune2ChargeOption);
+            groupBox1.Controls.Add(Rune1ChargeOption);
+            groupBox1.Location = new System.Drawing.Point(113, 76);
+            groupBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            groupBox1.Name = "groupBox1";
+            groupBox1.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            groupBox1.Size = new System.Drawing.Size(227, 172);
+            groupBox1.TabIndex = 20;
+            groupBox1.TabStop = false;
+            groupBox1.Text = "Select Rune to Charge";
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.NoneActivationOption);
-            this.groupBox2.Controls.Add(this.Rune3ActivateOption);
-            this.groupBox2.Controls.Add(this.Rune2ActivateOption);
-            this.groupBox2.Controls.Add(this.Rune1ActivateOption);
-            this.groupBox2.Location = new System.Drawing.Point(518, 61);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(191, 168);
-            this.groupBox2.TabIndex = 21;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Select Rune to Activate";
+            groupBox2.Controls.Add(NoneActivationOption);
+            groupBox2.Controls.Add(Rune3ActivateOption);
+            groupBox2.Controls.Add(Rune2ActivateOption);
+            groupBox2.Controls.Add(Rune1ActivateOption);
+            groupBox2.Location = new System.Drawing.Point(576, 76);
+            groupBox2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            groupBox2.Name = "groupBox2";
+            groupBox2.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            groupBox2.Size = new System.Drawing.Size(212, 210);
+            groupBox2.TabIndex = 21;
+            groupBox2.TabStop = false;
+            groupBox2.Text = "Select Rune to Activate";
             // 
             // RunePhaseGui
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.ConfirmButton);
-            this.Name = "RunePhaseGui";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "RunePhase";
-            this.Load += new System.EventHandler(this.RunePhaseGui_Load);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
-            this.ResumeLayout(false);
-
+            AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            ClientSize = new System.Drawing.Size(889, 562);
+            Controls.Add(groupBox2);
+            Controls.Add(groupBox1);
+            Controls.Add(ConfirmButton);
+            Location = new System.Drawing.Point(0, 369);
+            Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            Name = "RunePhaseGui";
+            StartPosition = System.Windows.Forms.FormStartPosition.Manual;
+            Text = "RunePhase";
+            Load += RunePhaseGui_Load;
+            groupBox1.ResumeLayout(false);
+            groupBox1.PerformLayout();
+            groupBox2.ResumeLayout(false);
+            groupBox2.PerformLayout();
+            ResumeLayout(false);
         }
 
         #endregion
