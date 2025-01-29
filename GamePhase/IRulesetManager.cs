@@ -13,12 +13,6 @@ namespace CosmageV2.GamePhase
         public int PlayerMaxHealth { get; protected set; }
         public int SatchelMaxWeight { get; protected set; }
 
-        // Player UI Handlers
-        public IAddIngredientHandler AddIngredientHandler { get; protected set; }
-        public IRunePhaseHandler RunePhaseHandler { get; protected set; }
-        public IConsumablePhaseHandler ConsumablePhaseHandler { get; protected set; }
-        public IChooseAttackTargetHandler ChooseAttackTargetHandler { get; protected set; }
-
         // Player Logic Handlers
         public IElementalRelationshipManager ElementalRelationshipManager { get; protected set; }
         public IDamageHandler DamageHandler { get; protected set; }

@@ -8,12 +8,6 @@ namespace CosmageV2.GamePhase
         public int PlayerMaxHealth { get; set; } // TODO why can't set be protected?
         public int SatchelMaxWeight { get; set; }
 
-        // Player UI Handlers //TODO move UI handlers to something like IGuiManager
-        public IAddIngredientHandler AddIngredientHandler { get; set; }
-        public IRunePhaseHandler RunePhaseHandler { get; set; }
-        public IConsumablePhaseHandler ConsumablePhaseHandler { get; set; }
-        public IChooseAttackTargetHandler ChooseAttackTargetHandler { get; set; }
-
         // Player Logic Handlers
         public IElementalRelationshipManager ElementalRelationshipManager { get; set; }
         public IDamageHandler DamageHandler { get; set; }
@@ -30,10 +24,10 @@ namespace CosmageV2.GamePhase
             PlayerMaxHealth = 20;
             SatchelMaxWeight = 150;
 
-            AddIngredientHandler = new WinFormCustomSatchelAddIngredientHandler();
-            RunePhaseHandler = new WinFormRunePhaseHandler();
-            ConsumablePhaseHandler = new WinFormConsumablePhaseHandler();
-            ChooseAttackTargetHandler = new WinFormChooseAttackTargetHandler();
+            //AddIngredientHandler = new WinFormCustomSatchelAddIngredientHandler();
+            //RunePhaseHandler = new WinFormRunePhaseHandler();
+            //ConsumablePhaseHandler = new WinFormConsumablePhaseHandler();
+            //ChooseAttackTargetHandler = new WinFormChooseAttackTargetHandler();
 
             ElementalRelationshipManager = new DefaultElementalRelationshipManager();
             DamageHandler = new DefaultDamageHandler(ElementalRelationshipManager);

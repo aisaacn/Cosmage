@@ -1,4 +1,5 @@
 ﻿using CosmageV2.GamePhase;
+using CosmageV2.GUI;
 using CosmageV2.PlayerInteraction.Itemization;
 using System;
 using System.Collections.Generic;
@@ -29,12 +30,13 @@ namespace CosmageV2.PlayerInteraction
         public bool Prepared { get; set; }
         public bool WardPrevented { get; set; }
 
-        IRulesetManager rulesetManager;
+        IGuiManager guiManager;
         IAddIngredientHandler addIngredientHandler;
         IRunePhaseHandler runePhaseHandler;
         IConsumablePhaseHandler consumablePhaseHandler;
         IChooseAttackTargetHandler chooseAttackTargetHandler;
 
+        IRulesetManager rulesetManager;
         IDamageHandler damageHandler;
         IWardHandler wardHandler;
 
@@ -54,18 +56,24 @@ namespace CosmageV2.PlayerInteraction
             CreateRunes();
 
             ConfigureRuleset();
+            ConfigureGui();
         }
 
         private void ConfigureRuleset()
         {
             rulesetManager = GamePhaseManager.Instance.RulesetManager;
             Health = rulesetManager.PlayerMaxHealth;
-            addIngredientHandler = rulesetManager.AddIngredientHandler;
-            runePhaseHandler = rulesetManager.RunePhaseHandler;
-            consumablePhaseHandler = rulesetManager.ConsumablePhaseHandler;
-            chooseAttackTargetHandler = rulesetManager.ChooseAttackTargetHandler;
             damageHandler = rulesetManager.DamageHandler;
             wardHandler = rulesetManager.WardHandler;
+        }
+
+        private void ConfigureGui()
+        {
+            guiManager = GamePhaseManager.Instance.GuiManager;
+            addIngredientHandler = guiManager.AddIngredientHandler;
+            runePhaseHandler = guiManager.RunePhaseHandler;
+            consumablePhaseHandler = guiManager.ConsumablePhaseHandler;
+            chooseAttackTargetHandler = guiManager.ChooseAttackTargetHandler;
         }
 
         public void SetSatchel(Satchel newSatchel)

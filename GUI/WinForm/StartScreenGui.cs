@@ -1,12 +1,6 @@
 ﻿using CosmageV2.GamePhase;
 using CosmageV2.PlayerInteraction;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -16,10 +10,12 @@ namespace CosmageV2.GUI
     {
         public Player player1;
         public Player player2;
+        private GameBoardGui gameBoard;
 
-        public StartScreenGui()
+        public StartScreenGui(GameBoardGui board)
         {
             InitializeComponent();
+            gameBoard = board;
             UpdatePlayerInfo();
         }
 
@@ -37,8 +33,8 @@ namespace CosmageV2.GUI
             if (player1 != null && player2 != null)
             {
                 GamePhaseManager.Instance.SetPlayers(player1, player2);
-                GameBoardGui gameBoard = new GameBoardGui();
-                GamePhaseManager.Instance.SetGameBoard(gameBoard);
+                //GameBoardGui gameBoard = new GameBoardGui();
+                //GamePhaseManager.Instance.SetGameBoard(gameBoard);
                 this.Hide();
 
                 Task.Run(() =>

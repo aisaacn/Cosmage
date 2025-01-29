@@ -16,13 +16,14 @@ namespace CosmageV2.GamePhase
             new Lazy<GamePhaseManager>(() => new GamePhaseManager());
         public static GamePhaseManager Instance { get { return lazy.Value; } }
 
-        public IRulesetManager RulesetManager { get; protected set; }
+        public IGuiManager GuiManager { get; private set; }
+        public IRulesetManager RulesetManager { get; private set; }
         private IGamePhaseExecutor currentPhaseExecutor;
         private IGamePhaseExecutorFactory gamePhaseExecutorFactory;
         private ISpellExecutor spellExecutor;
         private IAttackHandler attackHandler;
         private IPassiveHandler passiveHandler;
-        //private IGameBoardCommunicator gameBoardCommunicator;
+        private IGameBoardCommunicator gameBoardCommunicator;
 
         Player player1;
         Player player2;
@@ -30,7 +31,6 @@ namespace CosmageV2.GamePhase
         public Player CurrentPlayer { get; private set; }
         public Player InactivePlayer { get; private set; }
         public int CurrentTurn { get; private set; }
-        public GameBoardGui GameBoard { get; protected set; } // TODO abstract this to for different GUI types
 
         public void ConfigureRuleset(IRulesetManager ruleset)
         {
@@ -39,6 +39,12 @@ namespace CosmageV2.GamePhase
             spellExecutor = RulesetManager.SpellExecutor;
             attackHandler = RulesetManager.AttackHandler;
             passiveHandler = RulesetManager.PassiveHandler; 
+        }
+
+        public void ConfigureGui(IGuiManager guiManager)
+        {
+            GuiManager = guiManager;
+            gameBoardCommunicator = GuiManager.GameBoardCommunicator;
         }
 
         public GamePhase GetCurrentPhase()
@@ -50,11 +56,6 @@ namespace CosmageV2.GamePhase
         {
             player1 = p1;
             player2 = p2;
-        }
-
-        public void SetGameBoard(GameBoardGui gameBoard)
-        {
-            GameBoard = gameBoard;
         }
 
         private void DecideTurnOrder()
@@ -89,11 +90,8 @@ namespace CosmageV2.GamePhase
 
         private void ConfigureGameBoard()
         {
-            GameBoard.Invoke((MethodInvoker)delegate
-            {
-                GameBoard.AssignPlayersToLabels(player1, player2);
-                GameBoard.UpdateCurrentPlayer(CurrentPlayer);
-            });
+            gameBoardCommunicator.ConfigurePlayers(player1, player2);
+            gameBoardCommunicator.UpdateCurrentPlayer(CurrentPlayer);
         }
 
         public void StartGame()
@@ -103,6 +101,9 @@ namespace CosmageV2.GamePhase
 
             if (RulesetManager is null)
                 throw new Exception("Ruleset must be configured before starting game.");
+
+            if (GuiManager is null)
+                throw new Exception("GUIManager must be configured before starting game.");
 
             CurrentTurn = 0;
             winner = null;
@@ -119,7 +120,6 @@ namespace CosmageV2.GamePhase
                 TransitionToNextPhase();
             }
             DeclareWinner();
-            // TODO persist GameBoard GUI
         }
 
         private bool IsGameOver()
@@ -142,12 +142,7 @@ namespace CosmageV2.GamePhase
 
         private void DeclareWinner()
         {
-            GameBoard.Invoke((MethodInvoker)delegate
-            {
-                GameBoard.ShowWinner(winner);
-            });
-            //TODO determine winning player
-            //Console.WriteLine($"Player {CurrentPlayer.Name} wins!");
+            gameBoardCommunicator.DeclareWinner(winner);
         }
 
         private void ExecuteCurrentPhase()
@@ -157,11 +152,7 @@ namespace CosmageV2.GamePhase
 
         public void UpdateGameBoard()
         {
-            GameBoard.Invoke((MethodInvoker)delegate
-            {
-                GameBoard.UpdatePlayerLabels(player1);
-                GameBoard.UpdatePlayerLabels(player2);
-            });
+            gameBoardCommunicator.UpdatePlayerState(player1, player2);
         }
 
         private void TransitionToNextPhase()
@@ -171,17 +162,13 @@ namespace CosmageV2.GamePhase
 
         public void SwitchPlayer()
         {
-            //Console.WriteLine("----switching active player----");
             CurrentTurn++;
             Player tempCurrent = CurrentPlayer;
             CurrentPlayer = InactivePlayer;
             InactivePlayer = tempCurrent;
 
-            GameBoard.Invoke((MethodInvoker)delegate
-            {
-                GameBoard.UpdateCurrentPlayer(CurrentPlayer);
-                // TODO update current round on GameBoard
-            });
+            gameBoardCommunicator.UpdateCurrentPlayer(CurrentPlayer);
+            // TODO update current round on GameBoard
         }
 
         public void ExecuteSpell(Spell spell)
@@ -202,10 +189,7 @@ namespace CosmageV2.GamePhase
 
         public void LogEvent(string log)
         {
-            GameBoard.Invoke((MethodInvoker) delegate
-            {
-                GameBoard.LogEvent(log);
-            });
+            gameBoardCommunicator.LogEvent(log);
         }
     }
 }
