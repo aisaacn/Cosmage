@@ -12,6 +12,12 @@ namespace CosmageV2.PlayerInteraction
     {
         public Targetable HandleChooseAttackTarget()
         {
+            Player inactivePlayer = GamePhaseManager.Instance.InactivePlayer;
+            if (inactivePlayer.Constructs.Count == 0)
+            {
+                return inactivePlayer;
+            }
+
             ChooseAttackTargetGui gui = new ChooseAttackTargetGui();
             gui.ShowDialog();
 

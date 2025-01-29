@@ -25,14 +25,8 @@ namespace CosmageV2.GUI
         public ChooseAttackTargetGui()
         {
             InitializeComponent();
-
             inactivePlayer = GamePhaseManager.Instance.InactivePlayer;
-            if (inactivePlayer.Constructs.Count == 0)
-            {
-                Target = inactivePlayer;
-                Close();
-            }
-            else GenerateButtons();
+            GenerateButtons();
         }
 
         private void GenerateButtons()

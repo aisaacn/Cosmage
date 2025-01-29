@@ -18,16 +18,16 @@ namespace CosmageV2.GamePhase
 
         public IGuiManager GuiManager { get; private set; }
         public IRulesetManager RulesetManager { get; private set; }
+
         private IGamePhaseExecutor currentPhaseExecutor;
         private IGamePhaseExecutorFactory gamePhaseExecutorFactory;
         private ISpellExecutor spellExecutor;
         private IAttackHandler attackHandler;
         private IPassiveHandler passiveHandler;
-        private IGameBoardCommunicator gameBoardCommunicator;
+        private IGameBoardCommunicator gameBoardCommunicator; // TODO consider merging with IGuiManager
 
         Player player1;
         Player player2;
-        Player winner;
         public Player CurrentPlayer { get; private set; }
         public Player InactivePlayer { get; private set; }
         public int CurrentTurn { get; private set; }
@@ -103,10 +103,9 @@ namespace CosmageV2.GamePhase
                 throw new Exception("Ruleset must be configured before starting game.");
 
             if (GuiManager is null)
-                throw new Exception("GUIManager must be configured before starting game.");
+                throw new Exception("GuiManager must be configured before starting game.");
 
             CurrentTurn = 0;
-            winner = null;
             currentPhaseExecutor = gamePhaseExecutorFactory.CreateInitialPhaseExecutor();
 
             passiveHandler.HandlePassives(player1, player2);
@@ -119,28 +118,27 @@ namespace CosmageV2.GamePhase
                 UpdateGameBoard();
                 TransitionToNextPhase();
             }
-            DeclareWinner();
         }
 
         private bool IsGameOver()
         {
             if (InactivePlayer.Health <= 0)
             {
-                winner = CurrentPlayer;
+                DeclareWinner(CurrentPlayer);
                 return true;
             }
 
-            // TODO this block might be unnecessary, I dont think CurrentPlayer can take damage on their turn
+            // TODO this block might be unnecessary; I dont think CurrentPlayer can take damage on their turn
             if (CurrentPlayer.Health <= 0)
             {
-                winner = InactivePlayer;
+                DeclareWinner(InactivePlayer);
                 return true;
             }
 
             return false;
         }
 
-        private void DeclareWinner()
+        private void DeclareWinner(Player winner)
         {
             gameBoardCommunicator.DeclareWinner(winner);
         }
