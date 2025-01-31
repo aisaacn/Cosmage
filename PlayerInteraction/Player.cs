@@ -62,6 +62,9 @@ namespace CosmageV2.PlayerInteraction
         private void ConfigureRuleset()
         {
             rulesetManager = GamePhaseManager.Instance.RulesetManager;
+            if (rulesetManager is null)
+                throw new Exception("RulesetManager must be set in GamePhaseManager.");
+
             Health = rulesetManager.PlayerMaxHealth;
             damageHandler = rulesetManager.DamageHandler;
             wardHandler = rulesetManager.WardHandler;
@@ -70,6 +73,9 @@ namespace CosmageV2.PlayerInteraction
         private void ConfigureGui()
         {
             guiManager = GamePhaseManager.Instance.GuiManager;
+            if (guiManager is null)
+                throw new Exception("GuiManager must be set in GamePhaseManager.");
+
             addIngredientHandler = guiManager.AddIngredientHandler;
             runePhaseHandler = guiManager.RunePhaseHandler;
             consumablePhaseHandler = guiManager.ConsumablePhaseHandler;
