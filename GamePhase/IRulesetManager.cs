@@ -23,5 +23,6 @@ namespace CosmageV2.GamePhase
         public ISpellExecutor SpellExecutor { get; protected set; }
         public IAttackHandler AttackHandler { get; protected set; }
         public IPassiveHandler PassiveHandler { get; protected set; }
+        public IGameValidator GameValidator { get; protected set; }
     }
 }

@@ -25,9 +25,10 @@ namespace CosmageV2.GamePhase
         private IAttackHandler attackHandler;
         private IPassiveHandler passiveHandler;
         private IGameBoardCommunicator gameBoardCommunicator; // TODO consider merging with IGuiManager
+        private IGameValidator gameValidator;
 
-        Player player1;
-        Player player2;
+        public Player Player1 { get; private set; }
+        public Player Player2 { get; private set; }
         public Player CurrentPlayer { get; private set; }
         public Player InactivePlayer { get; private set; }
         public int CurrentTurn { get; private set; }
@@ -38,7 +39,8 @@ namespace CosmageV2.GamePhase
             gamePhaseExecutorFactory = RulesetManager.GamePhaseExecutorFactory;
             spellExecutor = RulesetManager.SpellExecutor;
             attackHandler = RulesetManager.AttackHandler;
-            passiveHandler = RulesetManager.PassiveHandler; 
+            passiveHandler = RulesetManager.PassiveHandler;
+            gameValidator = RulesetManager.GameValidator;
         }
 
         public void ConfigureGui(IGuiManager guiManager)
@@ -54,22 +56,22 @@ namespace CosmageV2.GamePhase
 
         public void SetPlayers(Player p1, Player p2)
         {
-            player1 = p1;
-            player2 = p2;
+            Player1 = p1;
+            Player2 = p2;
         }
 
         private void DecideTurnOrder()
         {
             // TODO polish
-            if (player1.Haste > player2.Haste)
+            if (Player1.Haste > Player2.Haste)
             {
-                CurrentPlayer = player1;
-                InactivePlayer = player2;
+                CurrentPlayer = Player1;
+                InactivePlayer = Player2;
             }
-            else if (player1.Haste < player2.Haste)
+            else if (Player1.Haste < Player2.Haste)
             {
-                CurrentPlayer = player2;
-                InactivePlayer = player1;
+                CurrentPlayer = Player2;
+                InactivePlayer = Player1;
             }
             else
             {
@@ -77,31 +79,31 @@ namespace CosmageV2.GamePhase
                 int num = rand.Next(2);
                 if (num == 0)
                 {
-                    CurrentPlayer = player1;
-                    InactivePlayer = player2;
+                    CurrentPlayer = Player1;
+                    InactivePlayer = Player2;
                 }
                 else
                 {
-                    CurrentPlayer = player2;
-                    InactivePlayer = player1;
+                    CurrentPlayer = Player2;
+                    InactivePlayer = Player1;
                 }
             }
         }
 
         private void ConfigureGameBoard()
         {
-            gameBoardCommunicator.ConfigurePlayers(player1, player2);
+            gameBoardCommunicator.ConfigurePlayers(Player1, Player2);
             gameBoardCommunicator.UpdateCurrentPlayer(CurrentPlayer);
         }
 
         public void StartGame()
         {
-            CheckGameReadyToStart();
+            gameValidator.ValidateGame(this);
 
             CurrentTurn = 0;
             currentPhaseExecutor = gamePhaseExecutorFactory.CreateInitialPhaseExecutor();
 
-            passiveHandler.HandlePassives(player1, player2);
+            passiveHandler.HandlePassives(Player1, Player2);
             DecideTurnOrder();
             ConfigureGameBoard();
 
@@ -111,32 +113,6 @@ namespace CosmageV2.GamePhase
                 UpdateGameBoard();
                 TransitionToNextPhase();
             }
-        }
-
-        private void CheckGameReadyToStart()
-        {
-            // TODO extract to something like IGameValidator?
-            if (player1 is null || player2 is null)
-                throw new Exception("Players must be added to GamePhaseManager before starting game.");
-            ValidateSatchels();
-
-            if (RulesetManager is null)
-                throw new Exception("RulesetManager must be configured before starting game.");
-
-            if (GuiManager is null)
-                throw new Exception("GuiManager must be configured before starting game.");
-        }
-
-        private void ValidateSatchels()
-        {
-            ValidateSatchel(player1);
-            ValidateSatchel(player2);
-        }
-
-        private void ValidateSatchel(Player player)
-        {
-            if (player.Satchel.TotalWeight > RulesetManager.SatchelMaxWeight)
-                throw new Exception($"{player.Name}'s Satchel exceeds the Satchel weight limit of {RulesetManager.SatchelMaxWeight}");
         }
 
         private bool IsGameOver()
@@ -169,7 +145,7 @@ namespace CosmageV2.GamePhase
 
         public void UpdateGameBoard()
         {
-            gameBoardCommunicator.UpdatePlayerState(player1, player2);
+            gameBoardCommunicator.UpdatePlayerState(Player1, Player2);
         }
 
         private void TransitionToNextPhase()

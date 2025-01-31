@@ -18,16 +18,12 @@ namespace CosmageV2.GamePhase
         public ISpellExecutor SpellExecutor { get; set; }
         public IAttackHandler AttackHandler { get; set; }
         public IPassiveHandler PassiveHandler { get; set; }
+        public IGameValidator GameValidator { get; set; }
 
         public DefaultRulesetManager()
         {
             PlayerMaxHealth = 20;
             SatchelMaxWeight = 150;
-
-            //AddIngredientHandler = new WinFormCustomSatchelAddIngredientHandler();
-            //RunePhaseHandler = new WinFormRunePhaseHandler();
-            //ConsumablePhaseHandler = new WinFormConsumablePhaseHandler();
-            //ChooseAttackTargetHandler = new WinFormChooseAttackTargetHandler();
 
             ElementalRelationshipManager = new DefaultElementalRelationshipManager();
             DamageHandler = new DefaultDamageHandler(ElementalRelationshipManager);
@@ -37,6 +33,7 @@ namespace CosmageV2.GamePhase
             SpellExecutor = new DefaultSpellExecutor();
             AttackHandler = new DefaultAttackHandler();
             PassiveHandler = new DefaultPassiveHandler();
+            GameValidator = new DefaultGameValidator();
         }
     }
 }
