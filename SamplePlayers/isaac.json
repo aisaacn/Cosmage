@@ -1,0 +1,36 @@
+{
+  "name": "isaac",
+  "element": 1,
+  "items": [
+    {
+      "itemType": "BasicMechanicalEssence"
+    },
+    {
+      "itemType": "BasicUnnaturalEssence"
+    },
+    {
+      "itemType": "AdvancedUnnaturalEssence"
+    },
+    {
+      "itemType": "AdvancedMechanicalEssence"
+    },
+    {
+      "itemType": "Augment"
+    },
+    {
+      "itemType": "Tesseract"
+    },
+    {
+      "itemType": "Wormhole"
+    },
+    {
+      "itemType": "HastyTome"
+    },
+    {
+      "itemType": "SturdyTome"
+    },
+    {
+      "itemType": "NaturalWardTome"
+    }
+  ]
+}

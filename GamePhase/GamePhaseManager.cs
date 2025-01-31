@@ -96,14 +96,7 @@ namespace CosmageV2.GamePhase
 
         public void StartGame()
         {
-            if (player1 is null || player2 is null)
-                throw new Exception("Players must be added to GamePhaseManager before starting game.");
-
-            if (RulesetManager is null)
-                throw new Exception("Ruleset must be configured before starting game.");
-
-            if (GuiManager is null)
-                throw new Exception("GuiManager must be configured before starting game.");
+            CheckGameReadyToStart();
 
             CurrentTurn = 0;
             currentPhaseExecutor = gamePhaseExecutorFactory.CreateInitialPhaseExecutor();
@@ -118,6 +111,32 @@ namespace CosmageV2.GamePhase
                 UpdateGameBoard();
                 TransitionToNextPhase();
             }
+        }
+
+        private void CheckGameReadyToStart()
+        {
+            // TODO extract to something like IGameValidator?
+            if (player1 is null || player2 is null)
+                throw new Exception("Players must be added to GamePhaseManager before starting game.");
+            ValidateSatchels();
+
+            if (RulesetManager is null)
+                throw new Exception("RulesetManager must be configured before starting game.");
+
+            if (GuiManager is null)
+                throw new Exception("GuiManager must be configured before starting game.");
+        }
+
+        private void ValidateSatchels()
+        {
+            ValidateSatchel(player1);
+            ValidateSatchel(player2);
+        }
+
+        private void ValidateSatchel(Player player)
+        {
+            if (player.Satchel.TotalWeight > RulesetManager.SatchelMaxWeight)
+                throw new Exception($"{player.Name}'s Satchel exceeds the Satchel weight limit of {RulesetManager.SatchelMaxWeight}");
         }
 
         private bool IsGameOver()

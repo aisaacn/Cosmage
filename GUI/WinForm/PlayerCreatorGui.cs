@@ -1,8 +1,10 @@
-﻿using CosmageV2.PlayerInteraction;
+﻿using CosmageV2.GamePhase;
+using CosmageV2.PlayerInteraction;
 using CosmageV2.PlayerInteraction.Itemization;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -120,8 +122,13 @@ namespace CosmageV2.GUI
         private void UpdateSatchelContents()
         {
             CurrentSatchelPanel.Controls.Clear();
+            SatchelWeightLabel.ForeColor = Color.Black;
             WinFormUtil.PopulateControlWithButtonsFromList(CurrentSatchelPanel, satchel, true, RemoveItem_Click);
-            SatchelWeightLabel.Text = satchel.Sum(item => item.SatchelWeight).ToString();
+
+            int maxWeight = GamePhaseManager.Instance.RulesetManager.SatchelMaxWeight;
+            int weight = satchel.Sum(item => item.SatchelWeight);
+            SatchelWeightLabel.Text = $"{weight.ToString()}/{maxWeight}";
+            if (weight > maxWeight) SatchelWeightLabel.ForeColor = Color.Red;
         }
 
         private void CreateItemOptions()

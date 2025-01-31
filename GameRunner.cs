@@ -15,7 +15,7 @@ namespace CosmageV2
             IGuiManager guiManager = new WinFormGuiManager();
             GamePhaseManager.Instance.ConfigureGui(guiManager);
 
-            guiManager.StartApplication();            
+            guiManager.StartApplication();      
         }
     }
 }

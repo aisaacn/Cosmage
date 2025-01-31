@@ -28,240 +28,250 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.ElementBox = new System.Windows.Forms.GroupBox();
-            this.UnnaturalButton = new System.Windows.Forms.RadioButton();
-            this.MechanicalButton = new System.Windows.Forms.RadioButton();
-            this.NaturalButton = new System.Windows.Forms.RadioButton();
-            this.PlayerName = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.CurrentSatchelPanel = new System.Windows.Forms.FlowLayoutPanel();
-            this.CurrentSatchelLabel = new System.Windows.Forms.Label();
-            this.SatchelWeightLabel = new System.Windows.Forms.Label();
-            this.EssencePanel = new System.Windows.Forms.FlowLayoutPanel();
-            this.CatalystPanel = new System.Windows.Forms.FlowLayoutPanel();
-            this.essenceLabel = new System.Windows.Forms.Label();
-            this.catalystLabel = new System.Windows.Forms.Label();
-            this.ConfirmButton = new System.Windows.Forms.Button();
-            this.SamplePlayerList = new System.Windows.Forms.ComboBox();
-            this.ConsumablePanel = new System.Windows.Forms.FlowLayoutPanel();
-            this.consumableLabel = new System.Windows.Forms.Label();
-            this.PassivePanel = new System.Windows.Forms.FlowLayoutPanel();
-            this.passiveLabel = new System.Windows.Forms.Label();
-            this.ElementBox.SuspendLayout();
-            this.SuspendLayout();
+            ElementBox = new System.Windows.Forms.GroupBox();
+            UnnaturalButton = new System.Windows.Forms.RadioButton();
+            MechanicalButton = new System.Windows.Forms.RadioButton();
+            NaturalButton = new System.Windows.Forms.RadioButton();
+            PlayerName = new System.Windows.Forms.TextBox();
+            label1 = new System.Windows.Forms.Label();
+            CurrentSatchelPanel = new System.Windows.Forms.FlowLayoutPanel();
+            CurrentSatchelLabel = new System.Windows.Forms.Label();
+            SatchelWeightLabel = new System.Windows.Forms.Label();
+            EssencePanel = new System.Windows.Forms.FlowLayoutPanel();
+            CatalystPanel = new System.Windows.Forms.FlowLayoutPanel();
+            essenceLabel = new System.Windows.Forms.Label();
+            catalystLabel = new System.Windows.Forms.Label();
+            ConfirmButton = new System.Windows.Forms.Button();
+            SamplePlayerList = new System.Windows.Forms.ComboBox();
+            ConsumablePanel = new System.Windows.Forms.FlowLayoutPanel();
+            consumableLabel = new System.Windows.Forms.Label();
+            PassivePanel = new System.Windows.Forms.FlowLayoutPanel();
+            passiveLabel = new System.Windows.Forms.Label();
+            ElementBox.SuspendLayout();
+            SuspendLayout();
             // 
             // ElementBox
             // 
-            this.ElementBox.Controls.Add(this.UnnaturalButton);
-            this.ElementBox.Controls.Add(this.MechanicalButton);
-            this.ElementBox.Controls.Add(this.NaturalButton);
-            this.ElementBox.Location = new System.Drawing.Point(12, 12);
-            this.ElementBox.Name = "ElementBox";
-            this.ElementBox.Size = new System.Drawing.Size(405, 79);
-            this.ElementBox.TabIndex = 0;
-            this.ElementBox.TabStop = false;
-            this.ElementBox.Text = "Select Player Element:";
+            ElementBox.Controls.Add(UnnaturalButton);
+            ElementBox.Controls.Add(MechanicalButton);
+            ElementBox.Controls.Add(NaturalButton);
+            ElementBox.Location = new System.Drawing.Point(13, 15);
+            ElementBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            ElementBox.Name = "ElementBox";
+            ElementBox.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            ElementBox.Size = new System.Drawing.Size(450, 99);
+            ElementBox.TabIndex = 0;
+            ElementBox.TabStop = false;
+            ElementBox.Text = "Select Player Element:";
             // 
             // UnnaturalButton
             // 
-            this.UnnaturalButton.AutoSize = true;
-            this.UnnaturalButton.Location = new System.Drawing.Point(277, 34);
-            this.UnnaturalButton.Name = "UnnaturalButton";
-            this.UnnaturalButton.Size = new System.Drawing.Size(104, 24);
-            this.UnnaturalButton.TabIndex = 2;
-            this.UnnaturalButton.TabStop = true;
-            this.UnnaturalButton.Text = "Unnatural";
-            this.UnnaturalButton.UseVisualStyleBackColor = true;
+            UnnaturalButton.AutoSize = true;
+            UnnaturalButton.Location = new System.Drawing.Point(308, 42);
+            UnnaturalButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            UnnaturalButton.Name = "UnnaturalButton";
+            UnnaturalButton.Size = new System.Drawing.Size(113, 29);
+            UnnaturalButton.TabIndex = 2;
+            UnnaturalButton.TabStop = true;
+            UnnaturalButton.Text = "Unnatural";
+            UnnaturalButton.UseVisualStyleBackColor = true;
             // 
             // MechanicalButton
             // 
-            this.MechanicalButton.AutoSize = true;
-            this.MechanicalButton.Location = new System.Drawing.Point(133, 34);
-            this.MechanicalButton.Name = "MechanicalButton";
-            this.MechanicalButton.Size = new System.Drawing.Size(114, 24);
-            this.MechanicalButton.TabIndex = 1;
-            this.MechanicalButton.TabStop = true;
-            this.MechanicalButton.Text = "Mechanical";
-            this.MechanicalButton.UseVisualStyleBackColor = true;
+            MechanicalButton.AutoSize = true;
+            MechanicalButton.Location = new System.Drawing.Point(148, 42);
+            MechanicalButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            MechanicalButton.Name = "MechanicalButton";
+            MechanicalButton.Size = new System.Drawing.Size(124, 29);
+            MechanicalButton.TabIndex = 1;
+            MechanicalButton.TabStop = true;
+            MechanicalButton.Text = "Mechanical";
+            MechanicalButton.UseVisualStyleBackColor = true;
             // 
             // NaturalButton
             // 
-            this.NaturalButton.AutoSize = true;
-            this.NaturalButton.Location = new System.Drawing.Point(19, 34);
-            this.NaturalButton.Name = "NaturalButton";
-            this.NaturalButton.Size = new System.Drawing.Size(85, 24);
-            this.NaturalButton.TabIndex = 0;
-            this.NaturalButton.TabStop = true;
-            this.NaturalButton.Text = "Natural";
-            this.NaturalButton.UseVisualStyleBackColor = true;
+            NaturalButton.AutoSize = true;
+            NaturalButton.Location = new System.Drawing.Point(21, 42);
+            NaturalButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            NaturalButton.Name = "NaturalButton";
+            NaturalButton.Size = new System.Drawing.Size(94, 29);
+            NaturalButton.TabIndex = 0;
+            NaturalButton.TabStop = true;
+            NaturalButton.Text = "Natural";
+            NaturalButton.UseVisualStyleBackColor = true;
             // 
             // PlayerName
             // 
-            this.PlayerName.Location = new System.Drawing.Point(455, 44);
-            this.PlayerName.Name = "PlayerName";
-            this.PlayerName.Size = new System.Drawing.Size(333, 26);
-            this.PlayerName.TabIndex = 1;
+            PlayerName.Location = new System.Drawing.Point(506, 55);
+            PlayerName.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            PlayerName.Name = "PlayerName";
+            PlayerName.Size = new System.Drawing.Size(370, 31);
+            PlayerName.TabIndex = 1;
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(451, 12);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(145, 20);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Enter Player Name:";
+            label1.AutoSize = true;
+            label1.Location = new System.Drawing.Point(501, 15);
+            label1.Name = "label1";
+            label1.Size = new System.Drawing.Size(160, 25);
+            label1.TabIndex = 2;
+            label1.Text = "Enter Player Name:";
             // 
             // CurrentSatchelPanel
             // 
-            this.CurrentSatchelPanel.AutoScroll = true;
-            this.CurrentSatchelPanel.Location = new System.Drawing.Point(12, 359);
-            this.CurrentSatchelPanel.Name = "CurrentSatchelPanel";
-            this.CurrentSatchelPanel.Size = new System.Drawing.Size(1034, 252);
-            this.CurrentSatchelPanel.TabIndex = 4;
+            CurrentSatchelPanel.AutoScroll = true;
+            CurrentSatchelPanel.Location = new System.Drawing.Point(13, 449);
+            CurrentSatchelPanel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            CurrentSatchelPanel.Name = "CurrentSatchelPanel";
+            CurrentSatchelPanel.Size = new System.Drawing.Size(1149, 315);
+            CurrentSatchelPanel.TabIndex = 4;
             // 
             // CurrentSatchelLabel
             // 
-            this.CurrentSatchelLabel.AutoSize = true;
-            this.CurrentSatchelLabel.Location = new System.Drawing.Point(8, 336);
-            this.CurrentSatchelLabel.Name = "CurrentSatchelLabel";
-            this.CurrentSatchelLabel.Size = new System.Drawing.Size(178, 20);
-            this.CurrentSatchelLabel.TabIndex = 0;
-            this.CurrentSatchelLabel.Text = "Current Satchel Weight:";
+            CurrentSatchelLabel.AutoSize = true;
+            CurrentSatchelLabel.Location = new System.Drawing.Point(9, 420);
+            CurrentSatchelLabel.Name = "CurrentSatchelLabel";
+            CurrentSatchelLabel.Size = new System.Drawing.Size(196, 25);
+            CurrentSatchelLabel.TabIndex = 0;
+            CurrentSatchelLabel.Text = "Current Satchel Weight:";
             // 
             // SatchelWeightLabel
             // 
-            this.SatchelWeightLabel.AutoSize = true;
-            this.SatchelWeightLabel.Location = new System.Drawing.Point(192, 336);
-            this.SatchelWeightLabel.Name = "SatchelWeightLabel";
-            this.SatchelWeightLabel.Size = new System.Drawing.Size(18, 20);
-            this.SatchelWeightLabel.TabIndex = 5;
-            this.SatchelWeightLabel.Text = "0";
+            SatchelWeightLabel.AutoSize = true;
+            SatchelWeightLabel.Location = new System.Drawing.Point(213, 420);
+            SatchelWeightLabel.Name = "SatchelWeightLabel";
+            SatchelWeightLabel.Size = new System.Drawing.Size(0, 25);
+            SatchelWeightLabel.TabIndex = 5;
             // 
             // EssencePanel
             // 
-            this.EssencePanel.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.EssencePanel.Location = new System.Drawing.Point(12, 115);
-            this.EssencePanel.Name = "EssencePanel";
-            this.EssencePanel.Size = new System.Drawing.Size(386, 218);
-            this.EssencePanel.TabIndex = 6;
+            EssencePanel.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            EssencePanel.Location = new System.Drawing.Point(13, 144);
+            EssencePanel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            EssencePanel.Name = "EssencePanel";
+            EssencePanel.Size = new System.Drawing.Size(429, 272);
+            EssencePanel.TabIndex = 6;
             // 
             // CatalystPanel
             // 
-            this.CatalystPanel.AutoScroll = true;
-            this.CatalystPanel.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.CatalystPanel.Location = new System.Drawing.Point(404, 115);
-            this.CatalystPanel.Name = "CatalystPanel";
-            this.CatalystPanel.Size = new System.Drawing.Size(200, 218);
-            this.CatalystPanel.TabIndex = 7;
-            this.CatalystPanel.WrapContents = false;
+            CatalystPanel.AutoScroll = true;
+            CatalystPanel.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            CatalystPanel.Location = new System.Drawing.Point(449, 144);
+            CatalystPanel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            CatalystPanel.Name = "CatalystPanel";
+            CatalystPanel.Size = new System.Drawing.Size(222, 272);
+            CatalystPanel.TabIndex = 7;
+            CatalystPanel.WrapContents = false;
             // 
             // essenceLabel
             // 
-            this.essenceLabel.AutoSize = true;
-            this.essenceLabel.Location = new System.Drawing.Point(12, 92);
-            this.essenceLabel.Name = "essenceLabel";
-            this.essenceLabel.Size = new System.Drawing.Size(132, 20);
-            this.essenceLabel.TabIndex = 8;
-            this.essenceLabel.Text = "Select Essences:";
+            essenceLabel.AutoSize = true;
+            essenceLabel.Location = new System.Drawing.Point(13, 115);
+            essenceLabel.Name = "essenceLabel";
+            essenceLabel.Size = new System.Drawing.Size(136, 25);
+            essenceLabel.TabIndex = 8;
+            essenceLabel.Text = "Select Essences:";
             // 
             // catalystLabel
             // 
-            this.catalystLabel.AutoSize = true;
-            this.catalystLabel.Location = new System.Drawing.Point(400, 92);
-            this.catalystLabel.Name = "catalystLabel";
-            this.catalystLabel.Size = new System.Drawing.Size(127, 20);
-            this.catalystLabel.TabIndex = 9;
-            this.catalystLabel.Text = "Select Catalysts:";
+            catalystLabel.AutoSize = true;
+            catalystLabel.Location = new System.Drawing.Point(444, 115);
+            catalystLabel.Name = "catalystLabel";
+            catalystLabel.Size = new System.Drawing.Size(137, 25);
+            catalystLabel.TabIndex = 9;
+            catalystLabel.Text = "Select Catalysts:";
             // 
             // ConfirmButton
             // 
-            this.ConfirmButton.Location = new System.Drawing.Point(734, 617);
-            this.ConfirmButton.Name = "ConfirmButton";
-            this.ConfirmButton.Size = new System.Drawing.Size(175, 35);
-            this.ConfirmButton.TabIndex = 10;
-            this.ConfirmButton.Text = "Confirm";
-            this.ConfirmButton.UseVisualStyleBackColor = true;
-            this.ConfirmButton.Click += new System.EventHandler(this.ConfirmButton_Click);
+            ConfirmButton.Location = new System.Drawing.Point(816, 771);
+            ConfirmButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            ConfirmButton.Name = "ConfirmButton";
+            ConfirmButton.Size = new System.Drawing.Size(194, 44);
+            ConfirmButton.TabIndex = 10;
+            ConfirmButton.Text = "Confirm";
+            ConfirmButton.UseVisualStyleBackColor = true;
+            ConfirmButton.Click += ConfirmButton_Click;
             // 
             // SamplePlayerList
             // 
-            this.SamplePlayerList.FormattingEnabled = true;
-            this.SamplePlayerList.Location = new System.Drawing.Point(101, 624);
-            this.SamplePlayerList.Name = "SamplePlayerList";
-            this.SamplePlayerList.Size = new System.Drawing.Size(256, 28);
-            this.SamplePlayerList.TabIndex = 11;
-            this.SamplePlayerList.Text = "Choose Sample Player...";
-            this.SamplePlayerList.SelectedIndexChanged += new System.EventHandler(this.SamplePlayer_Select);
+            SamplePlayerList.FormattingEnabled = true;
+            SamplePlayerList.Location = new System.Drawing.Point(112, 780);
+            SamplePlayerList.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            SamplePlayerList.Name = "SamplePlayerList";
+            SamplePlayerList.Size = new System.Drawing.Size(284, 33);
+            SamplePlayerList.TabIndex = 11;
+            SamplePlayerList.Text = "Choose Sample Player...";
+            SamplePlayerList.SelectedIndexChanged += SamplePlayer_Select;
             // 
             // ConsumablePanel
             // 
-            this.ConsumablePanel.AutoScroll = true;
-            this.ConsumablePanel.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.ConsumablePanel.Location = new System.Drawing.Point(607, 115);
-            this.ConsumablePanel.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
-            this.ConsumablePanel.Name = "ConsumablePanel";
-            this.ConsumablePanel.Size = new System.Drawing.Size(220, 218);
-            this.ConsumablePanel.TabIndex = 8;
-            this.ConsumablePanel.WrapContents = false;
+            ConsumablePanel.AutoScroll = true;
+            ConsumablePanel.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            ConsumablePanel.Location = new System.Drawing.Point(674, 144);
+            ConsumablePanel.Margin = new System.Windows.Forms.Padding(0, 4, 0, 4);
+            ConsumablePanel.Name = "ConsumablePanel";
+            ConsumablePanel.Size = new System.Drawing.Size(244, 272);
+            ConsumablePanel.TabIndex = 8;
+            ConsumablePanel.WrapContents = false;
             // 
             // consumableLabel
             // 
-            this.consumableLabel.AutoSize = true;
-            this.consumableLabel.Location = new System.Drawing.Point(603, 92);
-            this.consumableLabel.Name = "consumableLabel";
-            this.consumableLabel.Size = new System.Drawing.Size(159, 20);
-            this.consumableLabel.TabIndex = 12;
-            this.consumableLabel.Text = "Select Consumables:";
+            consumableLabel.AutoSize = true;
+            consumableLabel.Location = new System.Drawing.Point(670, 115);
+            consumableLabel.Name = "consumableLabel";
+            consumableLabel.Size = new System.Drawing.Size(174, 25);
+            consumableLabel.TabIndex = 12;
+            consumableLabel.Text = "Select Consumables:";
             // 
             // PassivePanel
             // 
-            this.PassivePanel.AutoScroll = true;
-            this.PassivePanel.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.PassivePanel.Location = new System.Drawing.Point(830, 115);
-            this.PassivePanel.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
-            this.PassivePanel.Name = "PassivePanel";
-            this.PassivePanel.Size = new System.Drawing.Size(220, 218);
-            this.PassivePanel.TabIndex = 9;
-            this.PassivePanel.WrapContents = false;
+            PassivePanel.AutoScroll = true;
+            PassivePanel.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            PassivePanel.Location = new System.Drawing.Point(922, 144);
+            PassivePanel.Margin = new System.Windows.Forms.Padding(0, 4, 0, 4);
+            PassivePanel.Name = "PassivePanel";
+            PassivePanel.Size = new System.Drawing.Size(244, 272);
+            PassivePanel.TabIndex = 9;
+            PassivePanel.WrapContents = false;
             // 
             // passiveLabel
             // 
-            this.passiveLabel.AutoSize = true;
-            this.passiveLabel.Location = new System.Drawing.Point(826, 92);
-            this.passiveLabel.Name = "passiveLabel";
-            this.passiveLabel.Size = new System.Drawing.Size(160, 20);
-            this.passiveLabel.TabIndex = 13;
-            this.passiveLabel.Text = "Select Passive Items:";
+            passiveLabel.AutoSize = true;
+            passiveLabel.Location = new System.Drawing.Point(918, 115);
+            passiveLabel.Name = "passiveLabel";
+            passiveLabel.Size = new System.Drawing.Size(172, 25);
+            passiveLabel.TabIndex = 13;
+            passiveLabel.Text = "Select Passive Items:";
             // 
             // PlayerCreatorGui
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1058, 664);
-            this.Controls.Add(this.passiveLabel);
-            this.Controls.Add(this.PassivePanel);
-            this.Controls.Add(this.consumableLabel);
-            this.Controls.Add(this.ConsumablePanel);
-            this.Controls.Add(this.SamplePlayerList);
-            this.Controls.Add(this.ConfirmButton);
-            this.Controls.Add(this.catalystLabel);
-            this.Controls.Add(this.essenceLabel);
-            this.Controls.Add(this.CatalystPanel);
-            this.Controls.Add(this.EssencePanel);
-            this.Controls.Add(this.SatchelWeightLabel);
-            this.Controls.Add(this.CurrentSatchelLabel);
-            this.Controls.Add(this.CurrentSatchelPanel);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.PlayerName);
-            this.Controls.Add(this.ElementBox);
-            this.Name = "PlayerCreatorGui";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "PlayerCreatorGui";
-            this.ElementBox.ResumeLayout(false);
-            this.ElementBox.PerformLayout();
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            ClientSize = new System.Drawing.Size(1176, 830);
+            Controls.Add(passiveLabel);
+            Controls.Add(PassivePanel);
+            Controls.Add(consumableLabel);
+            Controls.Add(ConsumablePanel);
+            Controls.Add(SamplePlayerList);
+            Controls.Add(ConfirmButton);
+            Controls.Add(catalystLabel);
+            Controls.Add(essenceLabel);
+            Controls.Add(CatalystPanel);
+            Controls.Add(EssencePanel);
+            Controls.Add(SatchelWeightLabel);
+            Controls.Add(CurrentSatchelLabel);
+            Controls.Add(CurrentSatchelPanel);
+            Controls.Add(label1);
+            Controls.Add(PlayerName);
+            Controls.Add(ElementBox);
+            Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            Name = "PlayerCreatorGui";
+            StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            Text = "PlayerCreatorGui";
+            ElementBox.ResumeLayout(false);
+            ElementBox.PerformLayout();
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
