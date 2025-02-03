@@ -1,10 +1,12 @@
-﻿using CosmageV2.GUI;
+﻿using CosmageV2.GamePhase;
+using CosmageV2.GUI;
 using CosmageV2.PlayerInteraction.Itemization;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace CosmageV2.PlayerInteraction
 {
@@ -32,6 +34,7 @@ namespace CosmageV2.PlayerInteraction
                     }
 
                     player.AddEssenceAndRemoveFromSatchel(essence);
+                    GamePhaseManager.Instance.LogEvent($"{player.Name} added {essence.Name}");
                 }
             }
         }
@@ -42,6 +45,7 @@ namespace CosmageV2.PlayerInteraction
             {
                 HandleAddIngredient(player);
             }
+            else GamePhaseManager.Instance.LogEvent($"{player.Name} added {catalyst.Name}");
         }
     }
 }

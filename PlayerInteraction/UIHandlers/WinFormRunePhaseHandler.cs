@@ -1,9 +1,11 @@
-﻿using CosmageV2.GUI;
+﻿using CosmageV2.GamePhase;
+using CosmageV2.GUI;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace CosmageV2.PlayerInteraction
 {
@@ -48,6 +50,7 @@ namespace CosmageV2.PlayerInteraction
                 return false;
             }
 
+            GamePhaseManager.Instance.LogEvent($"{player.Name} has charged their {player.Runes[runeChargeIndex].Name}");
             player.ChargeRune(runeChargeIndex);
             return true;
         }
@@ -66,6 +69,7 @@ namespace CosmageV2.PlayerInteraction
                 return false;
             }
 
+            GamePhaseManager.Instance.LogEvent($"{player.Name} has activated their {player.Runes[runeActivateIndex].Name}");
             player.ActivateRune(runeActivateIndex);
             return true;
         }

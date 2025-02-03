@@ -188,7 +188,7 @@ namespace CosmageV2.GUI
         {
             if (GetName() && GetElement())
             {
-                Player = new Player(element, name);
+                Player = new Player(element, name); // TODO pass ruleset and gui here? 
                 Player.SetSatchel(new Satchel(satchel));
                 Close();
             }

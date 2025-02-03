@@ -26,10 +26,11 @@ namespace CosmageV2.PlayerInteraction
             wardHandler = playerWardHandler;
         }
 
-        public override void ReceiveDamage(Element element, int damageAmount)
+        public override int ReceiveDamage(Element element, int damageAmount)
         {
             WardAndDamageWrapper result = wardHandler.GetAdjustedWardAndFinalDamageAmount(Strength, element, damageAmount);
             Strength = result.Ward;
+            return result.Damage;
         }
 
         public void DecrementAllStrengths()

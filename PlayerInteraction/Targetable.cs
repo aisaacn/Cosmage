@@ -10,6 +10,6 @@ namespace CosmageV2.PlayerInteraction
     {
         public abstract Element Element { get; protected set; }
 
-        public abstract void ReceiveDamage(Element element, int damageAmount);
+        public abstract int ReceiveDamage(Element element, int damageAmount);
     }
 }

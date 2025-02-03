@@ -15,7 +15,7 @@ namespace CosmageV2.PlayerInteraction
     public class Player : Targetable
     {
         public override Element Element { get; protected set; }
-        public string Name { get; }
+        public string Name { get; private set; }
         public int Health { get; set; }
         public ElementalStrength Ward { get; private set; }
         public List<Construct> Constructs { get; private set; }
@@ -42,6 +42,18 @@ namespace CosmageV2.PlayerInteraction
 
         public Player(Element element, string name) 
         {
+            InitializePlayer(element, name);
+        }
+
+        public Player(Element element, string name, IRulesetManager ruleset, IGuiManager gui)
+        {
+            rulesetManager = ruleset;
+            guiManager = gui;
+            InitializePlayer(element, name);
+        }
+
+        public void InitializePlayer(Element element, string name)
+        {
             Element = element;
             Name = name;
 
@@ -61,9 +73,12 @@ namespace CosmageV2.PlayerInteraction
 
         private void ConfigureRuleset()
         {
-            rulesetManager = GamePhaseManager.Instance.RulesetManager;
             if (rulesetManager is null)
-                throw new Exception("RulesetManager must be set in GamePhaseManager.");
+            {
+                if (GamePhaseManager.Instance.RulesetManager is null)
+                    throw new Exception("RulesetManager must be set in GamePhaseManager.");
+                rulesetManager = GamePhaseManager.Instance.RulesetManager;
+            }
 
             Health = rulesetManager.PlayerMaxHealth;
             damageHandler = rulesetManager.DamageHandler;
@@ -72,9 +87,12 @@ namespace CosmageV2.PlayerInteraction
 
         private void ConfigureGui()
         {
-            guiManager = GamePhaseManager.Instance.GuiManager;
             if (guiManager is null)
-                throw new Exception("GuiManager must be set in GamePhaseManager.");
+            {
+                if (GamePhaseManager.Instance.GuiManager is null)
+                    throw new Exception("GuiManager must be set in GamePhaseManager.");
+                guiManager = GamePhaseManager.Instance.GuiManager;
+            }
 
             addIngredientHandler = guiManager.AddIngredientHandler;
             runePhaseHandler = guiManager.RunePhaseHandler;
@@ -159,7 +177,6 @@ namespace CosmageV2.PlayerInteraction
             Cauldron = new ElementalStrength();
             Catalyst = CatalystType.None;
 
-            GamePhaseManager.Instance.LogEvent($"{Name} has cast a spell: {spell.Type} {spell.Strength.ToString()}");
             return spell;
         }
 
@@ -168,7 +185,6 @@ namespace CosmageV2.PlayerInteraction
             LastEssence = essence;
             Cauldron.AddStrength(essence.Element, essence.Magnitude);
             Satchel.RemoveItem(essence);
-            GamePhaseManager.Instance.LogEvent($"{Name} added {essence.Name}");
         }
 
         public bool AddCatalystAndRemoveFromSatchel(Catalyst catalyst)
@@ -185,7 +201,6 @@ namespace CosmageV2.PlayerInteraction
             {
                 Satchel.RemoveItem(catalyst);
             }
-            GamePhaseManager.Instance.LogEvent($"{Name} added {catalyst.Name}");
             return true;
         }
 
@@ -196,7 +211,6 @@ namespace CosmageV2.PlayerInteraction
 
         public bool ChargeRune(int runeIndex)
         {
-            GamePhaseManager.Instance.LogEvent($"{Name} has charged their {Runes[runeIndex].Name}");
             return Runes[runeIndex].ChargeRune();
         }
 
@@ -207,7 +221,6 @@ namespace CosmageV2.PlayerInteraction
 
         public bool ActivateRune(int runeIndex)
         {
-            GamePhaseManager.Instance.LogEvent($"{Name} has activated their {Runes[runeIndex].Name}");
             LastActivatedRune = Runes[runeIndex];
             return Runes[runeIndex].ActivateRune();
         }
@@ -263,18 +276,18 @@ namespace CosmageV2.PlayerInteraction
             return chooseAttackTargetHandler.HandleChooseAttackTarget();
         }
 
-        public override void ReceiveDamage(Element damageElement, int damageAmount)
+        public override int ReceiveDamage(Element damageElement, int damageAmount)
         {
             int adjDamage = damageHandler.CalculateAdjustedDamage(Element, damageAmount, damageElement);
-            LoseHealthAfterFactoringWard(damageElement, adjDamage);
+            return LoseHealthAfterFactoringWard(damageElement, adjDamage);
         }
 
-        private void LoseHealthAfterFactoringWard(Element damageElement, int damage)
+        private int LoseHealthAfterFactoringWard(Element damageElement, int damage)
         {
             WardAndDamageWrapper damageResult = wardHandler.GetAdjustedWardAndFinalDamageAmount(Ward, damageElement, damage);
             Ward = damageResult.Ward;
             Health -= damageResult.Damage;
-            GamePhaseManager.Instance.LogEvent($"{Name} has taken {damageResult.Damage} damage");
+            return damageResult.Damage;
         }
 
         private void CreateRunes()

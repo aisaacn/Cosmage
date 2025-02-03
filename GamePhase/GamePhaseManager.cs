@@ -171,7 +171,8 @@ namespace CosmageV2.GamePhase
 
         public void HandleAttack(ElementalStrength attack, Targetable target)
         {
-            attackHandler.HandleAttack(attack, target);
+            int totalDamage = attackHandler.HandleAttack(attack, target);
+            if (target is Player) LogEvent($"{((Player)target).Name} has taken {totalDamage} damage"); // TODO fix this garbage (Construct just needs a Name, but that throws weird errors)
             InactivePlayer.RemoveDetroyedConstructs();
         }
 

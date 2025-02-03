@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Xml.Linq;
 using CosmageV2.PlayerInteraction;
 
 namespace CosmageV2.GamePhase
@@ -23,6 +24,7 @@ namespace CosmageV2.GamePhase
 
             if (spell != null)
             {
+                GamePhaseManager.Instance.LogEvent($"{manager.CurrentPlayer.Name} has cast a spell: {spell.Type} {spell.Strength.ToString()}");
                 manager.ExecuteSpell(spell);
             }
         }

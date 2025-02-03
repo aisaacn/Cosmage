@@ -13,6 +13,6 @@ namespace CosmageV2.GamePhase
      */
     public interface IAttackHandler
     {
-        void HandleAttack(ElementalStrength strength, Targetable target);
+        int HandleAttack(ElementalStrength strength, Targetable target);
     }
 }
