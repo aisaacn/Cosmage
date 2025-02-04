@@ -34,7 +34,6 @@
             Player1CauldronContents = new System.Windows.Forms.Label();
             Player2Catalyst = new System.Windows.Forms.Label();
             Player1Catalyst = new System.Windows.Forms.Label();
-            CurrentPlayerLabel = new System.Windows.Forms.Label();
             Player2RuneNames = new System.Windows.Forms.Label();
             Player2RuneStatus = new System.Windows.Forms.Label();
             Player1RuneNames = new System.Windows.Forms.Label();
@@ -101,15 +100,6 @@
             Player1Catalyst.Size = new System.Drawing.Size(131, 25);
             Player1Catalyst.TabIndex = 5;
             Player1Catalyst.Text = "Player1Catalyst";
-            // 
-            // CurrentPlayerLabel
-            // 
-            CurrentPlayerLabel.AutoSize = true;
-            CurrentPlayerLabel.Location = new System.Drawing.Point(7, 250);
-            CurrentPlayerLabel.Name = "CurrentPlayerLabel";
-            CurrentPlayerLabel.Size = new System.Drawing.Size(158, 25);
-            CurrentPlayerLabel.TabIndex = 6;
-            CurrentPlayerLabel.Text = "CurrentPlayerLabel";
             // 
             // Player2RuneNames
             // 
@@ -230,7 +220,6 @@
             Controls.Add(Player1RuneNames);
             Controls.Add(Player2RuneStatus);
             Controls.Add(Player2RuneNames);
-            Controls.Add(CurrentPlayerLabel);
             Controls.Add(Player1Catalyst);
             Controls.Add(Player2Catalyst);
             Controls.Add(Player1CauldronContents);
@@ -254,7 +243,6 @@
         private System.Windows.Forms.Label Player1CauldronContents;
         private System.Windows.Forms.Label Player2Catalyst;
         private System.Windows.Forms.Label Player1Catalyst;
-        private System.Windows.Forms.Label CurrentPlayerLabel;
         private System.Windows.Forms.Label Player2RuneNames;
         private System.Windows.Forms.Label Player2RuneStatus;
         private System.Windows.Forms.Label Player1RuneNames;

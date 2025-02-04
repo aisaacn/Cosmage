@@ -13,6 +13,7 @@ namespace CosmageV2.GUI
 {
     public partial class GameBoardGui : Form
     {
+        Dictionary<Player, Label> nameByPlayer;
         Dictionary<Player, Label> cauldronByPlayer;
         Dictionary<Player, Label> catalystByPlayer;
         Dictionary<Player, Label> runeNamesByPlayer;
@@ -37,6 +38,7 @@ namespace CosmageV2.GUI
 
         private void CreateLabelDicts()
         {
+            nameByPlayer = new Dictionary<Player, Label>();
             cauldronByPlayer = new Dictionary<Player, Label>();
             catalystByPlayer = new Dictionary<Player, Label>();
             runeNamesByPlayer = new Dictionary<Player, Label>();
@@ -82,6 +84,8 @@ namespace CosmageV2.GUI
             healthByPlayer.Add(player2, Player2Health);
 
             // Player Names
+            nameByPlayer.Add(player1, Player1CauldronLabel);
+            nameByPlayer.Add(player2, Player2CauldronLabel);
             Player1CauldronLabel.Text = $"{player1.Name}-{player1.Element}:";
             Player2CauldronLabel.Text = $"{player2.Name}-{player2.Element}:";
 
@@ -110,7 +114,12 @@ namespace CosmageV2.GUI
 
         public void UpdateCurrentPlayer(Player player)
         {
-            CurrentPlayerLabel.Text = "Current Player: " + player.Name;
+            // TODO better way to get other player label?
+            foreach (Player p in nameByPlayer.Keys)
+            {
+                if (p.Equals(player)) nameByPlayer[p].ForeColor = Color.Green;
+                else nameByPlayer[p].ForeColor = Color.Black;
+            }
         }
 
         public void ShowWinner(Player player)
