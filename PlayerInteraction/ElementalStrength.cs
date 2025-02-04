@@ -21,9 +21,9 @@ namespace CosmageV2.PlayerInteraction
             strengths = new Dictionary<Element, int>();
 
             // TODO: probably don't hardcode this. Foreach Element in enum??
-            strengths.Add(Element.Natural, natural);
-            strengths.Add(Element.Mechanical, mechanical);
-            strengths.Add(Element.Unnatural, unnatural);
+            strengths.Add(Element.Natural, Math.Max(natural, 0));
+            strengths.Add(Element.Mechanical, Math.Max(mechanical, 0));
+            strengths.Add(Element.Unnatural, Math.Max(unnatural, 0));
         }
 
         public int GetStrength(Element element)
@@ -34,7 +34,7 @@ namespace CosmageV2.PlayerInteraction
         public void AddStrength(Element element, int strength)
         {
             int cur = strengths[element];
-            strengths[element] = cur + strength;
+            strengths[element] = Math.Max(cur + strength, 0);
         }
 
         public void RemoveStrength(Element element, int strength)
@@ -45,9 +45,9 @@ namespace CosmageV2.PlayerInteraction
 
         public void AddStrengths(ElementalStrength strengthsToAdd)
         {
-            strengths[Element.Natural] += strengthsToAdd.GetStrength(Element.Natural);
-            strengths[Element.Mechanical] += strengthsToAdd.GetStrength(Element.Mechanical);
-            strengths[Element.Unnatural] += strengthsToAdd.GetStrength(Element.Unnatural);
+            this.AddStrength(Element.Natural, strengthsToAdd.GetStrength(Element.Natural));
+            this.AddStrength(Element.Mechanical, strengthsToAdd.GetStrength(Element.Mechanical));
+            this.AddStrength(Element.Unnatural, strengthsToAdd.GetStrength(Element.Unnatural));
         }
 
         public int GetMagnitude()

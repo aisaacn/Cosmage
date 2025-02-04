@@ -13,7 +13,7 @@ namespace CosmageV2.GamePhase
      */
     public class DefaultSpellExecutor : ISpellExecutor
     {
-        public void ExecuteSpell(Spell spell)
+        public void ExecuteSpell(Spell spell, Player caster)
         {
             //Console.WriteLine($"Executing spell: {spell.Strength.ToString()} {spell.Type}");
             
@@ -25,11 +25,11 @@ namespace CosmageV2.GamePhase
                     break;
 
                 case CatalystType.Ward:
-                    manager.CurrentPlayer.AddWard(spell.Strength);
+                    caster.AddWard(spell.Strength);
                     break;
 
                 case CatalystType.Construct:
-                    manager.CurrentPlayer.AddConstruct(spell.Strength);
+                    if (spell.Strength.GetMagnitude() > 0) caster.AddConstruct(spell.Strength);
                     break;
 
                 case CatalystType.None:

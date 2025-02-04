@@ -13,6 +13,6 @@ namespace CosmageV2.GamePhase
      */
     public interface ISpellExecutor
     {
-        void ExecuteSpell(Spell spell);
+        void ExecuteSpell(Spell spell, Player caster);
     }
 }

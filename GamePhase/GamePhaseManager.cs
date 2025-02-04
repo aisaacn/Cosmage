@@ -166,7 +166,7 @@ namespace CosmageV2.GamePhase
 
         public void ExecuteSpell(Spell spell)
         {
-            spellExecutor.ExecuteSpell(spell);
+            spellExecutor.ExecuteSpell(spell, CurrentPlayer);
         }
 
         public void HandleAttack(ElementalStrength attack, Targetable target)
