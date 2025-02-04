@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Navigation;
 
 namespace CosmageV2.PlayerInteraction
 {
@@ -15,6 +16,7 @@ namespace CosmageV2.PlayerInteraction
         public override Element Element { get; protected set; }
         public ElementalStrength Strength { get; private set; }
         public bool HasSummoningSickness { get; private set; }
+        public override string Name { get => $"Construct: {Strength}"; }
 
         private IWardHandler wardHandler;
 
@@ -30,7 +32,7 @@ namespace CosmageV2.PlayerInteraction
         {
             WardAndDamageWrapper result = wardHandler.GetAdjustedWardAndFinalDamageAmount(Strength, element, damageAmount);
             Strength = result.Ward;
-            return result.Damage;
+            return damageAmount;
         }
 
         public void DecrementAllStrengths()

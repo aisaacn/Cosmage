@@ -9,6 +9,7 @@ namespace CosmageV2.PlayerInteraction
     public abstract class Targetable
     {
         public abstract Element Element { get; protected set; }
+        public abstract string Name { get; }
 
         public abstract int ReceiveDamage(Element element, int damageAmount);
     }

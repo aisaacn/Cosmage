@@ -15,7 +15,8 @@ namespace CosmageV2.PlayerInteraction
     public class Player : Targetable
     {
         public override Element Element { get; protected set; }
-        public string Name { get; private set; }
+        public override string Name { get => _name; }
+        private string _name;
         public int Health { get; set; }
         public ElementalStrength Ward { get; private set; }
         public List<Construct> Constructs { get; private set; }
@@ -55,7 +56,7 @@ namespace CosmageV2.PlayerInteraction
         public void InitializePlayer(Element element, string name)
         {
             Element = element;
-            Name = name;
+            _name = name;
 
             Haste = 0;
             Prepared = false;
