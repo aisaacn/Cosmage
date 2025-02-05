@@ -19,7 +19,7 @@ namespace CosmageV2.PlayerInteraction
         private int currentDelayCounters;
 
         protected abstract int MaxCharges { get; set; }
-        private int currentCharges;
+        public int CurrentCharges { get; protected set; }
 
         protected abstract List<int> EffectByCharge { get; set; }
 
@@ -34,7 +34,7 @@ namespace CosmageV2.PlayerInteraction
         {
             IsActive = false;
             currentDelayCounters = -1;
-            currentCharges = 0;
+            CurrentCharges = 0;
         }
 
         public bool ChargeRune()
@@ -44,13 +44,13 @@ namespace CosmageV2.PlayerInteraction
                 return false;
             }
 
-            currentCharges++;
+            CurrentCharges++;
             return true;
         }
 
         public bool IsMaxCharge()
         {
-            return currentCharges == MaxCharges;
+            return CurrentCharges == MaxCharges;
         }
 
         public bool ActivateRune()
@@ -70,7 +70,7 @@ namespace CosmageV2.PlayerInteraction
             currentDelayCounters--;
             if (currentDelayCounters == 0)
             {
-                if (currentCharges == 0)
+                if (CurrentCharges == 0)
                 {
                     // Rune cannot cast spell without at least 1 charge
                     Initialize();
@@ -93,12 +93,12 @@ namespace CosmageV2.PlayerInteraction
         public int GetEffectByCharge()
         {
             // TODO evaluate potential bug with charge effects
-            return EffectByCharge[currentCharges - 1];
+            return EffectByCharge[CurrentCharges - 1];
         }
 
         public String StatusToString()
         {
-            return $"Charges: {currentCharges} Delay: {currentDelayCounters}";
+            return $"Charges: {CurrentCharges} Delay: {currentDelayCounters}";
         }
     }
 }

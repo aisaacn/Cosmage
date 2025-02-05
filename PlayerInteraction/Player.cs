@@ -231,7 +231,7 @@ namespace CosmageV2.PlayerInteraction
             return Runes[runeIndex].IsActive;
         }
 
-        public String RuneNamesToString()
+        public string RuneNamesToString()
         {
             StringBuilder sb = new StringBuilder();
             foreach (Rune rune in Runes)
@@ -241,7 +241,7 @@ namespace CosmageV2.PlayerInteraction
             return sb.ToString();
         }
 
-        public String RuneStatusToString()
+        public string RuneStatusToString()
         {
             StringBuilder sb = new StringBuilder();
             foreach (Rune rune in Runes)
