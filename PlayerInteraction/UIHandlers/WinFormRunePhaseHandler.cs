@@ -18,6 +18,9 @@ namespace CosmageV2.PlayerInteraction
         int runeChargeIndex;
         int runeActivateIndex;
 
+        /// <summary>
+        /// Windows Forms GUI to charge and activate Runes.
+        /// </summary>
         public void HandleRunePhase(Player player)
         {
             RunePhaseGui gui = new RunePhaseGui();
@@ -41,6 +44,9 @@ namespace CosmageV2.PlayerInteraction
             }
         }
 
+        /// <summary>
+        /// Tries to add 1 Charge to selected Rune. Relaunches GUI if selected Rune is at max charge.
+        /// </summary>
         private bool TryChargingRune(Player player)
         {
             if (player.IsRuneMaxCharge(runeChargeIndex))
@@ -55,6 +61,9 @@ namespace CosmageV2.PlayerInteraction
             return true;
         }
 
+        /// <summary>
+        /// Tries to activate selected Rune. Relaunches GUI if selected Rune is already active.
+        /// </summary>
         private bool TryChargingAndActivatingRune(Player player)
         {
             if (player.IsRuneActive(runeActivateIndex))

@@ -15,6 +15,10 @@ namespace CosmageV2.GamePhase
             Phase = GamePhase.Ingredient;
         }
 
+        /// <summary>
+        /// Executes current Player's Ingredient Phase.
+        /// Player may add a single Ingredient to their Cauldron.
+        /// </summary>
         public void ExecuteGamePhase(GamePhaseManager manager)
         {
             // Console.WriteLine($"executing Player {manager.CurrentPlayer.Name}'s ingredient phase");

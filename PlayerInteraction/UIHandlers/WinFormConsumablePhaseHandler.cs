@@ -13,6 +13,10 @@ namespace CosmageV2.PlayerInteraction
     {
         private bool usingWormhole = false;
 
+        /// <summary>
+        /// Launches Windows Form GUI for Player to use any number of their Consumables.
+        /// Doesn't launch if Player has no Consumables.
+        /// </summary>
         public void HandleConsumablePhase(Player player)
         {
             if (player.Satchel.Consumables.Count == 0)
@@ -32,6 +36,9 @@ namespace CosmageV2.PlayerInteraction
                 HandleConsumablePhase(player);
         }
 
+        /// <summary>
+        /// Handles using selected Consumable and removes from Player's Satchel.
+        /// </summary>
         private void UseConsumable(Player player, Consumable consumable)
         {
             player.RemoveConsumableFromSatchel(consumable);

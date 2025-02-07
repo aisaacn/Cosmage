@@ -15,6 +15,9 @@ namespace CosmageV2.GamePhase
             Phase = GamePhase.End;
         }
 
+        /// <summary>
+        /// Executes the End Phase, switching active players.
+        /// </summary>
         public void ExecuteGamePhase(GamePhaseManager manager)
         {
             //Console.WriteLine($"Ending {manager.CurrentPlayer.Name}'s turn");

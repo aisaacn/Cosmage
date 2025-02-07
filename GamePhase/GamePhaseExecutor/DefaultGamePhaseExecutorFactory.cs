@@ -12,11 +12,18 @@ namespace CosmageV2.GamePhase
      */
     public class DefaultGamePhaseExecutorFactory : IGamePhaseExecutorFactory
     {
+        /// <summary>
+        /// Returns the GamePhaseExecutor for the first phase (Ingredient phase).
+        /// </summary>
         public IGamePhaseExecutor CreateInitialPhaseExecutor()
         {
             return new IngredientPhaseExecutor();
         }
 
+        /// <summary>
+        /// Returns the GamePhaseExecutor for the phase following the current phase.
+        /// Phase Order: Ingredient, Consumable, Rune, Execution, Construct, End
+        /// </summary>
         public IGamePhaseExecutor GetNextPhaseExecutor(GamePhase currentPhase)
         {
             switch (currentPhase)

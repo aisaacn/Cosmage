@@ -21,6 +21,10 @@ namespace CosmageV2.GamePhase
             elementalRelationshipManager = new DefaultElementalRelationshipManager();
         }
 
+        /// <summary>
+        /// Handles dealing provided damage to Target (Player or Construct).
+        /// Breaks a single attack into three separate instances of damage (one for each Element) in the order defined in IElementalRelationshipManager.
+        /// </summary>
         public int HandleAttack(ElementalStrength strength, Targetable target)
         {
             //Console.WriteLine($"{target.Name} has been attacked! {strength.ToString()}");

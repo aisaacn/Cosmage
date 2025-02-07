@@ -12,6 +12,9 @@ namespace CosmageV2.PlayerInteraction
      */
     public interface IAddIngredientHandler
     {
+        /// <summary>
+        /// Prompts Player to select an Ingredient to add to their Cauldron, or add none.
+        /// </summary>
         void HandleAddIngredient(Player player);
     }
 }

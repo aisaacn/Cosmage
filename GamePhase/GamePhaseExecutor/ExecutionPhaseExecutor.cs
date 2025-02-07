@@ -17,6 +17,11 @@ namespace CosmageV2.GamePhase
             Phase = GamePhase.Execution;
         }
 
+        /// <summary>
+        /// Executes the current Player's Execution Phase.
+        /// Decrements Player's activated Runes' Delay counters by 1.
+        /// If a Rune reaches 0 Delay, a spell executes using the Player's current Cauldron.
+        /// </summary>
         public void ExecuteGamePhase(GamePhaseManager manager)
         {
             // TODO

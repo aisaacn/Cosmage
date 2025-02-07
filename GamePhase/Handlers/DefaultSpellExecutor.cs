@@ -13,6 +13,9 @@ namespace CosmageV2.GamePhase
      */
     public class DefaultSpellExecutor : ISpellExecutor
     {
+        /// <summary>
+        /// Handles execution of provided Spell based on it's CatalystType.
+        /// </summary>
         public void ExecuteSpell(Spell spell, Player caster)
         {
             //Console.WriteLine($"Executing spell: {spell.Strength.ToString()} {spell.Type}");
@@ -33,7 +36,7 @@ namespace CosmageV2.GamePhase
                     break;
 
                 case CatalystType.None:
-                    throw new Exception("Spell cast with no catalyst");
+                    throw new Exception("Spell cast with no catalyst"); // Should never happen
             }
         }
     }

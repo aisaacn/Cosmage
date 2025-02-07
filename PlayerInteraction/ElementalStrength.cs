@@ -26,23 +26,35 @@ namespace CosmageV2.PlayerInteraction
             strengths.Add(Element.Unnatural, Math.Max(unnatural, 0));
         }
 
+        /// <summary>
+        /// Returns strength of provided Element.
+        /// </summary>
         public int GetStrength(Element element)
         {
             return strengths[element];
         }
 
+        /// <summary>
+        /// Adds provided strength to provided Element. Strength cannot be below 0.
+        /// </summary>
         public void AddStrength(Element element, int strength)
         {
             int cur = strengths[element];
             strengths[element] = Math.Max(cur + strength, 0);
         }
 
+        /// <summary>
+        /// Removes strength from provided Element. Strength cannot be below 0.
+        /// </summary>
         public void RemoveStrength(Element element, int strength)
         {
             int cur = strengths[element];
             strengths[element] = Math.Max(cur - strength, 0);
         }
 
+        /// <summary>
+        /// Add strengths for each element from provided ElementalStrength.
+        /// </summary>
         public void AddStrengths(ElementalStrength strengthsToAdd)
         {
             this.AddStrength(Element.Natural, strengthsToAdd.GetStrength(Element.Natural));
@@ -50,11 +62,17 @@ namespace CosmageV2.PlayerInteraction
             this.AddStrength(Element.Unnatural, strengthsToAdd.GetStrength(Element.Unnatural));
         }
 
+        /// <summary>
+        /// Returns total strength from all Elements.
+        /// </summary>
         public int GetMagnitude()
         {
             return strengths.Values.Sum();
         }
 
+        /// <summary>
+        /// Returns the Element with the largest strength, with preference to provided Element in case of ties.
+        /// </summary>
         public Element GetPrimaryElementWithTiebreakerPreference(Element tiebreakerPreference)
         {
             Element primary = tiebreakerPreference;
@@ -65,6 +83,9 @@ namespace CosmageV2.PlayerInteraction
             return primary;
         }
 
+        /// <summary>
+        /// Sets strengths for all Elements to 0.
+        /// </summary>
         public void SetZero()
         {
             strengths = new Dictionary<Element, int>();
@@ -74,6 +95,9 @@ namespace CosmageV2.PlayerInteraction
             strengths.Add(Element.Unnatural, 0);
         }
 
+        /// <summary>
+        /// Returns formatted string of each Element's strength.
+        /// </summary>
         public override string ToString()
         {
             return string.Join(" ", strengths);

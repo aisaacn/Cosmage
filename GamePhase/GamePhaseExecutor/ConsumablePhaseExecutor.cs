@@ -15,6 +15,10 @@ namespace CosmageV2.GamePhase
             Phase = GamePhase.Consumable;
         }
 
+        /// <summary>
+        /// Executes current Player's Consumable Phase.
+        /// Player may use any number of Consumables from their Satchel.
+        /// </summary>
         public void ExecuteGamePhase(GamePhaseManager manager)
         {
             manager.CurrentPlayer.HandleUseConsumables();

@@ -15,6 +15,10 @@ namespace CosmageV2.GamePhase
             Phase = GamePhase.Rune;
         }
 
+        /// <summary>
+        /// Executes the current Player's Rune Phase.
+        /// Player must add 1 charge to any of their Runes. Player may activate any of their inactive Runes.
+        /// </summary>
         public void ExecuteGamePhase(GamePhaseManager manager)
         {
             if (manager.CurrentTurn != 0 || manager.CurrentPlayer.Prepared)

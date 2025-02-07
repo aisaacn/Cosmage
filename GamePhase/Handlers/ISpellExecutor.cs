@@ -13,6 +13,9 @@ namespace CosmageV2.GamePhase
      */
     public interface ISpellExecutor
     {
+        /// <summary>
+        /// Handles execution of provided Spell based on it's CatalystType.
+        /// </summary>
         void ExecuteSpell(Spell spell, Player caster);
     }
 }

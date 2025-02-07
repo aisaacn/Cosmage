@@ -28,6 +28,9 @@ namespace CosmageV2.PlayerInteraction
             wardHandler = playerWardHandler;
         }
 
+        /// <summary>
+        /// Modify Construct's strength per incoming damage.
+        /// </summary>
         public override int ReceiveDamage(Element element, int damageAmount)
         {
             WardAndDamageWrapper result = wardHandler.GetAdjustedWardAndFinalDamageAmount(Strength, element, damageAmount);
@@ -35,6 +38,9 @@ namespace CosmageV2.PlayerInteraction
             return damageAmount;
         }
 
+        /// <summary>
+        /// Decrease strength of each Element by 1. Cannot reduce below 0.
+        /// </summary>
         public void DecrementAllStrengths()
         {
             if (HasSummoningSickness)
@@ -48,6 +54,9 @@ namespace CosmageV2.PlayerInteraction
             Strength.RemoveStrength(Element.Unnatural, 1);
         }
 
+        /// <summary>
+        /// Returns true if sum of all Element's strengths is 0.
+        /// </summary>
         public bool IsDestroyed()
         {
             return Strength.GetMagnitude() <= 0;

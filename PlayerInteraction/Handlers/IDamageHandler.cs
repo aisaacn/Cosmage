@@ -12,6 +12,12 @@ namespace CosmageV2.PlayerInteraction
      */
     public interface IDamageHandler
     {
+        /// <summary>
+        /// Returns adjusted damage based on receiving Player's Element and incoming damage Element.
+        /// Default behaviour is as follows:
+        /// +1 Damage when incoming Element is strong against target's Element.
+        /// -1 Damage when incoming Element is weak against target's Element.
+        /// </summary>
         int CalculateAdjustedDamage(Element targetElement, int damage, Element damageElement);
     }
 }

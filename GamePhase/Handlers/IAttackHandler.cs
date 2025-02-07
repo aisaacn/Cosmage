@@ -13,6 +13,9 @@ namespace CosmageV2.GamePhase
      */
     public interface IAttackHandler
     {
+        /// <summary>
+        /// Facilitates dealing provided damage to Target (Player or Construct).
+        /// </summary>
         int HandleAttack(ElementalStrength strength, Targetable target);
     }
 }

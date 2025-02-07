@@ -33,6 +33,9 @@ namespace CosmageV2.GamePhase
         public Player InactivePlayer { get; private set; }
         public int CurrentTurn { get; private set; }
 
+        /// <summary>
+        /// Provide an IRulesetManager to configure logic handlers.
+        /// </summary>
         public void ConfigureRuleset(IRulesetManager ruleset)
         {
             RulesetManager = ruleset;
@@ -43,23 +46,35 @@ namespace CosmageV2.GamePhase
             gameValidator = RulesetManager.GameValidator;
         }
 
+        /// <summary>
+        /// Provide an IGuiManager to configure GUI handlers.
+        /// </summary>
         public void ConfigureGui(IGuiManager guiManager)
         {
             GuiManager = guiManager;
             gameBoardCommunicator = GuiManager.GameBoardCommunicator;
         }
 
+        /// <summary>
+        /// Returns the enum corresponding to the current GamePhase.
+        /// </summary>
         public GamePhase GetCurrentPhase()
         {
             return currentPhaseExecutor.Phase;
         }
 
+        /// <summary>
+        /// Add two opposing Players to the game.
+        /// </summary>
         public void SetPlayers(Player p1, Player p2)
         {
             Player1 = p1;
             Player2 = p2;
         }
 
+        /// <summary>
+        /// Decides which Player goes first by comparing their Hastes. Randomly decides if Haste is tied.
+        /// </summary>
         private void DecideTurnOrder()
         {
             // TODO polish
@@ -90,12 +105,18 @@ namespace CosmageV2.GamePhase
             }
         }
 
+        /// <summary>
+        /// Registers the current Players to the GameBoard GUI.
+        /// </summary>
         private void ConfigureGameBoard()
         {
             gameBoardCommunicator.ConfigurePlayers(Player1, Player2);
             gameBoardCommunicator.UpdateCurrentPlayer(CurrentPlayer);
         }
 
+        /// <summary>
+        /// Begins game loop if all necessary parameters are configured.
+        /// </summary>
         public void StartGame()
         {
             gameValidator.ValidateGame(this);
@@ -115,6 +136,9 @@ namespace CosmageV2.GamePhase
             }
         }
 
+        /// <summary>
+        /// Returns true if either Player reaches 0 Health.
+        /// </summary>
         private bool IsGameOver()
         {
             if (InactivePlayer.Health <= 0)
@@ -133,26 +157,33 @@ namespace CosmageV2.GamePhase
             return false;
         }
 
+        /// <summary>
+        /// Communicates with GameBoard GUI to reflect winning Player.
+        /// </summary>
         private void DeclareWinner(Player winner)
         {
             gameBoardCommunicator.DeclareWinner(winner);
         }
 
+        /// <summary>
+        /// Executes current game phase as provided by IGamePhaseExecutorFactory.
+        /// </summary>
         private void ExecuteCurrentPhase()
         {
             currentPhaseExecutor.ExecuteGamePhase(this);
         }
 
-        public void UpdateGameBoard()
-        {
-            gameBoardCommunicator.UpdatePlayerState(Player1, Player2);
-        }
-
+        /// <summary>
+        /// Fetch next GamePhaseExecutor from IGamePhaseExecutorFactory.
+        /// </summary>
         private void TransitionToNextPhase()
         {
             currentPhaseExecutor = gamePhaseExecutorFactory.GetNextPhaseExecutor(GetCurrentPhase());
         }
 
+        /// <summary>
+        /// Begins InactivePlayer's turn.
+        /// </summary>
         public void SwitchPlayer()
         {
             CurrentTurn++;
@@ -164,24 +195,44 @@ namespace CosmageV2.GamePhase
             // TODO update current round on GameBoard
         }
 
+        /// <summary>
+        /// Passes cast Spell from Player to ISpellExecutor for handling.
+        /// </summary>
         public void ExecuteSpell(Spell spell)
         {
             spellExecutor.ExecuteSpell(spell, CurrentPlayer);
         }
 
+        /// <summary>
+        /// Passes incoming attack and Target (either Player or Construct) to IAttackHandler for damage facilitation.
+        /// </summary>
         public void HandleAttack(ElementalStrength attack, Targetable target)
         {
-            string targetName = target.Name; // Get Construct name prior to taking damage
+            string targetName = target.Name; // Gets Construct name prior to taking damage
             int totalDamage = attackHandler.HandleAttack(attack, target);
             LogEvent($"{targetName} has taken {totalDamage} damage");
             InactivePlayer.RemoveDetroyedConstructs();
         }
 
+        /// <summary>
+        /// Prompts Player to choose attack Target when casting attack Spell.
+        /// </summary>
         public void HandlePlayerAttack(ElementalStrength attack)
         {
             HandleAttack(attack, CurrentPlayer.HandleChooseAttackTarget());
         }
 
+        /// <summary>
+        /// Prompts GameBoard GUI to update Player data.
+        /// </summary>
+        public void UpdateGameBoard()
+        {
+            gameBoardCommunicator.UpdatePlayerState(Player1, Player2);
+        }
+
+        /// <summary>
+        /// Prints a string to the GameBoard GUI Event Log.
+        /// </summary>
         public void LogEvent(string log)
         {
             gameBoardCommunicator.LogEvent(log);

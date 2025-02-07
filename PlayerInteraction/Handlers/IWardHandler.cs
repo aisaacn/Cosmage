@@ -12,9 +12,15 @@ namespace CosmageV2.PlayerInteraction
      */
     public interface IWardHandler
     {
+        /// <summary>
+        /// Returns adjusted Ward and any excess damage per provided ward and provided incoming damage.
+        /// </summary>
         WardAndDamageWrapper GetAdjustedWardAndFinalDamageAmount(ElementalStrength ward, Element damageElement, int damageTotal);
     }
 
+    /*
+     * Wrapper class for storing adjusted Ward and excess Damage after receiving incoming damage.
+     */
     public class WardAndDamageWrapper
     {
         // TODO where does this wrapper class belong?

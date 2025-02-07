@@ -25,16 +25,26 @@ namespace CosmageV2.PlayerInteraction
             orderByElement.Add(Element.Unnatural, orderIfTargetUnnatural);
         }
 
+        /// <summary>
+        /// Returns List of Elements in the order that damage should be taken against the provided Element.
+        /// Order is Strong Against -> Weak Against -> Neutral
+        /// </summary>
         public List<Element> GetElementalDamageOrder(Element target)
         {
             return orderByElement[target];
         }
 
+        /// <summary>
+        /// Returns Element strong against provided Element.
+        /// </summary>
         public Element GetElementStrongAgainst(Element target)
         {
             return orderByElement[target][0];
         }
 
+        /// <summary>
+        /// Returns Element weak against provided Element.
+        /// </summary>
         public Element GetElementWeakAgainst(Element target)
         {
             return orderByElement[target][1];

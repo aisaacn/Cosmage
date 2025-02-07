@@ -13,6 +13,10 @@ namespace CosmageV2.GamePhase
     public interface IGamePhaseExecutor
     {
         GamePhase Phase { get; }
+
+        /// <summary>
+        /// Executes the specified GamePhase.
+        /// </summary>
         void ExecuteGamePhase(GamePhaseManager manager);
     }
 }

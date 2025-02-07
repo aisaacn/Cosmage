@@ -18,6 +18,10 @@ namespace CosmageV2.GamePhase
             Phase = GamePhase.Construct;
         }
 
+        /// <summary>
+        /// Executes the current Players's Construct Phase.
+        /// Each of current Player's Constructs deal damage and lose 1 strength of each Element.
+        /// </summary>
         public void ExecuteGamePhase(GamePhaseManager manager)
         {
             Player currentPlayer = manager.CurrentPlayer;

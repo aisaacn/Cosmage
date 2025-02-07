@@ -27,16 +27,25 @@ namespace CosmageV2.PlayerInteraction
             AllItems = items;
         }
 
+        /// <summary>
+        /// Add Item to Satchel.
+        /// </summary>
         public void AddItem(Item item)
         {
             AllItems.Add(item);
         }
 
+        /// <summary>
+        /// Remove Item from Satchel.
+        /// </summary>
         public bool RemoveItem(Item item)
         {
             return AllItems.Remove(item);
         }
 
+        /// <summary>
+        /// Create deep copy of Satchel to avoid reference pointer issues.
+        /// </summary>
         public Satchel Clone()
         {
             Satchel newSatchel = new Satchel();

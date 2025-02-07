@@ -9,6 +9,9 @@ namespace CosmageV2.GamePhase
 {
     public interface IPassiveHandler
     {
+        /// <summary>
+        /// Adjusts game and Player status according to each Player's Passive Items.
+        /// </summary>
         void HandlePassives(Player player1, Player player2);
     }
 }

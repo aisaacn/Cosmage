@@ -20,6 +20,12 @@ namespace CosmageV2.PlayerInteraction
             elementalRelationshipManager = erm;
         }
 
+        /// <summary>
+        /// Returns adjusted damage based on receiving Player's Element and incoming damage Element.
+        /// +1 Damage when incoming Element is strong against target's Element.
+        /// -1 Damage when incoming Element is weak against target's Element.
+        /// Elemental relationships are defined by provided IElementalRelationshipManager.
+        /// </summary>
         public int CalculateAdjustedDamage(Element targetElement, int damage, Element damageElement)
         {
             int adjDamage = damage;

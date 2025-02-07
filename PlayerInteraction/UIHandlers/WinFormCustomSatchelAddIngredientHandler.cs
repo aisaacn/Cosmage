@@ -12,6 +12,9 @@ namespace CosmageV2.PlayerInteraction
 {
     public class WinFormCustomSatchelAddIngredientHandler : IAddIngredientHandler
     {
+        /// <summary>
+        /// Launches Windows Forms GUI to prompt Player to add an Ingredient to their Cauldron, or add none.
+        /// </summary>
         public void HandleAddIngredient(Player player)
         {
             IngredientPhaseGuiCustomSatchel gui = new IngredientPhaseGuiCustomSatchel(player.Satchel);
@@ -39,6 +42,9 @@ namespace CosmageV2.PlayerInteraction
             }
         }
 
+        /// <summary>
+        /// Tries to add Catalyst to Player's Cauldron. If Cauldron already contains a Catalyst, relaunches GUI.
+        /// </summary>
         public void TryAddCatalyst(Player player, Catalyst catalyst)
         {
             if (!player.AddCatalystAndRemoveFromSatchel(catalyst))

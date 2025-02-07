@@ -12,7 +12,14 @@ namespace CosmageV2.GamePhase
      */
     public interface IGamePhaseExecutorFactory
     {
+        /// <summary>
+        /// Returns the GamePhaseExecutor for the first phase in a game (default: Ingredient phase).
+        /// </summary>
         IGamePhaseExecutor CreateInitialPhaseExecutor();
+
+        /// <summary>
+        /// Returns the GamePhaseExecutor for the phase that follows the provided phase.
+        /// </summary>
         IGamePhaseExecutor GetNextPhaseExecutor(GamePhase currentPhase);
     }
 }

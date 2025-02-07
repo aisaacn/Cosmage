@@ -27,6 +27,9 @@ namespace CosmageV2.PlayerInteraction
             GetSamplePlayersFromJson();
         }
 
+        /// <summary>
+        /// Stores provided Player.
+        /// </summary>
         public static void AddCustomSamplePlayer(Player player)
         {
             PlayerSerializable newPlayer = new PlayerSerializable(player);
@@ -41,6 +44,9 @@ namespace CosmageV2.PlayerInteraction
             SavePlayerToJson(newPlayer);
         }
 
+        /// <summary>
+        /// Returns Player by provided name.
+        /// </summary>
         public static Player GetPlayer(string name)
         {
             PlayerSerializable playerS = Samples[name];
@@ -49,12 +55,18 @@ namespace CosmageV2.PlayerInteraction
             return player;
         }
 
+        /// <summary>
+        /// Serializes provided Player to Json.
+        /// </summary>
         private static void SavePlayerToJson(PlayerSerializable player)
         {
             var json = JsonSerializer.Serialize(player, _options);
             File.WriteAllText(jsonDirectoryPath + player.Name + ".json", json);
         }
 
+        /// <summary>
+        /// Deserializes Json file to Player object. Populates SamplePlayers.
+        /// </summary>
         private static void LoadPlayerFromJson(string fileName)
         {
             var json = File.ReadAllText(fileName);
@@ -62,6 +74,9 @@ namespace CosmageV2.PlayerInteraction
             Samples.Add(player.Name, player);
         }
 
+        /// <summary>
+        /// Fetches all Json objects in SamplePlayer directory.
+        /// </summary>
         private static void GetSamplePlayersFromJson()
         {
             foreach (string fileName in Directory.GetFiles(jsonDirectoryPath, "*.json"))
@@ -70,6 +85,9 @@ namespace CosmageV2.PlayerInteraction
             }
         }
 
+        /// <summary>
+        /// Finds path to SamplePlayers directory based on working directory.
+        /// </summary>
         private static void SetJsonDirectoryPath()
         {
             string dir = Environment.CurrentDirectory;

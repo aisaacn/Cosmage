@@ -53,6 +53,9 @@ namespace CosmageV2.PlayerInteraction
             InitializePlayer(element, name);
         }
 
+        /// <summary>
+        /// Sets Player data to initial state.
+        /// </summary>
         public void InitializePlayer(Element element, string name)
         {
             Element = element;
@@ -72,6 +75,9 @@ namespace CosmageV2.PlayerInteraction
             ConfigureGui();
         }
 
+        /// <summary>
+        /// Configres logic handlers per provided IRulesetManager. If none provided, uses the one from GamePhaseManager.
+        /// </summary>
         private void ConfigureRuleset()
         {
             if (rulesetManager is null)
@@ -86,6 +92,9 @@ namespace CosmageV2.PlayerInteraction
             wardHandler = rulesetManager.WardHandler;
         }
 
+        /// <summary>
+        /// Configres GUI handlers per provided IGuiManager. If none provided, uses the one from GamePhaseManager.
+        /// </summary>
         private void ConfigureGui()
         {
             if (guiManager is null)
@@ -101,27 +110,42 @@ namespace CosmageV2.PlayerInteraction
             chooseAttackTargetHandler = guiManager.ChooseAttackTargetHandler;
         }
 
+        /// <summary>
+        /// Configure Player's Satchel of items.
+        /// </summary>
         public void SetSatchel(Satchel newSatchel)
         {
             // TODO satchel size check. If newSatchel.Size <= rulesManager.MaxSatchelSize
             Satchel = newSatchel;
         }
 
+        /// <summary>
+        /// Executes Player's Ingredient Phase per provided IAddIngredientHandler.
+        /// </summary>
         public void HandleAddIngredient()
         {
             addIngredientHandler.HandleAddIngredient(this);
         }
 
+        /// <summary>
+        /// Executes Player's Consumable Phase per provided IConsumablePhaseHandler.
+        /// </summary>
         public void HandleUseConsumables()
         {
             consumablePhaseHandler.HandleConsumablePhase(this);
         }
 
+        /// <summary>
+        /// Executes Player's Rune Phase per provided IRunePhaseHandler.
+        /// </summary>
         public void HandleRunePhase()
         {
             runePhaseHandler.HandleRunePhase(this);
         }
 
+        /// <summary>
+        /// Executes Player's Execution Phase by decrementing all activated Runes' Delay counters. If Delay reaches 0, returns a Spell to be cast.
+        /// </summary>
         public Spell HandleExecutionPhaseAndGetPreparedSpell()
         {
             int runeEffect = DecrementRuneDelayAndGetEffectIncrease();
@@ -132,6 +156,9 @@ namespace CosmageV2.PlayerInteraction
             return PrepareSpell(runeEffect);
         }
 
+        /// <summary>
+        /// Decrements each of Player's Constructs strength by 1 for each element. Removes Constructs with 0 strength.
+        /// </summary>
         public void DecrementAllConstructs()
         {
             foreach (Construct c in Constructs)
@@ -141,6 +168,9 @@ namespace CosmageV2.PlayerInteraction
             RemoveDetroyedConstructs();
         }
 
+        /// <summary>
+        /// Removes all of Player's Constructs with 0 strength.
+        /// </summary>
         public void RemoveDetroyedConstructs()
         {
             List<Construct> toDestroy = new List<Construct>();
@@ -155,6 +185,9 @@ namespace CosmageV2.PlayerInteraction
             }
         }
 
+        /// <summary>
+        /// Creates Spell to be executed if all criteria are met. Returns Cauldron to base state upon successful Spell creation.
+        /// </summary>
         private Spell PrepareSpell(int runeEffect)
         {
             // Don't cast spell if no essence, no catalyst, or if runeEffect reduces spell strength to less than 1
@@ -180,7 +213,10 @@ namespace CosmageV2.PlayerInteraction
 
             return spell;
         }
-
+        
+        /// <summary>
+        /// Adds Essence Ingredient to Cauldron and removes from Satchel.
+        /// </summary>
         public void AddEssenceAndRemoveFromSatchel(Essence essence)
         {
             LastEssence = essence;
@@ -188,6 +224,9 @@ namespace CosmageV2.PlayerInteraction
             Satchel.RemoveItem(essence);
         }
 
+        /// <summary>
+        /// Add Catalyst Ingredient to Cauldron and removes from Satchel. Fails if Cauldron already contains a Catalyst.
+        /// </summary>
         public bool AddCatalystAndRemoveFromSatchel(Catalyst catalyst)
         {
             if (Catalyst != CatalystType.None)
@@ -205,32 +244,50 @@ namespace CosmageV2.PlayerInteraction
             return true;
         }
 
+        /// <summary>
+        /// Removes Consumable from Satchel. Only called upon Consumable use.
+        /// </summary>
         public bool RemoveConsumableFromSatchel(Consumable consumable)
         {
             return Satchel.RemoveItem(consumable);
         }
 
+        /// <summary>
+        /// Add 1 Charge to the specified Rune. Returns false if Rune is at max charge.
+        /// </summary>
         public bool ChargeRune(int runeIndex)
         {
             return Runes[runeIndex].ChargeRune();
         }
 
+        /// <summary>
+        /// Returns true if specified Rune is already at max Charges.
+        /// </summary>
         public bool IsRuneMaxCharge(int runeIndex)
         {
             return Runes[runeIndex].IsMaxCharge();
         }
 
+        /// <summary>
+        /// Activates specified Rune. Returns false if Rune is already activated.
+        /// </summary>
         public bool ActivateRune(int runeIndex)
         {
             LastActivatedRune = Runes[runeIndex];
             return Runes[runeIndex].ActivateRune();
         }
 
+        /// <summary>
+        /// Returns true if Rune is already activated.
+        /// </summary>
         public bool IsRuneActive(int runeIndex)
         {
             return Runes[runeIndex].IsActive;
         }
 
+        /// <summary>
+        /// Returns formatted string of Player's Runes' names.
+        /// </summary>
         public string RuneNamesToString()
         {
             StringBuilder sb = new StringBuilder();
@@ -241,6 +298,9 @@ namespace CosmageV2.PlayerInteraction
             return sb.ToString();
         }
 
+        /// <summary>
+        /// Returns formatted string of Player's Runes' statuses (charge level and activation).
+        /// </summary>
         public string RuneStatusToString()
         {
             StringBuilder sb = new StringBuilder();
@@ -251,16 +311,25 @@ namespace CosmageV2.PlayerInteraction
             return sb.ToString();
         }
 
+        /// <summary>
+        /// Adds provided Ward to Player's total Ward.
+        /// </summary>
         public void AddWard(ElementalStrength strength)
         {
             Ward.AddStrengths(strength);
         }
 
+        /// <summary>
+        /// Adds new Construct to Player's list of Constructs.
+        /// </summary>
         public void AddConstruct(ElementalStrength strength)
         {
             Constructs.Add(new Construct(strength, Element, wardHandler));
         }
 
+        /// <summary>
+        /// Returns formatted string of all Player's Constructs.
+        /// </summary>
         public string ConstructsToString()
         {
             StringBuilder sb = new StringBuilder();
@@ -272,17 +341,26 @@ namespace CosmageV2.PlayerInteraction
             return sb.ToString();
         }
 
+        /// <summary>
+        /// Returns Target of Player's attack Spell. Defaults to opposing Player if that Player has no Constructs.
+        /// </summary>
         public Targetable HandleChooseAttackTarget()
         {
             return chooseAttackTargetHandler.HandleChooseAttackTarget();
         }
 
+        /// <summary>
+        /// Adjusts incoming damage based on the relationship between the Elements of the Player and incoming damage.
+        /// </summary>
         public override int ReceiveDamage(Element damageElement, int damageAmount)
         {
             int adjDamage = damageHandler.CalculateAdjustedDamage(Element, damageAmount, damageElement);
             return LoseHealthAfterFactoringWard(damageElement, adjDamage);
         }
 
+        /// <summary>
+        /// Adjusts Player's Health and Ward after incoming damage per IWardHandler.
+        /// </summary>
         private int LoseHealthAfterFactoringWard(Element damageElement, int damage)
         {
             WardAndDamageWrapper damageResult = wardHandler.GetAdjustedWardAndFinalDamageAmount(Ward, damageElement, damage);
@@ -291,12 +369,18 @@ namespace CosmageV2.PlayerInteraction
             return damageResult.Damage;
         }
 
+        /// <summary>
+        /// Creates Player's three Runes.
+        /// </summary>
         private void CreateRunes()
         {
             // TODO use runes from player loadout
             Runes = new List<Rune> { new InstantRune(), new StandardRune(), new DelayedRune() };
         }
 
+        /// <summary>
+        /// Decrement each activated Rune's Delay counters by 1. Returns Rune's spell effect if Delay reaches 0.
+        /// </summary>
         private int DecrementRuneDelayAndGetEffectIncrease()
         {
             int effect = int.MinValue;

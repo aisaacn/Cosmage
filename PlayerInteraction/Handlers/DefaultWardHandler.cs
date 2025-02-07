@@ -19,6 +19,9 @@ namespace CosmageV2.PlayerInteraction
             elementalRelationshipManager = erm;
         }
 
+        /// <summary>
+        /// Factors provided Ward into incoming damage. Returns remaining ward and any excess damage taken.
+        /// </summary>
         public WardAndDamageWrapper GetAdjustedWardAndFinalDamageAmount(ElementalStrength ward, Element damageElement, int damageTotal)
         {
             int tempDamage = damageTotal;

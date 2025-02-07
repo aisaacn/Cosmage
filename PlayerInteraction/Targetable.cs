@@ -11,6 +11,9 @@ namespace CosmageV2.PlayerInteraction
         public abstract Element Element { get; protected set; }
         public abstract string Name { get; }
 
+        /// <summary>
+        /// Handle incoming damage.
+        /// </summary>
         public abstract int ReceiveDamage(Element element, int damageAmount);
     }
 }
